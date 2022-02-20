@@ -1,0 +1,17 @@
+#!/bin/bash
+##
+## EPITECH PROJECT, 2021
+## Minishell1
+## File description:
+## push.sh
+##
+
+clear
+make fclean >/dev/null 2>&1
+git status >/dev/null 2>&1
+git add . >/dev/null 2>&1
+buffer=$(git status)
+gcc Push/push.c -o Push/push && ./Push/push "${buffer}"
+rm -rf Push/push >/dev/null 2>&1
+git commit -m "$1" >/dev/null 2>&1
+git push >/dev/null 2>&1

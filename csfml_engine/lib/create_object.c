@@ -1,0 +1,54 @@
+/*
+** EPITECH PROJECT, 2021
+** CSFML engine
+** File description:
+** create_object.c
+*/
+
+#include "my.h"
+#include "engine.h"
+#include "var.h"
+
+obj_t initiate_object(char *src_img, char *tag, int display_order, engine_t *engine)
+{
+    static int id = 1;
+    obj_t object;
+
+    object.display = true;
+    object.exist = true;
+    object.tag = tag;
+    object.texture = sfTexture_createFromFile(my_strcat("csfml_engine/img_src/", src_img), NULL);
+    object.sprite = sfSprite_create();
+    sfSprite_setTexture(object.sprite, object.texture, sfTrue);
+    object.size = sfTexture_getSize(object.texture);
+    object.display_order = display_order;
+    object.id = id;
+    object.gravity = false;
+    object.ishape = false;
+    object.shape = (sfIntRect){0, 0, object.size.x, object.size.y};
+    object.speed = 0.00;
+    object.mouse_inside = false;
+    object.angle = 0.00;
+    id += 1;
+    return object;
+}
+
+obj_t create_object(char *src_img, char *tag, int display_order, engine_t *engine)
+{
+    node_t *new_node = malloc(sizeof(node_t));
+    obj_t object = initiate_object(src_img, tag, display_order, engine);
+
+    if (engine->game.list != NULL) {
+        new_node->previous = engine->game.list;
+        engine->game.list->next = new_node;
+        new_node->next = NULL;
+        new_node->settings = object;
+        engine->game.list = new_node;
+    } else {
+        new_node->previous = NULL;
+        new_node->next = NULL;
+        new_node->settings = object;
+        engine->game.list = new_node;
+    }
+    return object;
+}
