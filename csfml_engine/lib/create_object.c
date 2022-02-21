@@ -9,6 +9,15 @@
 #include "engine.h"
 #include "var.h"
 
+void initialise_enemy(obj_t *enemy)
+{
+    enemy->enemy = false;
+    enemy->path = NULL;
+    enemy->pos_path = 0;
+    enemy->anim_ennemie = 0.00;
+    enemy->move_enemies = 0.00;
+}
+
 obj_t initiate_object(char *src_img, char *tag, int display_order, engine_t *engine)
 {
     static int id = 1;
@@ -29,6 +38,7 @@ obj_t initiate_object(char *src_img, char *tag, int display_order, engine_t *eng
     object.speed = 0.00;
     object.mouse_inside = false;
     object.angle = 0.00;
+    initialise_enemy(&object);
     id += 1;
     return object;
 }

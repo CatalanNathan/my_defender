@@ -15,43 +15,40 @@ void system_function(var_t *var, engine_t *engine)
         game_end(0, engine);
 }
 
-void animation_move_enemies(var_t *var, engine_t *engine)
+void animation_move_enemies(obj_t *object, engine_t *engine)
 {
-    static float anim_ennemie = 0.00;
-    static float move_enemies = 0.00;
-    static int pos_path = 0;
-    sfVector2f path[2] = {{860, 640}, {1020, 750}};
-
-    animation_obj(&var->enemies, (int[4]){0, 48, 240, 100}, &anim_ennemie, engine);
-    if (elapsed_time_milliseconds(50, &move_enemies, engine) != true)
+    animation_obj(object, (int[4]){0, 48, 240, 100}, &object->anim_ennemie, engine);
+    if (elapsed_time_milliseconds(15, &object->move_enemies , engine) != true)
         return;
-    if (get_position_obj(var->enemies, engine).x > path[pos_path].x) {
-        set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x - 1,get_position_obj(var->enemies, engine).y}, engine);
-        if (get_scale_obj(var->enemies, engine).x > 0) {
-            set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x + get_size_obj(&var->enemies, engine).x, get_position_obj(var->enemies, engine).y}, engine);
-            set_scale_obj(&var->enemies, (sfVector2f){get_scale_obj(var->enemies, engine).x * -1, get_scale_obj(var->enemies, engine).y}, engine);
+    if (get_position_obj(*object, engine).x > object->path[object->pos_path].x) {
+        set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x - 1,get_position_obj(*object, engine).y}, engine);
+        if (get_scale_obj(*object, engine).x > 0) {
+            set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x + get_size_obj(object, engine).x, get_position_obj(*object, engine).y}, engine);
+            set_scale_obj(object, (sfVector2f){get_scale_obj(*object, engine).x * -1, get_scale_obj(*object, engine).y}, engine);
         }
     }
-    if (get_position_obj(var->enemies, engine).x < path[pos_path].x) {
-        set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x + 1,get_position_obj(var->enemies, engine).y}, engine);
-        if (get_scale_obj(var->enemies, engine).x < 0) {
-            set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x - get_size_obj(&var->enemies, engine).x, get_position_obj(var->enemies, engine).y}, engine);
-            set_scale_obj(&var->enemies, (sfVector2f){get_scale_obj(var->enemies, engine).x * -1, get_scale_obj(var->enemies, engine).y}, engine);
+    if (get_position_obj(*object, engine).x < object->path[object->pos_path].x) {
+        set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x + 1,get_position_obj(*object, engine).y}, engine);
+        if (get_scale_obj(*object, engine).x < 0) {
+            set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x - get_size_obj(object, engine).x, get_position_obj(*object, engine).y}, engine);
+            set_scale_obj(object, (sfVector2f){get_scale_obj(*object, engine).x * -1, get_scale_obj(*object, engine).y}, engine);
         }
     }
-    if (get_position_obj(var->enemies, engine).y > path[pos_path].y)
-        set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x,get_position_obj(var->enemies, engine).y - 0.5}, engine);
-    if (get_position_obj(var->enemies, engine).y < path[pos_path].y)
-        set_position_obj(var->enemies, (sfVector2f){get_position_obj(var->enemies, engine).x,get_position_obj(var->enemies, engine).y + 0.5}, engine);
-    if (compare_sfvector2f(get_position_obj(var->enemies, engine), path[pos_path]))
-        pos_path++;
-    if (pos_path > 1)
-        pos_path = 0;
-
+    if (get_position_obj(*object, engine).y > object->path[object->pos_path].y)
+        set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x,get_position_obj(*object, engine).y - 0.5}, engine);
+    if (get_position_obj(*object, engine).y < object->path[object->pos_path].y)
+        set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x,get_position_obj(*object, engine).y + 0.5}, engine);
+    if (compare_sfvector2f(get_position_obj(*object, engine), object->path[object->pos_path]) && object->pos_path < 5)
+        object->pos_path++;
 }
 
 void update(var_t *var, engine_t *engine)
 {
+    node_t *start = engine->game.list;
+
     system_function(var, engine);
-    animation_move_enemies(var, engine);
+    for (;engine->game.list != NULL; engine->game.list = engine->game.list->previous)
+        if (engine->game.list->settings.enemy)
+            animation_move_enemies(&var->enemies, engine);
+    engine->game.list = start;
 }

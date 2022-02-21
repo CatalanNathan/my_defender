@@ -41,6 +41,12 @@ struct obj_s
     int display_order;
     float angle;
     int id;
+
+    bool enemy;
+    sfVector2f *path;
+    float anim_ennemie;
+    float move_enemies;
+    int pos_path;
 };
 typedef struct obj_s obj_t;
 
@@ -226,5 +232,7 @@ void set_rotation_tag(char *tag, float angle, engine_t *engine);
 void destroy_object(int id, engine_t *engine);
 sfVector2f get_scale_obj(obj_t obj, engine_t *engine);
 bool compare_sfvector2f(sfVector2f first, sfVector2f second);
+void set_enemy_obj(obj_t *obj, sfVector2f *path, engine_t *engine);
+void set_enemy_tag(char *tag, sfVector2f *path, engine_t *engine);
 
 #endif
