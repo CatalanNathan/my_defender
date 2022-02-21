@@ -9,8 +9,8 @@
 #include "engine.h"
 #include "var.h"
 
-void game_end(int value, engine_t *engine)
+void game_end(int value)
 {
-    engine->game.game_end = true;
-    engine->game.end_value = value;
+    engine.game.game_end = true;
+    engine.game.end_value = value;
 }

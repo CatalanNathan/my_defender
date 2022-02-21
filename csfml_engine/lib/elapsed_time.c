@@ -8,11 +8,11 @@
 #include "my.h"
 #include "engine.h"
 
-bool elapsed_time_seconds(int seconds, float *increment, engine_t *engine)
+bool elapsed_time_seconds(int seconds, float *increment)
 {
     sfTime convert;
 
-    convert = sfClock_getElapsedTime(engine->win_settings.clock);
+    convert = sfClock_getElapsedTime(engine.win_settings.clock);
     *increment += convert.microseconds;
     if (*increment / 1000000 >= seconds) {
         *increment = 0;
@@ -21,11 +21,11 @@ bool elapsed_time_seconds(int seconds, float *increment, engine_t *engine)
     return false;
 }
 
-bool elapsed_time_milliseconds(int milliseconds, float *increment, engine_t *engine)
+bool elapsed_time_milliseconds(int milliseconds, float *increment)
 {
     sfTime convert;
 
-    convert = sfClock_getElapsedTime(engine->win_settings.clock);
+    convert = sfClock_getElapsedTime(engine.win_settings.clock);
     *increment += convert.microseconds;
     if (*increment / 1000 >= milliseconds) {
         *increment = 0;
@@ -34,11 +34,11 @@ bool elapsed_time_milliseconds(int milliseconds, float *increment, engine_t *eng
     return false;
 }
 
-bool elapsed_time_microseconds(int microseconds, float *increment, engine_t *engine)
+bool elapsed_time_microseconds(int microseconds, float *increment)
 {
     sfTime convert;
 
-    convert = sfClock_getElapsedTime(engine->win_settings.clock);
+    convert = sfClock_getElapsedTime(engine.win_settings.clock);
     *increment += convert.microseconds;
     if (*increment >= microseconds) {
         *increment = 0;

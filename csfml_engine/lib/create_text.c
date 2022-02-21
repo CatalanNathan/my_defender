@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-text_t initiate_text(char *text, char *tag, engine_t *engine)
+text_t initiate_text(char *text, char *tag)
 {
     static int id = 0;
     text_t create_text;
@@ -28,22 +28,22 @@ text_t initiate_text(char *text, char *tag, engine_t *engine)
     return create_text;
 }
 
-text_t create_text(char *text, char *tag, engine_t *engine)
+text_t create_text(char *text, char *tag)
 {
     node_text_t *new_node = malloc(sizeof(node_text_t));
-    text_t create_text = initiate_text(text, tag, engine);
+    text_t create_text = initiate_text(text, tag);
 
-    if (engine->game.text != NULL) {
-        new_node->previous = engine->game.text;
-        engine->game.text->next = new_node;
+    if (engine.game.text != NULL) {
+        new_node->previous = engine.game.text;
+        engine.game.text->next = new_node;
         new_node->next = NULL;
         new_node->settings = create_text;
-        engine->game.text = new_node;
+        engine.game.text = new_node;
     } else {
         new_node->previous = NULL;
         new_node->next = NULL;
         new_node->settings = create_text;
-        engine->game.text = new_node;
+        engine.game.text = new_node;
     }
     return create_text;
 }

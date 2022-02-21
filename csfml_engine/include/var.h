@@ -18,8 +18,8 @@ struct var_s
 };
 typedef struct var_s var_t;
 
-void create(var_t *var, engine_t *engine);
-void update(var_t *var, engine_t *engine);
-void engine_is_open(int *start, var_t *var, engine_t *engine);
+void create(var_t *var);
+void update(var_t *var);
+void engine_is_open(int *start, var_t *var);
 
 #endif

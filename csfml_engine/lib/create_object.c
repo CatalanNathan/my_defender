@@ -18,7 +18,7 @@ void initialise_enemy(obj_t *enemy)
     enemy->move_enemies = 0.00;
 }
 
-obj_t initiate_object(char *src_img, char *tag, int display_order, engine_t *engine)
+obj_t initiate_object(char *src_img, char *tag, int display_order)
 {
     static int id = 1;
     obj_t object;
@@ -43,22 +43,22 @@ obj_t initiate_object(char *src_img, char *tag, int display_order, engine_t *eng
     return object;
 }
 
-obj_t create_object(char *src_img, char *tag, int display_order, engine_t *engine)
+obj_t create_object(char *src_img, char *tag, int display_order)
 {
     node_t *new_node = malloc(sizeof(node_t));
-    obj_t object = initiate_object(src_img, tag, display_order, engine);
+    obj_t object = initiate_object(src_img, tag, display_order);
 
-    if (engine->game.list != NULL) {
-        new_node->previous = engine->game.list;
-        engine->game.list->next = new_node;
+    if (engine.game.list != NULL) {
+        new_node->previous = engine.game.list;
+        engine.game.list->next = new_node;
         new_node->next = NULL;
         new_node->settings = object;
-        engine->game.list = new_node;
+        engine.game.list = new_node;
     } else {
         new_node->previous = NULL;
         new_node->next = NULL;
         new_node->settings = object;
-        engine->game.list = new_node;
+        engine.game.list = new_node;
     }
     return object;
 }
