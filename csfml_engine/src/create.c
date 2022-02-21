@@ -24,6 +24,7 @@ void create(var_t *var)
 {
     set_background("background.png", true);
     create_object("map.png", "map", 10);
+    set_position_tag("map", (V2f){engine.win_settings.middle_screen.x/2 - get_size_tag("map").x/2, engine.win_settings.middle_screen.y/2 - get_size_tag("map").y/2});
     set_fps(true, 15, sfBlack);
     for (int i = 0; i != 15; i++)
         create_enemies(var);

@@ -26,7 +26,8 @@ void initiate(int *window_mode, bool fullscreen, char *win_name)
     engine.game.text = NULL;
     engine.game.music = NULL;
     engine.game.gravity = 9.81;
-    engine.win_settings.middle_screen = (sfVector2i){sfVideoMode_getDesktopMode().width/2 - engine.win_settings.size.x/2, sfVideoMode_getDesktopMode().height/2 - engine.win_settings.size.y/2};
+    engine.win_settings.middle_screen.x = window_mode[0];
+    engine.win_settings.middle_screen.y = window_mode[1];
     engine.win_settings.fullscreen = fullscreen;
     engine.win_settings.win_name = win_name;
     engine.win_settings.fps.view_fps = false;
