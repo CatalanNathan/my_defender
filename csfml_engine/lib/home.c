@@ -31,10 +31,10 @@ void initiate(engine_t *engine, int *window_mode, bool fullscreen, char *win_nam
     engine->win_settings.fps.fps = 0;
 }
 
-void display(engine_t *engine)
+void display(int start, engine_t *engine)
 {
     shape_img(engine);
-    if (sfRenderWindow_isOpen(engine->win_settings.engine))
+    if (start == 0)
         return display_engine(engine);
     if (engine->win_settings.background.display == true && engine->win_settings.background.exist == true)
         sfRenderWindow_drawSprite(engine->win_settings.window, engine->win_settings.background.sprite, NULL);
@@ -75,6 +75,7 @@ void primary_function(engine_t *engine)
 
 int csfml_engine(int *window_mode, char *win_name, bool fullscreen, int framerate)
 {
+    static int start = 0;
     engine_t engine;
     var_t var;
 
@@ -82,7 +83,7 @@ int csfml_engine(int *window_mode, char *win_name, bool fullscreen, int framerat
     engine.win_settings.framerate = framerate;
     microprogramme_create(&engine);
     while (sfRenderWindow_isOpen(engine.win_settings.engine) || engine.game.game_end != true) {
-        engine_is_open(&var, &engine);
+        engine_is_open(&start, &var, &engine);
     }
     sfRenderWindow_destroy(engine.win_settings.engine);
     return engine.game.end_value;

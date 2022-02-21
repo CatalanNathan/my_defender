@@ -14,11 +14,12 @@
 
 struct var_s
 {
+    obj_t enemies;
 };
 typedef struct var_s var_t;
 
 void create(var_t *var, engine_t *engine);
 void update(var_t *var, engine_t *engine);
-void engine_is_open(var_t *var, engine_t *engine);
+void engine_is_open(int *start, var_t *var, engine_t *engine);
 
 #endif

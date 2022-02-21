@@ -46,7 +46,7 @@ void microprogramme(engine_t *engine, int *start, var_t *var)
         return;
     }
     if (get_scale_tag("loadBar", engine).x < 1 && engine->win_settings.time.microseconds / 1000 > 5) {
-        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar", engine).x + 0.001, 0.2}, engine);
+        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar", engine).x + 0.01, 0.2}, engine);
         sfClock_restart(engine->win_settings.clock);
     }
     if (key_pressed(sfKeyEscape, engine))
@@ -54,26 +54,24 @@ void microprogramme(engine_t *engine, int *start, var_t *var)
     exit_program(engine);
 }
 
-void engine_is_open(var_t *var, engine_t *engine)
+void engine_is_open(int *start, var_t *var, engine_t *engine)
 {
-    static int start = 0;
-
     engine->win_settings.time = sfClock_getElapsedTime(engine->win_settings.clock);
     if (sfRenderWindow_isOpen(engine->win_settings.engine))
         sfRenderWindow_clear(engine->win_settings.engine, engine->clear_background);
     else if (engine->game.game_end == false)
         sfRenderWindow_clear(engine->win_settings.window, engine->clear_background);
-    if (start == 1 && (engine->game.game_end == false)) {
+    if (*start == 1 && (engine->game.game_end == false)) {
         sfRenderWindow_pollEvent(engine->win_settings.window, &engine->event);
         update(var, engine);
         primary_function(engine);
         sfClock_restart(engine->win_settings.clock);
     } else
-        microprogramme(engine, &start, var);
-    display(engine);
+        microprogramme(engine, start, var);
+    display(*start, engine);
     if (engine->game.game_end == true) {
         destroy_all(engine);
-        if (start == 1) {
+        if (*start == 1) {
             sfRenderWindow_close(engine->win_settings.window);
             sfRenderWindow_destroy(engine->win_settings.window);
         } else

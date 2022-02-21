@@ -147,7 +147,7 @@ void display_engine(engine_t *engine);
 void window_set_position(sfVector2i offset, engine_t *engine);
 void microprogramme_create(engine_t *engine);
 void primary_function(engine_t *engine);
-void display(engine_t *engine);
+void display(int start, engine_t *engine);
 void destroy_all(engine_t *engine);
 void set_background(char *src_img, bool auto_resize, engine_t *engine);
 bool key_pressed(sfKeyCode key, engine_t *engine);
@@ -224,5 +224,7 @@ obj_t copy_object(int id, engine_t *engine);
 void set_rotation_obj(obj_t *obj, float angle, engine_t *engine);
 void set_rotation_tag(char *tag, float angle, engine_t *engine);
 void destroy_object(int id, engine_t *engine);
+sfVector2f get_scale_obj(obj_t obj, engine_t *engine);
+bool compare_sfvector2f(sfVector2f first, sfVector2f second);
 
 #endif
