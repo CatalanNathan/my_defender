@@ -21,5 +21,6 @@ typedef struct var_s var_t;
 void create(var_t *var);
 void update(var_t *var);
 void engine_is_open(int *start, var_t *var);
+void manage_enemy(var_t *var);
 
 #endif

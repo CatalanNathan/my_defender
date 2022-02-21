@@ -22,19 +22,19 @@ void initialise_enemy_par(obj_t *enemy)
 obj_t resize_parallax(obj_t obj)
 {
     while (obj.size.x > engine.win_settings.size.x) {
-        sfSprite_setScale(obj.sprite, (sfVector2f){sfSprite_getScale(obj.sprite).x - 0.01, 1});
+        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x - 0.01, 1});
         obj.size.x = sfTexture_getSize(obj.texture).x * sfSprite_getScale(obj.sprite).x;
     }
     while (obj.size.y > engine.win_settings.size.y) {
-        sfSprite_setScale(obj.sprite, (sfVector2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y - 0.01});
+        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y - 0.01});
         obj.size.y = sfTexture_getSize(obj.texture).y * sfSprite_getScale(obj.sprite).y;
     }
     while (obj.size.x < engine.win_settings.size.x) {
-        sfSprite_setScale(obj.sprite, (sfVector2f){sfSprite_getScale(obj.sprite).x + 0.01, 1});
+        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x + 0.01, 1});
         obj.size.x = sfTexture_getSize(obj.texture).x * sfSprite_getScale(obj.sprite).x;
     }
     while (obj.size.y < engine.win_settings.size.y) {
-        sfSprite_setScale(obj.sprite, (sfVector2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y + 0.01});
+        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y + 0.01});
         obj.size.y = sfTexture_getSize(obj.texture).y * sfSprite_getScale(obj.sprite).y;
     }
     return obj;
@@ -94,7 +94,7 @@ void set_parallax(char **src_img, float speed, float multiplicator)
     for (int i = 0; src_img[i] != NULL; i++) {
         original_speed = speed;
         object = add_parallax(src_img[i], "parallax", speed /= multiplicator);
-        sfSprite_setPosition(object.sprite, (sfVector2f){engine.win_settings.size.x, sfSprite_getPosition(object.sprite).y});
+        sfSprite_setPosition(object.sprite, (V2f){engine.win_settings.size.x, sfSprite_getPosition(object.sprite).y});
         speed = original_speed;
         add_parallax(src_img[i], "parallax", speed /= multiplicator);
     }

@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void set_scale_tag(char *tag, sfVector2f scale)
+void set_scale_tag(char *tag, V2f scale)
 {
     node_t *start = engine.game.list;
 
@@ -24,7 +24,7 @@ void set_scale_tag(char *tag, sfVector2f scale)
     engine.game.list = start;
 }
 
-void set_scale_obj(obj_t *obj, sfVector2f scale)
+void set_scale_obj(obj_t *obj, V2f scale)
 {
     node_t *start = engine.game.list;
 

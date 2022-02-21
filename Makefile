@@ -15,10 +15,11 @@ LDFLAGS = -g3 -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-network -lc
 
 CPPFLAGS = -I./include -I./csfml_engine/include
 
-SRC = src/main.c \
-		csfml_engine/create.c \
-		csfml_engine/update.c \
-		$(wildcard csfml_engine/lib/*.c)
+SRC = $(wildcard csfml_engine/lib/*.c) \
+		csfml_engine/src/update.c \
+		csfml_engine/src/create.c \
+		csfml_engine/src/manage_enemy.c \
+		src/main.c \
 
 OBJ = $(SRC:.c=.o)
 

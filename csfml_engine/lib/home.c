@@ -17,7 +17,7 @@ void initiate(int *window_mode, bool fullscreen, char *win_name)
     engine.game.end_value = 0;
     engine.clear_background = sfBlack;
     engine.win_settings.win_mode = (sfVideoMode){window_mode[0], window_mode[1], window_mode[2]};
-    engine.win_settings.size = (sfVector2f){window_mode[0], window_mode[1]};
+    engine.win_settings.size = (V2f){window_mode[0], window_mode[1]};
     engine.win_settings.background.display = false;
     engine.win_settings.background.exist = false;
     engine.win_settings.clock = sfClock_create();
@@ -69,7 +69,7 @@ void primary_function()
     }
     while (engine.game.list != NULL) {
         if (engine.game.list->settings.gravity == true && engine.game.list->settings.exist == true)
-            sfSprite_setPosition(engine.game.list->settings.sprite, (sfVector2f){sfSprite_getPosition(engine.game.list->settings.sprite).x, sfSprite_getPosition(engine.game.list->settings.sprite).y + engine.game.gravity});
+            sfSprite_setPosition(engine.game.list->settings.sprite, (V2f){sfSprite_getPosition(engine.game.list->settings.sprite).x, sfSprite_getPosition(engine.game.list->settings.sprite).y + engine.game.gravity});
         engine.game.list = engine.game.list->previous;
     }
     engine.game.list = start;

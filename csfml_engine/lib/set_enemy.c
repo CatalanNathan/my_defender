@@ -9,16 +9,16 @@
 #include "engine.h"
 #include "var.h"
 
-void initiate_vector2f(enemy_t *enemy, sfVector2f *path)
+void initiate_vector2f(enemy_t *enemy, V2f *path)
 {
-    enemy->path = malloc(sizeof(sfVector2f[6]));
+    enemy->path = malloc(sizeof(V2f[6]));
     for (int i = 0; i != 6; i++) {
         enemy->path[i].x = path[i].x;
         enemy->path[i].y = path[i].y;
     }
 }
 
-void set_enemy_tag(char *tag, sfVector2f *path)
+void set_enemy_tag(char *tag, V2f *path)
 {
     node_t *start = engine.game.list;
 
@@ -35,7 +35,7 @@ void set_enemy_tag(char *tag, sfVector2f *path)
     engine.game.list = start;
 }
 
-void set_enemy_obj(obj_t *obj, sfVector2f *path)
+void set_enemy_obj(obj_t *obj, V2f *path)
 {
     node_t *start = engine.game.list;
 

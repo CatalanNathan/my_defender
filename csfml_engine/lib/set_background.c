@@ -12,19 +12,19 @@
 void resize_img()
 {
     while (engine.win_settings.background.size.x > engine.win_settings.size.x) {
-        sfSprite_setScale(engine.win_settings.background.sprite, (sfVector2f){sfSprite_getScale(engine.win_settings.background.sprite).x - 0.01, 1});
+        sfSprite_setScale(engine.win_settings.background.sprite, (V2f){sfSprite_getScale(engine.win_settings.background.sprite).x - 0.01, 1});
         engine.win_settings.background.size.x = sfTexture_getSize(engine.win_settings.background.texture).x * sfSprite_getScale(engine.win_settings.background.sprite).x;
     }
     while (engine.win_settings.background.size.y > engine.win_settings.size.y) {
-        sfSprite_setScale(engine.win_settings.background.sprite, (sfVector2f){sfSprite_getScale(engine.win_settings.background.sprite).x, sfSprite_getScale(engine.win_settings.background.sprite).y - 0.01});
+        sfSprite_setScale(engine.win_settings.background.sprite, (V2f){sfSprite_getScale(engine.win_settings.background.sprite).x, sfSprite_getScale(engine.win_settings.background.sprite).y - 0.01});
         engine.win_settings.background.size.y = sfTexture_getSize(engine.win_settings.background.texture).y * sfSprite_getScale(engine.win_settings.background.sprite).y;
     }
     while (engine.win_settings.background.size.x < engine.win_settings.size.x) {
-        sfSprite_setScale(engine.win_settings.background.sprite, (sfVector2f){sfSprite_getScale(engine.win_settings.background.sprite).x + 0.01, 1});
+        sfSprite_setScale(engine.win_settings.background.sprite, (V2f){sfSprite_getScale(engine.win_settings.background.sprite).x + 0.01, 1});
         engine.win_settings.background.size.x = sfTexture_getSize(engine.win_settings.background.texture).x * sfSprite_getScale(engine.win_settings.background.sprite).x;
     }
     while (engine.win_settings.background.size.y < engine.win_settings.size.y) {
-        sfSprite_setScale(engine.win_settings.background.sprite, (sfVector2f){sfSprite_getScale(engine.win_settings.background.sprite).x, sfSprite_getScale(engine.win_settings.background.sprite).y + 0.01});
+        sfSprite_setScale(engine.win_settings.background.sprite, (V2f){sfSprite_getScale(engine.win_settings.background.sprite).x, sfSprite_getScale(engine.win_settings.background.sprite).y + 0.01});
         engine.win_settings.background.size.y = sfTexture_getSize(engine.win_settings.background.texture).y * sfSprite_getScale(engine.win_settings.background.sprite).y;
     }
 }

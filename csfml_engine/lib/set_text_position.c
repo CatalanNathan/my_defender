@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void set_text_position_tag(char *tag, sfVector2f position)
+void set_text_position_tag(char *tag, V2f position)
 {
     node_text_t *start = engine.game.text;
 
@@ -21,7 +21,7 @@ void set_text_position_tag(char *tag, sfVector2f position)
     engine.game.text = start;
 }
 
-void set_text_position_text(text_t text, sfVector2f position)
+void set_text_position_text(text_t text, V2f position)
 {
     node_text_t *start = engine.game.text;
 

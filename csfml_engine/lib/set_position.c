@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void set_position_tag(char *tag, sfVector2f offset)
+void set_position_tag(char *tag, V2f offset)
 {
     node_t *start = engine.game.list;
 
@@ -21,7 +21,7 @@ void set_position_tag(char *tag, sfVector2f offset)
     engine.game.list = start;
 }
 
-void set_position_obj(obj_t obj, sfVector2f offset)
+void set_position_obj(obj_t obj, V2f offset)
 {
     sfSprite_setPosition(obj.sprite, offset);
 }

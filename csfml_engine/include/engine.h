@@ -22,13 +22,15 @@
 #include <SFML/Audio.h>
 #include "my.h"
 
+#define V2f sfVector2f
+
 #ifndef ENGINE_
     #define ENGINE_
 
 struct enemy_s
 {
     bool it_is;
-    sfVector2f *path;
+    V2f *path;
     float anim_ennemie;
     float move_enemies;
     int pos_path;
@@ -120,7 +122,7 @@ struct window_s
     sfRenderWindow* window;
     sfRenderWindow* engine;
     sfVideoMode win_mode;
-    sfVector2f size;
+    V2f size;
     char *win_name;
     bool fullscreen;
     int framerate;
@@ -167,17 +169,17 @@ void set_background(char *src_img, bool auto_resize);
 bool key_pressed(sfKeyCode key);
 void game_end(int value);
 obj_t create_object(char *src_img, char *flag, int display_order);
-void set_scale_tag(char *tag, sfVector2f scale);
-void set_scale_obj(obj_t *obj, sfVector2f scale);
-sfVector2f get_scale_tag(char *tag);
-void set_position_tag(char *tag, sfVector2f offset);
-void set_position_obj(obj_t obj, sfVector2f offset);
+void set_scale_tag(char *tag, V2f scale);
+void set_scale_obj(obj_t *obj, V2f scale);
+V2f get_scale_tag(char *tag);
+void set_position_tag(char *tag, V2f offset);
+void set_position_obj(obj_t obj, V2f offset);
 sfVector2u get_size_tag(char *tag);
 sfVector2u get_size_obj(obj_t *obj);
 void set_gravity_tag(char *tag, bool gravity);
 void set_gravity_obj(obj_t *obj, bool gravity);
-sfVector2f get_position_tag(char *tag);
-sfVector2f get_position_obj(obj_t obj);
+V2f get_position_tag(char *tag);
+V2f get_position_obj(obj_t obj);
 void set_shape_tag(char *tag, sfIntRect shape, bool ishape);
 void set_shape_obj(obj_t *obj, sfIntRect shape, bool ishape);
 bool get_collision_tag(char *obj_tag, char *obstacles_tag);
@@ -203,16 +205,16 @@ text_t create_text(char *text, char *tag);
 void display_text();
 void set_text_color_text(text_t *text, sfColor color);
 void set_text_color_tag(char *tag, sfColor color);
-void set_text_position_text(text_t text, sfVector2f position);
-void set_text_position_tag(char *tag, sfVector2f position);
+void set_text_position_text(text_t text, V2f position);
+void set_text_position_tag(char *tag, V2f position);
 void set_text_text(text_t *text, char *str);
 void set_text_tag(char *tag, char *text);
 void set_text_size_text(text_t *text, int size);
 void set_text_size_tag(char *tag, int size);
 void set_text_visible_tag(char *tag, bool visible);
 void set_text_visible_text(text_t *text, bool visible);
-sfVector2f get_text_position_tag(char *tag);
-sfVector2f get_text_position_text(text_t text);
+V2f get_text_position_tag(char *tag);
+V2f get_text_position_text(text_t text);
 bool key_press(sfKeyCode key);
 bool mouse_press(sfMouseButton button);
 void exit_program();
@@ -238,10 +240,10 @@ obj_t copy_object(int id);
 void set_rotation_obj(obj_t *obj, float angle);
 void set_rotation_tag(char *tag, float angle);
 void destroy_object(int id);
-sfVector2f get_scale_obj(obj_t obj);
-bool compare_sfvector2f(sfVector2f first, sfVector2f second);
-void set_enemy_obj(obj_t *obj, sfVector2f *path);
-void set_enemy_tag(char *tag, sfVector2f *path);
-sfVector2f *random_this(sfVector2f *value, int n);
+V2f get_scale_obj(obj_t obj);
+bool compare_sfvector2f(V2f first, V2f second);
+void set_enemy_obj(obj_t *obj, V2f *path);
+void set_enemy_tag(char *tag, V2f *path);
+V2f *random_this(V2f *value, int n);
 
 #endif
