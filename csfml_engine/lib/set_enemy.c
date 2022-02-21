@@ -9,12 +9,12 @@
 #include "engine.h"
 #include "var.h"
 
-void initiate_vector2f(obj_t *obj, sfVector2f *path)
+void initiate_vector2f(enemy_t *enemy, sfVector2f *path)
 {
-    obj->path = malloc(sizeof(sfVector2f[6]));
+    enemy->path = malloc(sizeof(sfVector2f[6]));
     for (int i = 0; i != 6; i++) {
-        obj->path[i].x = path[i].x;
-        obj->path[i].y = path[i].y;
+        enemy->path[i].x = path[i].x;
+        enemy->path[i].y = path[i].y;
     }
 }
 
@@ -24,11 +24,11 @@ void set_enemy_tag(char *tag, sfVector2f *path)
 
     while (engine.game.list != NULL) {
         if (equal(engine.game.list->settings.tag, tag) == true) {
-            engine.game.list->settings.enemy = true;
-            engine.game.list->settings.anim_ennemie = 0.00;
-            engine.game.list->settings.move_enemies = 0.00;
-            engine.game.list->settings.pos_path = 0;
-            engine.game.list->settings.path = path;
+            engine.game.list->settings.enemy.it_is = true;
+            engine.game.list->settings.enemy.anim_ennemie = 0.00;
+            engine.game.list->settings.enemy.move_enemies = 0.00;
+            engine.game.list->settings.enemy.pos_path = 0;
+            initiate_vector2f(&engine.game.list->settings.enemy, path);
         }
         engine.game.list = engine.game.list->previous;
     }
@@ -39,18 +39,18 @@ void set_enemy_obj(obj_t *obj, sfVector2f *path)
 {
     node_t *start = engine.game.list;
 
-    obj->enemy = true;
-    obj->anim_ennemie = 0.00;
-    obj->move_enemies = 0.00;
-    initiate_vector2f(obj, path);
-    obj->pos_path = 0;
+    obj->enemy.it_is = true;
+    obj->enemy.anim_ennemie = 0.00;
+    obj->enemy.move_enemies = 0.00;
+    initiate_vector2f(&obj->enemy, path);
+    obj->enemy.pos_path = 0;
     while (engine.game.list != NULL) {
         if (obj->id == engine.game.list->settings.id) {
-            engine.game.list->settings.enemy = true;
-            engine.game.list->settings.anim_ennemie = 0.00;
-            engine.game.list->settings.move_enemies = 0.00;
-            engine.game.list->settings.pos_path = 0;
-            initiate_vector2f(&engine.game.list->settings, path);
+            engine.game.list->settings.enemy.it_is = true;
+            engine.game.list->settings.enemy.anim_ennemie = 0.00;
+            engine.game.list->settings.enemy.move_enemies = 0.00;
+            engine.game.list->settings.enemy.pos_path = 0;
+            initiate_vector2f(&engine.game.list->settings.enemy, path);
         }
         engine.game.list = engine.game.list->previous;
     }

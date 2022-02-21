@@ -9,13 +9,13 @@
 #include "engine.h"
 #include "var.h"
 
-void initialise_enemy(obj_t *enemy)
+void initialise_enemy(obj_t *object)
 {
-    enemy->enemy = false;
-    enemy->path = NULL;
-    enemy->pos_path = 0;
-    enemy->anim_ennemie = 0.00;
-    enemy->move_enemies = 0.00;
+    object->enemy.it_is = false;
+    object->enemy.path = NULL;
+    object->enemy.pos_path = 0;
+    object->enemy.move_enemies = 0.00;
+    object->enemy.anim_ennemie = 0.00;
 }
 
 obj_t initiate_object(char *src_img, char *tag, int display_order)

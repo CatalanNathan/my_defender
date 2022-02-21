@@ -25,6 +25,16 @@
 #ifndef ENGINE_
     #define ENGINE_
 
+struct enemy_s
+{
+    bool it_is;
+    sfVector2f *path;
+    float anim_ennemie;
+    float move_enemies;
+    int pos_path;
+};
+typedef struct enemy_s enemy_t;
+
 struct obj_s
 {
     sfTexture *texture;
@@ -41,12 +51,8 @@ struct obj_s
     int display_order;
     float angle;
     int id;
+    enemy_t enemy;
 
-    bool enemy;
-    sfVector2f *path;
-    float anim_ennemie;
-    float move_enemies;
-    int pos_path;
 };
 typedef struct obj_s obj_t;
 
