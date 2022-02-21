@@ -9,6 +9,16 @@
 #include "engine.h"
 #include "var.h"
 
+
+void initialise_enemy_par(obj_t *enemy)
+{
+    enemy->enemy = false;
+    enemy->path = NULL;
+    enemy->pos_path = 0;
+    enemy->anim_ennemie = 0.00;
+    enemy->move_enemies = 0.00;
+}
+
 obj_t resize_parallax(obj_t obj, engine_t *engine)
 {
     while (obj.size.x > engine->win_settings.size.x) {
@@ -51,6 +61,7 @@ obj_t initiate_paralax(char *src_img, char *tag, float speed, engine_t *engine)
     object.angle = 0;
     object.mouse_inside = false;
     id += 1;
+    initialise_enemy_par(&object);
     object = resize_parallax(object, engine);
     return object;
 }

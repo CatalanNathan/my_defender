@@ -38,8 +38,12 @@ void animation_move_enemies(obj_t *object, engine_t *engine)
         set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x,get_position_obj(*object, engine).y - 0.5}, engine);
     if (get_position_obj(*object, engine).y < object->path[object->pos_path].y)
         set_position_obj(*object, (sfVector2f){get_position_obj(*object, engine).x,get_position_obj(*object, engine).y + 0.5}, engine);
-    if (compare_sfvector2f(get_position_obj(*object, engine), object->path[object->pos_path]) && object->pos_path < 5)
-        object->pos_path++;
+    if (compare_sfvector2f(get_position_obj(*object, engine), object->path[object->pos_path]) && object->pos_path < 6)
+        object->pos_path += 1;
+    else if (object->pos_path > 5) {
+        set_position_obj(*object, (sfVector2f){1060, 750}, engine);
+        object->pos_path = 0;
+    }
 }
 
 void update(var_t *var, engine_t *engine)
@@ -49,6 +53,6 @@ void update(var_t *var, engine_t *engine)
     system_function(var, engine);
     for (;engine->game.list != NULL; engine->game.list = engine->game.list->previous)
         if (engine->game.list->settings.enemy)
-            animation_move_enemies(&var->enemies, engine);
+            animation_move_enemies(&engine->game.list->settings, engine);
     engine->game.list = start;
 }

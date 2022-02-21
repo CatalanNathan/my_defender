@@ -234,5 +234,6 @@ sfVector2f get_scale_obj(obj_t obj, engine_t *engine);
 bool compare_sfvector2f(sfVector2f first, sfVector2f second);
 void set_enemy_obj(obj_t *obj, sfVector2f *path, engine_t *engine);
 void set_enemy_tag(char *tag, sfVector2f *path, engine_t *engine);
+sfVector2f *random_this(sfVector2f *value, int n);
 
 #endif
