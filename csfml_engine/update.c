@@ -9,8 +9,13 @@
 #include "engine.h"
 #include "var.h"
 
-void update(var_t *var, engine_t *engine)
+void system_function(var_t *var, engine_t *engine)
 {
     if (key_pressed(sfKeyEscape, engine))
         game_end(0, engine);
+}
+
+void update(var_t *var, engine_t *engine)
+{
+    system_function(var, engine);
 }

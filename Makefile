@@ -7,7 +7,7 @@
 
 CC = gcc
 
-TARGET = engine
+TARGET = my_defender
 
 CFLAGS = -g3 -Wno-unused -Werror -Wextra -Wall
 
