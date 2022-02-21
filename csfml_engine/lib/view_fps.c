@@ -33,7 +33,7 @@ void set_fps(bool visible, int font_size, sfColor color, engine_t *engine)
         engine->win_settings.fps.text = sfText_create();
         sfText_setColor(engine->win_settings.fps.text, color);
         sfText_setCharacterSize(engine->win_settings.fps.text, font_size);
-        sfText_setFont(engine->win_settings.fps.text, sfFont_createFromFile("csfml_engine/font/Yellow Candy.otf"));
+        sfText_setFont(engine->win_settings.fps.text, sfFont_createFromFile("csfml_engine/font/Elmono-regular.ttf"));
     } else if (visible == false)
         engine->win_settings.fps.view_fps = false;
 

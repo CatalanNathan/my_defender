@@ -14,5 +14,4 @@ void create(var_t *var, engine_t *engine)
     set_background("background.png", true, engine);
     create_object("map.png", "map", 10, engine);
     set_fps(true, 20, sfBlack, engine);
-
 }
