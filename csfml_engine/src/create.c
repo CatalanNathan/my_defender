@@ -33,7 +33,9 @@ void create(var_t *var)
     set_position_obj(var->hearth, (sfVector2f){950, 197});
     create_wall("brick-wall.png", (V2f){1190, 600}, var);
     create_wall("brick-wall.png", (V2f){660, 590}, var);
-    create_wall("brick-wall.png", (V2f){980, 440}, var);;
+    create_wall("brick-wall.png", (V2f){980, 440}, var);
+    create_object("Money_bar.png", "money_bar", 0);
+    set_visible_tag("money_bar", false);
     create_tower("Tower_lv1.png", (V2f){870, 335}, var);
     create_tower("Tower_lv1.png", (V2f){750, 10}, var);
     create_tower("Tower_lv1.png", (V2f){1000, 140}, var);
