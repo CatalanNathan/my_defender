@@ -9,31 +9,6 @@
 #include "engine.h"
 #include "var.h"
 
-void create_enemies(var_t *var, int possibility)
-{
-    srand(time(NULL));
-    int x_start = 0;
-    int y_start = 0;
-    int n = 0;
-    V2f *path;
-
-    if (possibility % 2 == 0) {
-        x_start = 1090;
-        y_start = 730;
-        path = random_this((V2f[4]){{1015, 640}, {1290, 450}, {990, 290}, {x_start, y_start}}, 4);
-        n = 4;
-    } else {
-        x_start = 400;
-        y_start = 540;
-        path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {910, 280}, {x_start, y_start}}, 6);
-        n = 6;
-    }
-    var->enemies = create_object("player.png", "enemies", 9);
-    set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
-    set_position_obj(var->enemies, (V2f){x_start, y_start});
-    set_enemy_obj(&var->enemies, path, n);
-}
-
 void create_menu(var_t *var)
 {
     var->b_constructor = create_object("bconstructor.png", "constructMenu", 10);
@@ -43,9 +18,17 @@ void create_menu(var_t *var)
 
 void create(var_t *var)
 {
+    srand(time(NULL));
+    var->nb_enemies = 20;;
     set_background("background.png", true);
     set_fps(true, 15, sfBlack);
     create_object("map.png", "map", 10);
     set_position_tag("map", (V2f){engine.win_settings.middle_screen.x/2 - get_size_tag("map").x/2, engine.win_settings.middle_screen.y/2 - get_size_tag("map").y/2});
     create_menu(var);
+    create_tower("Tower_lv1.png", (V2f){870, 335}, var);
+    create_tower("Tower_lv1.png", (V2f){750, 10}, var);
+    create_tower("Tower_lv1.png", (V2f){1000, 140}, var);
+    create_tower("Tower_lv1.png", (V2f){660, 290}, var);
+    create_tower("Tower_lv1.png", (V2f){470, 110}, var);
+
 }

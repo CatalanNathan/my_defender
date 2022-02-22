@@ -17,7 +17,6 @@ void system_function(var_t *var)
 
 void update(var_t *var)
 {
-    var->nb_enemies = 20;
     system_function(var);
     make_enemies(var);
     manage_enemy(var);

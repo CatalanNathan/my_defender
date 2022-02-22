@@ -11,14 +11,23 @@
 
 #ifndef VAR_
     #define VAR_
+struct tower_s
+{
+    obj_t tower;
+};
+typedef struct tower_s tower_t;
 
 struct var_s
 {
     int nb_enemies;
     obj_t enemies;
     obj_t b_constructor;
+    tower_t tower;
+    obj_t wall;
 };
 typedef struct var_s var_t;
+
+
 
 void create(var_t *var);
 void update(var_t *var);
@@ -27,5 +36,6 @@ void manage_enemy(var_t *var);
 void manage_construct(var_t *var);
 void make_enemies(var_t *var);
 void create_enemies(var_t *var, int possibility);
+void create_tower(char *src_img, V2f pos, var_t *var);
 
 #endif
