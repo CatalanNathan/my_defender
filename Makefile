@@ -19,7 +19,8 @@ SRC = $(wildcard csfml_engine/lib/*.c) \
 		csfml_engine/src/update.c \
 		csfml_engine/src/create.c \
 		csfml_engine/src/mconstruct.c \
-		csfml_engine/src/create_tower.c \
+		csfml_engine/src/create_defense.c \
+		csfml_engine/src/manage_button.c \
 		csfml_engine/src/manage_enemy.c \
 		src/main.c \
 

@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void exit_program()
+void exit_program(void)
 {
     static float anime_button = 0.00;
 

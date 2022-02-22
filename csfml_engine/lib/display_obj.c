@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void display_obj()
+void display_obj(void)
 {
     node_t *start = engine.game.list;
     int order = 10;

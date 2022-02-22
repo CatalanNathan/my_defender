@@ -42,7 +42,8 @@ bool equal(char *s1, char *s2);
 bool allowed(char *unverified, char *library);
 bool scan(char *filepath, char **buffer);
 
-int csfml_engine(int *window_mode, char *win_name, bool fullscreen, int framerate);
+int csfml_engine(int *window_mode, char *win_name, \
+bool fullscreen, int framerate);
 
 #endif
 

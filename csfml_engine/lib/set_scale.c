@@ -30,7 +30,7 @@ void set_scale_obj(obj_t *obj, V2f scale)
 
     sfSprite_setScale(obj->sprite, scale);
     obj->size.x = (sfTexture_getSize(obj->texture).x * scale.x);
-    obj->size.y  = (sfTexture_getSize(obj->texture).y * scale.y);
+    obj->size.y = (sfTexture_getSize(obj->texture).y * scale.y);
     while (engine.game.list != NULL) {
         if (obj->id == engine.game.list->settings.id) {
             sfSprite_setScale(engine.game.list->settings.sprite, scale);

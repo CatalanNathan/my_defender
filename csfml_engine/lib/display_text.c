@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void display_text()
+void display_text(void)
 {
     node_text_t *start = engine.game.text;
 

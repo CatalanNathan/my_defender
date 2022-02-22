@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void resize_img()
+void resize_img(engine_t engine)
 {
     while (engine.win_settings.background.size.x > engine.win_settings.size.x) {
         sfSprite_setScale(engine.win_settings.background.sprite, (V2f){sfSprite_getScale(engine.win_settings.background.sprite).x - 0.01, 1});

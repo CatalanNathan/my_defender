@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void shape_selected_col()
+void shape_selected_col(void)
 {
     if (engine.game.list->settings.ishape == false) {
         engine.game.list->settings.size.x = sfTexture_getSize(engine.game.list->settings.texture).x * sfSprite_getScale(engine.game.list->settings.sprite).x;
@@ -20,7 +20,7 @@ void shape_selected_col()
     }
 }
 
-sfVector2u get_size_col()
+sfVector2u get_size_col(void)
 {
     shape_selected_col();
     return engine.game.list->settings.size;

@@ -36,23 +36,23 @@ void create_enemies(var_t *var, int possibility)
 void set_movement(obj_t *object)
 {
     if (get_position_obj(*object).x > object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x - 1,get_position_obj(*object).y});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x - 1, get_position_obj(*object).y});
         if (get_scale_obj(*object).x > 0) {
             set_position_obj(*object, (V2f){get_position_obj(*object).x + get_size_obj(object).x, get_position_obj(*object).y});
             set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
         }
     }
     if (get_position_obj(*object).x < object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x + 1,get_position_obj(*object).y});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x + 1, get_position_obj(*object).y});
         if (get_scale_obj(*object).x < 0) {
             set_position_obj(*object, (V2f){get_position_obj(*object).x - get_size_obj(object).x, get_position_obj(*object).y});
             set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
         }
     }
     if (get_position_obj(*object).y > object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x,get_position_obj(*object).y - 0.5});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y - 0.5});
     if (get_position_obj(*object).y < object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x,get_position_obj(*object).y + 0.5});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y + 0.5});
 }
 
 void animation_move_enemies(obj_t *object, var_t *var)
@@ -65,6 +65,7 @@ void animation_move_enemies(obj_t *object, var_t *var)
         object->enemy.pos_path += 1;
     if (object->enemy.pos_path >= object->enemy.n_path - 1) {
         var->castle_life -= 15;
+        // var->hearth = create_object("h1.png", "hearth", 8);
         set_position_obj(*object, object->enemy.path[object->enemy.pos_path]);
         object->enemy.pos_path = 0;
     }

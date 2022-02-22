@@ -47,7 +47,7 @@ void display(int start)
     view_fps(engine);
 }
 
-void destroy_all()
+void destroy_all(void)
 {
     if (engine.win_settings.background.exist == true) {
         sfSprite_destroy(engine.win_settings.background.sprite);
@@ -60,7 +60,7 @@ void destroy_all()
     destroy_text(engine);
 }
 
-void primary_function()
+void primary_function(void)
 {
     node_t *start = engine.game.list;
 

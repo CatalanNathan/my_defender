@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void display_engine()
+void display_engine(void)
 {
     node_t *start = engine.game.list;
     int order = 0;

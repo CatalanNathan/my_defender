@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void window_creator()
+void window_creator(void)
 {
     if (engine.win_settings.fullscreen == true)
         engine.win_settings.window = sfRenderWindow_create(engine.win_settings.win_mode, engine.win_settings.win_name, sfFullscreen | sfClose, NULL);
@@ -19,7 +19,7 @@ void window_creator()
         sfRenderWindow_setFramerateLimit(engine.win_settings.window, engine.win_settings.framerate);
 }
 
-void microprogramme_create()
+void microprogramme_create(void)
 {
     engine.win_settings.engine = sfRenderWindow_create((sfVideoMode){960, 540, 32}, "csfml engine", sfNone, NULL);
     window_set_position((sfVector2i){sfVideoMode_getDesktopMode().width/2 - 960/2, sfVideoMode_getDesktopMode().height/2 - 540/2});

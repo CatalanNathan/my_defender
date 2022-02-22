@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void shape_img()
+void shape_img(void)
 {
     node_t *start = engine.game.list;
 

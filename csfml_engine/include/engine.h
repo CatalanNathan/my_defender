@@ -246,5 +246,6 @@ bool compare_sfvector2f(V2f first, V2f second);
 void set_enemy_obj(obj_t *obj, V2f *path, int n);
 void set_enemy_tag(char *tag, V2f *path, int n);
 V2f *random_this(V2f *value, int n);
+obj_t mouse_inside_more(char *tag);
 
 #endif

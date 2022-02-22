@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void shape_selected()
+void shape_selected(engine_t engine)
 {
     if (engine.game.list->settings.ishape == false) {
         engine.game.list->settings.size.x = sfTexture_getSize(engine.game.list->settings.texture).x * sfSprite_getScale(engine.game.list->settings.sprite).x;

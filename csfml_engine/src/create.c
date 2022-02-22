@@ -28,6 +28,12 @@ void create(var_t *var)
     create_menu(var);
     create_text(my_strcat("HP : ", my_itoa(var->castle_life, 0)), "CastleHP");
     set_text_position_tag("CastleHP", (V2f){935, 220});
+    var->hearth = create_object("heart-attack.png", "hearth", 8);
+    set_scale_obj(&var->hearth, (sfVector2f){0.05, 0.05});
+    set_position_obj(var->hearth, (sfVector2f){950, 197});
+    create_wall("brick-wall.png", (V2f){1190, 600}, var);
+    create_wall("brick-wall.png", (V2f){660, 590}, var);
+    create_wall("brick-wall.png", (V2f){980, 440}, var);;
     create_tower("Tower_lv1.png", (V2f){870, 335}, var);
     create_tower("Tower_lv1.png", (V2f){750, 10}, var);
     create_tower("Tower_lv1.png", (V2f){1000, 140}, var);

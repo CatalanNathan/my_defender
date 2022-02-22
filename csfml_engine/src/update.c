@@ -21,5 +21,6 @@ void update(var_t *var)
     make_enemies(var);
     manage_enemy(var);
     manage_construct(var);
+    manage_button(var);
     set_text_tag("CastleHP", my_strcat("HP : ", my_itoa(var->castle_life, 0)));
 }

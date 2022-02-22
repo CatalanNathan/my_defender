@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void destroy_list()
+void destroy_list(void)
 {
     while (engine.game.list != NULL) {
         sfSprite_destroy(engine.game.list->settings.sprite);
@@ -24,7 +24,7 @@ void destroy_list()
     }
 }
 
-void destroy_music()
+void destroy_music(void)
 {
     while (engine.game.music != NULL) {
         sfMusic_destroy(engine.game.music->settings.sound);
@@ -39,7 +39,7 @@ void destroy_music()
     }
 }
 
-void destroy_text()
+void destroy_text(void)
 {
     while (engine.game.text != NULL) {
         sfText_destroy(engine.game.text->settings.text);
