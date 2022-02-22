@@ -9,7 +9,7 @@
 
 sfVector2f *random_this(sfVector2f *value, int n)
 {
-    int seed = 0;
+    int seed = time(NULL);
     sfVector2f *path = malloc(sizeof(sfVector2f) * n);
 
     for (int i = 0; i < n; i++) {
