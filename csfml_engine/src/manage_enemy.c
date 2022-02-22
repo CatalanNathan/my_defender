@@ -39,7 +39,7 @@ void animation_move_enemies(obj_t *object)
     set_movement(object);
     if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) && object->enemy.pos_path < 6)
         object->enemy.pos_path += 1;
-    else if (object->enemy.pos_path > 5) {
+    else if (object->enemy.path[object->enemy.pos_path].x == 0) {
         set_position_obj(*object, (V2f){1060, 750});
         object->enemy.pos_path = 0;
     }
@@ -53,4 +53,12 @@ void manage_enemy(var_t *var)
         if (engine.game.list->settings.enemy.it_is)
             animation_move_enemies(&engine.game.list->settings);
     engine.game.list = start;
+}
+
+void make_enemies(var_t *var)
+{
+    static int i = 0;
+
+    for (; i <= var->nb_enemies; i++)
+        create_enemies(var, i);
 }

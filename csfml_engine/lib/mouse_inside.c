@@ -16,7 +16,7 @@ bool mouse_inside_tag(char *tag)
         mouse_pos = sfMouse_getPositionRenderWindow(engine.win_settings.engine);
     else
         mouse_pos = sfMouse_getPositionRenderWindow(engine.win_settings.window);
-    sfVector2f tag_pos = get_position_tag(tag);
+    V2f tag_pos = get_position_tag(tag);
     sfVector2u tag_size = get_size_tag(tag);
 
     if ((mouse_pos.x >= tag_pos.x && mouse_pos.x <= tag_pos.x + tag_size.x) &&
@@ -28,7 +28,7 @@ bool mouse_inside_tag(char *tag)
 bool mouse_inside_obj(obj_t *obj)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(engine.win_settings.window);
-    sfVector2f obj_pos = get_position_obj(*obj);
+    V2f obj_pos = get_position_obj(*obj);
     sfVector2u obj_size = get_size_obj(obj);
 
     if ((mouse_pos.x >= obj_pos.x && mouse_pos.x <= obj_pos.x + obj_size.x) &&

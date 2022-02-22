@@ -18,6 +18,7 @@ CPPFLAGS = -I./include -I./csfml_engine/include
 SRC = $(wildcard csfml_engine/lib/*.c) \
 		csfml_engine/src/update.c \
 		csfml_engine/src/create.c \
+		csfml_engine/src/mconstruct.c \
 		csfml_engine/src/manage_enemy.c \
 		src/main.c \
 

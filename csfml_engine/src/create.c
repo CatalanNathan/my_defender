@@ -9,26 +9,39 @@
 #include "engine.h"
 #include "var.h"
 
-void create_enemies(var_t *var)
+void create_enemies(var_t *var, int possibility)
 {
-    // static int i = 1090; // POSSIBILITÉ 2
-    static int i = 400; //P OSSIBILITÉ 1
-    // V2f *path = random_this((V2f[3]){{1015, 640}, {1290, 450}, {1000, 100}}, 3); // POSSIBILITÉ 2
-    V2f *path = random_this((V2f[5]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {980, 100}}, 5); // POSSIBILITÉ 1
+    int x_start = 0;
+    int y_start = 0;
+    V2f *path;
 
+    if (possibility % 2 == 0) {
+        x_start = 1090;
+        y_start = 730;
+        path = random_this((V2f[3]){{1015, 640}, {1290, 450}, {1000, 100}}, 3);
+    } else {
+        x_start = 400;
+        y_start = 540;
+        path = random_this((V2f[5]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {980, 100}}, 5);
+    }
     var->enemies = create_object("player.png", "enemies", 9);
     set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
-    // set_position_obj(var->enemies, (V2f){i, 730}); // POSSIBILITÉ 2
-    set_position_obj(var->enemies, (V2f){i, 540}); // POSSIBILITÉ 1
-    set_enemy_obj(&var->enemies, path);
+    set_position_obj(var->enemies, (V2f){x_start, y_start});
+    set_enemy_obj(&var->enemies, path, 5);
+}
+
+void create_menu(var_t *var)
+{
+    var->b_constructor = create_object("bconstructor.png", "constructMenu", 10);
+    set_position_obj(var->b_constructor, (V2f){50, 965});
+    set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, true);
 }
 
 void create(var_t *var)
 {
     set_background("background.png", true);
+    set_fps(true, 15, sfBlack);
     create_object("map.png", "map", 10);
     set_position_tag("map", (V2f){engine.win_settings.middle_screen.x/2 - get_size_tag("map").x/2, engine.win_settings.middle_screen.y/2 - get_size_tag("map").y/2});
-    set_fps(true, 15, sfBlack);
-    for (int i = 0; i != 15; i++)
-        create_enemies(var);
+    create_menu(var);
 }

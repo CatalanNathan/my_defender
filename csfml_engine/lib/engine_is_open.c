@@ -46,7 +46,7 @@ void microprogramme(int *start, var_t *var)
         return;
     }
     if (get_scale_tag("loadBar").x < 1 && engine.win_settings.time.microseconds / 1000 > 5) {
-        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x + 0.001, 0.2});
+        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x + 0.01, 0.2});
         sfClock_restart(engine.win_settings.clock);
     }
     if (key_pressed(sfKeyEscape))
@@ -64,6 +64,7 @@ void engine_is_open(int *start, var_t *var)
     if (*start == 1 && (engine.game.game_end == false)) {
         sfRenderWindow_pollEvent(engine.win_settings.window, &engine.event);
         update(var);
+        sfRenderWindow_pollEvent(engine.win_settings.window, &engine.event);
         primary_function();
         sfClock_restart(engine.win_settings.clock);
     } else

@@ -242,8 +242,8 @@ void set_rotation_tag(char *tag, float angle);
 void destroy_object(int id);
 V2f get_scale_obj(obj_t obj);
 bool compare_sfvector2f(V2f first, V2f second);
-void set_enemy_obj(obj_t *obj, V2f *path);
-void set_enemy_tag(char *tag, V2f *path);
+void set_enemy_obj(obj_t *obj, V2f *path, int n);
+void set_enemy_tag(char *tag, V2f *path, int n);
 V2f *random_this(V2f *value, int n);
 
 #endif
