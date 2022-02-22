@@ -55,7 +55,7 @@ void set_movement(obj_t *object)
         set_position_obj(*object, (V2f){get_position_obj(*object).x,get_position_obj(*object).y + 0.5});
 }
 
-void animation_move_enemies(obj_t *object)
+void animation_move_enemies(obj_t *object, var_t *var)
 {
     animation_obj(object, (int[4]){0, 48, 240, 100}, &object->enemy.anim_ennemie);
     if (elapsed_time_milliseconds(15, &object->enemy.move_enemies) != true)
@@ -64,6 +64,7 @@ void animation_move_enemies(obj_t *object)
     if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)
         object->enemy.pos_path += 1;
     if (object->enemy.pos_path >= object->enemy.n_path - 1) {
+        var->castle_life -= 15;
         set_position_obj(*object, object->enemy.path[object->enemy.pos_path]);
         object->enemy.pos_path = 0;
     }
@@ -75,7 +76,7 @@ void manage_enemy(var_t *var)
 
     for (;engine.game.list != NULL; engine.game.list = engine.game.list->previous)
         if (engine.game.list->settings.enemy.it_is)
-            animation_move_enemies(&engine.game.list->settings);
+            animation_move_enemies(&engine.game.list->settings, var);
     engine.game.list = start;
 }
 

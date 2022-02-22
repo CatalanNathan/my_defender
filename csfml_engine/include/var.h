@@ -24,6 +24,8 @@ struct var_s
     obj_t b_constructor;
     tower_t tower;
     obj_t wall;
+    int castle_life;
+    int enemy_dammage;
 };
 typedef struct var_s var_t;
 
