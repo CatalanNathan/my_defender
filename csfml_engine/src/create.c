@@ -18,11 +18,11 @@ void create_enemies(var_t *var, int possibility)
     if (possibility % 2 == 0) {
         x_start = 1090;
         y_start = 730;
-        path = random_this((V2f[3]){{1015, 640}, {1290, 450}, {1000, 100}}, 3);
+        path = random_this((V2f[4]){{1015, 640}, {1290, 450}, {850, 250}, {0, 0}}, 4);
     } else {
         x_start = 400;
         y_start = 540;
-        path = random_this((V2f[5]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {980, 100}}, 5);
+        path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {940, 250}, {0, 0}}, 6);
     }
     var->enemies = create_object("player.png", "enemies", 9);
     set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
