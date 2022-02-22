@@ -28,6 +28,7 @@ void set_enemy_tag(char *tag, V2f *path, int n)
             engine.game.list->settings.enemy.anim_ennemie = 0.00;
             engine.game.list->settings.enemy.move_enemies = 0.00;
             engine.game.list->settings.enemy.pos_path = 0;
+            engine.game.list->settings.enemy.n_path = n;
             initiate_vector2f(&engine.game.list->settings.enemy, path, n);
         }
         engine.game.list = engine.game.list->previous;
@@ -43,6 +44,7 @@ void set_enemy_obj(obj_t *obj, V2f *path, int n)
     obj->enemy.anim_ennemie = 0.00;
     obj->enemy.move_enemies = 0.00;
     initiate_vector2f(&obj->enemy, path, n);
+    obj->enemy.n_path = n;
     obj->enemy.pos_path = 0;
     while (engine.game.list != NULL) {
         if (obj->id == engine.game.list->settings.id) {
@@ -50,6 +52,7 @@ void set_enemy_obj(obj_t *obj, V2f *path, int n)
             engine.game.list->settings.enemy.anim_ennemie = 0.00;
             engine.game.list->settings.enemy.move_enemies = 0.00;
             engine.game.list->settings.enemy.pos_path = 0;
+            engine.game.list->settings.enemy.n_path = n;
             initiate_vector2f(&engine.game.list->settings.enemy, path, n);
         }
         engine.game.list = engine.game.list->previous;

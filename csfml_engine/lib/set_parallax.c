@@ -17,6 +17,7 @@ void initialise_enemy_par(obj_t *enemy)
     enemy->enemy.pos_path = 0;
     enemy->enemy.anim_ennemie = 0.00;
     enemy->enemy.move_enemies = 0.00;
+    enemy->enemy.n_path = 0;
 }
 
 obj_t resize_parallax(obj_t obj)

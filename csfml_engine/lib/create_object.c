@@ -16,6 +16,7 @@ void initialise_enemy(obj_t *object)
     object->enemy.pos_path = 0;
     object->enemy.move_enemies = 0.00;
     object->enemy.anim_ennemie = 0.00;
+    object->enemy.n_path = 0;
 }
 
 obj_t initiate_object(char *src_img, char *tag, int display_order)

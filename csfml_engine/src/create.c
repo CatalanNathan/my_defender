@@ -11,23 +11,27 @@
 
 void create_enemies(var_t *var, int possibility)
 {
+    srand(time(NULL));
     int x_start = 0;
     int y_start = 0;
+    int n = 0;
     V2f *path;
 
     if (possibility % 2 == 0) {
         x_start = 1090;
         y_start = 730;
-        path = random_this((V2f[4]){{1015, 640}, {1290, 450}, {850, 250}, {0, 0}}, 4);
+        path = random_this((V2f[4]){{1015, 640}, {1290, 450}, {990, 290}, {x_start, y_start}}, 4);
+        n = 4;
     } else {
         x_start = 400;
         y_start = 540;
-        path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {940, 250}, {0, 0}}, 6);
+        path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {780, 370}, {910, 280}, {x_start, y_start}}, 6);
+        n = 6;
     }
     var->enemies = create_object("player.png", "enemies", 9);
     set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
     set_position_obj(var->enemies, (V2f){x_start, y_start});
-    set_enemy_obj(&var->enemies, path, 5);
+    set_enemy_obj(&var->enemies, path, n);
 }
 
 void create_menu(var_t *var)

@@ -37,11 +37,10 @@ void animation_move_enemies(obj_t *object)
     if (elapsed_time_milliseconds(15, &object->enemy.move_enemies) != true)
         return;
     set_movement(object);
-    // printf("%f\n", object->enemy.path[object->enemy.pos_path].x);
-    if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]))
+    if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)
         object->enemy.pos_path += 1;
-    if (object->enemy.path[object->enemy.pos_path + 1].x == 0) {
-        set_position_obj(*object, (V2f){1060, 750});
+    if (object->enemy.pos_path >= object->enemy.n_path - 1) {
+        set_position_obj(*object, object->enemy.path[object->enemy.pos_path]);
         object->enemy.pos_path = 0;
     }
 }

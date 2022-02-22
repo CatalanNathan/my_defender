@@ -34,6 +34,7 @@ struct enemy_s
     float anim_ennemie;
     float move_enemies;
     int pos_path;
+    int n_path;
 };
 typedef struct enemy_s enemy_t;
 
