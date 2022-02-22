@@ -30,7 +30,7 @@ void create(var_t *var)
     set_text_position_tag("CastleHP", (V2f){935, 220});
     var->hearth = create_object("heart-attack.png", "hearth", 8);
     set_scale_obj(&var->hearth, (sfVector2f){0.05, 0.05});
-    set_position_obj(var->hearth, (sfVector2f){950, 197});
+    set_position_obj(var->hearth, (sfVector2f){954, 194});
     create_wall("brick-wall.png", (V2f){1190, 600}, var);
     create_wall("brick-wall.png", (V2f){660, 590}, var);
     create_wall("brick-wall.png", (V2f){980, 440}, var);
@@ -41,5 +41,4 @@ void create(var_t *var)
     create_tower("Tower_lv1.png", (V2f){1000, 140}, var);
     create_tower("Tower_lv1.png", (V2f){660, 290}, var);
     create_tower("Tower_lv1.png", (V2f){470, 110}, var);
-
 }
