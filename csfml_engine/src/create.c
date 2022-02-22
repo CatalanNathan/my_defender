@@ -11,12 +11,15 @@
 
 void create_enemies(var_t *var)
 {
-    static int i = 1020;
-    V2f *path = random_this((V2f[6]){{860, 640}, {1135, 480}, {1110, 445}, {1310, 315}, {1040, 170}, {470, 440}}, 6);
+    // static int i = 1090; // POSSIBILITÉ 2
+    static int i = 400; //P OSSIBILITÉ 1
+    // V2f *path = random_this((V2f[3]){{1015, 640}, {1290, 450}, {1000, 100}}, 3); // POSSIBILITÉ 2
+    V2f *path = random_this((V2f[5]){{555, 470}, {750, 550}, {925, 450}, {780, 355}, {1000, 100}}, 5); // POSSIBILITÉ 1
 
     var->enemies = create_object("player.png", "enemies", 9);
     set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
-    set_position_obj(var->enemies, (V2f){i, 750});
+    // set_position_obj(var->enemies, (V2f){i, 730}); // POSSIBILITÉ 2
+    set_position_obj(var->enemies, (V2f){i, 540}); // POSSIBILITÉ 1
     set_enemy_obj(&var->enemies, path);
 }
 
