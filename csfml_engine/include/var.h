@@ -56,5 +56,6 @@ void update_all_text(var_t *var);
 void init_system(var_t *var);
 void create_selected_tower(var_t *var);
 void selected_button_tower(var_t *var);
+void change_cursor(var_t * var);
 
 #endif

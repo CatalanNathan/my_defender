@@ -20,8 +20,7 @@ void first_wall(var_t *var, int *action)
         set_visible_tag("money_bar", true);
         set_text_position_tag("price_wall", (V2f){get_position_tag("money_bar").x + get_size_tag("money_bar").x/2 - (5 * int_size(var->price_wall)), get_position_tag("money_bar").y + 5});
         set_text_visible_tag("price_wall", true);
-        set_shape_tag("cursor", (sfIntRect){200, 0, 173, 177}, true);
-        var->on_button = true;
+        change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_1", true);
             set_exits_tag("btn_wall_1", false);
@@ -48,8 +47,7 @@ void second_wall(var_t *var, int *action)
         set_visible_tag("money_bar", true);
         set_text_position_tag("price_wall", (V2f){get_position_tag("money_bar").x + get_size_tag("money_bar").x/2 - (5 * int_size(var->price_wall)), get_position_tag("money_bar").y + 5});
         set_text_visible_tag("price_wall", true);
-        set_shape_tag("cursor", (sfIntRect){200, 0, 173, 177}, true);
-        var->on_button = true;
+        change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_2", true);
             set_exits_tag("btn_wall_2", false);
@@ -76,8 +74,7 @@ void third_wall(var_t *var, int *action)
         set_visible_tag("money_bar", true);
         set_text_position_tag("price_wall", (V2f){get_position_tag("money_bar").x + get_size_tag("money_bar").x/2 - (5 * int_size(var->price_wall)), get_position_tag("money_bar").y + 5});
         set_text_visible_tag("price_wall", true);
-        set_shape_tag("cursor", (sfIntRect){200, 0, 173, 177}, true);
-        var->on_button = true;
+        change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_3", true);
             set_exits_tag("btn_wall_3", false);
