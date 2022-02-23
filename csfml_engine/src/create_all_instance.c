@@ -40,12 +40,14 @@ static void create_all_bar(var_t *var)
     set_position_obj(var->hearth, (sfVector2f){954, 194});
     create_object("Money_bar.png", "money_bar", 0);
     set_visible_tag("money_bar", false);
-    create_object("global_money.png", "global_money", 9);
-    set_position_tag("global_money", (V2f){engine.win_settings.size.x - get_size_tag("global_money").x - 40, 40});
+    create_object("global_money.png", "bar_money", 9);
+    set_position_tag("bar_money", (V2f){engine.win_settings.size.x - get_size_tag("bar_money").x - 40, 40});
     create_object("Ruby_life.png", "ruby_life", 7);
     set_position_tag("ruby_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("ruby_life").x/2, get_position_tag("hearth").y + 50});
     create_object("white_life.png", "white_life", 8);
     set_position_tag("white_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("white_life").x/2, get_position_tag("hearth").y + 50});
+    create_object("clock_time_wall.png", "clock_wall", 8);
+    set_position_tag("clock_wall", (V2f){500, 300});
 }
 
 static void create_all_text(var_t *var)
@@ -54,7 +56,7 @@ static void create_all_text(var_t *var)
     set_text_position_tag("CastleHP", (V2f){935, 220});
     create_text(format_number(my_itoa(var->money, 0), var->money), "money");
     set_text_size_tag("money", 30);
-    set_text_position_tag("money", (V2f){get_position_tag("global_money").x + get_size_tag("global_money").x/2 - (5 * int_size(var->money)), get_position_tag("global_money").y + 20});
+    set_text_position_tag("money", (V2f){get_position_tag("bar_money").x + get_size_tag("bar_money").x/2 - (5 * int_size(var->money)), get_position_tag("bar_money").y + 20});
     create_text(format_number(my_itoa(var->price_wall, 0), var->price_wall), "price_wall");
     set_text_visible_tag("price_wall", false);
 
