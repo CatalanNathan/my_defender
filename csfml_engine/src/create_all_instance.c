@@ -48,6 +48,7 @@ static void create_all_bar(var_t *var)
     set_position_tag("white_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("white_life").x/2, get_position_tag("hearth").y + 50});
     create_object("clock_time_wall.png", "clock_wall", 8);
     set_position_tag("clock_wall", (V2f){500, 300});
+    set_scale_tag("clock_wall", (V2f){0.3, 0.3});
 }
 
 static void create_all_text(var_t *var)
