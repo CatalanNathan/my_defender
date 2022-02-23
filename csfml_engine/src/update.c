@@ -13,6 +13,7 @@ void event_game(var_t *var)
 {
     if (key_pressed(sfKeyEscape))
         game_end(0);
+    set_position_tag("cursor", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - 3, sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 3});
 }
 
 void update_all_text(var_t *var)
@@ -30,10 +31,13 @@ void update_all_text(var_t *var)
 
 void update(var_t *var)
 {
+    var->on_button = false;
     event_game(var);
     make_enemies(var);
     manage_enemy(var);
     manage_construct(var);
     manage_button(var);
     update_all_text(var);
+    if (var->on_button == false)
+        set_shape_tag("cursor", (sfIntRect){0, 0, 173, 177}, true);
 }

@@ -37,6 +37,7 @@ struct var_s
     int money;
     int price_wall;
     obj_t background;
+    bool on_button;
 };
 typedef struct var_s var_t;
 
@@ -52,5 +53,6 @@ void create_wall(char *src_image, V2f pos, var_t *var, char *tag);
 void manage_button(var_t *var);
 void create_loop_game(var_t *var);
 void update_all_text(var_t *var);
+void init_system(var_t *var);
 
 #endif
