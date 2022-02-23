@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "var.h"
 
-void system_function(var_t *var)
+void event_game(var_t *var)
 {
     if (key_pressed(sfKeyEscape))
         game_end(0);
@@ -17,10 +17,14 @@ void system_function(var_t *var)
 
 void update(var_t *var)
 {
-    system_function(var);
+    event_game(var);
     make_enemies(var);
     manage_enemy(var);
     manage_construct(var);
     manage_button(var);
     set_text_tag("CastleHP", my_strcat("HP : ", my_itoa(var->castle_life, 0)));
+    set_text_position_tag("money", (V2f){get_position_tag("global_money").x + get_size_tag("global_money").x/2 - (5 * int_size(var->money)), get_position_tag("global_money").y + 20});
+    set_position_tag("global_money", (V2f){engine.win_settings.size.x - get_size_tag("global_money").x - 40, 40});
+    if (var->castle_life > 0)
+        set_scale_tag("ruby_life", (V2f){((var->castle_life/1000)*100)/100, get_scale_tag("ruby_life").y});
 }

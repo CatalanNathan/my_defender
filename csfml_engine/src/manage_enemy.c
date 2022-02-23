@@ -27,7 +27,7 @@ void create_enemies(var_t *var, int possibility)
         path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {790, 370}, {910, 280}, {x_start, y_start}}, 6);
         n = 6;
     }
-    var->enemies = create_object("player.png", "enemies", 9);
+    var->enemies = create_object("player.png", "enemies", 8);
     set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
     set_position_obj(var->enemies, (V2f){x_start, y_start});
     set_enemy_obj(&var->enemies, path, n);
@@ -35,6 +35,8 @@ void create_enemies(var_t *var, int possibility)
 
 void set_movement(obj_t *object)
 {
+    if (get_collision_obj(object, "wall_1", 50) || get_collision_obj(object, "wall_2", 50) || get_collision_obj(object, "wall_3", 50))
+        return;
     if (get_position_obj(*object).x > object->enemy.path[object->enemy.pos_path].x) {
         set_position_obj(*object, (V2f){get_position_obj(*object).x - 1, get_position_obj(*object).y});
         if (get_scale_obj(*object).x > 0) {
@@ -64,8 +66,7 @@ void animation_move_enemies(obj_t *object, var_t *var)
     if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)
         object->enemy.pos_path += 1;
     if (object->enemy.pos_path >= object->enemy.n_path - 1) {
-        var->castle_life -= 15;
-        // var->hearth = create_object("h1.png", "hearth", 8);
+        var->castle_life -= 15.00;
         set_position_obj(*object, object->enemy.path[object->enemy.pos_path]);
         object->enemy.pos_path = 0;
     }

@@ -21,7 +21,9 @@ SRC = $(wildcard csfml_engine/lib/*.c) \
 		csfml_engine/src/mconstruct.c \
 		csfml_engine/src/create_defense.c \
 		csfml_engine/src/manage_button.c \
+		csfml_engine/src/parse_all.c \
 		csfml_engine/src/manage_enemy.c \
+		csfml_engine/src/create_all_instance.c \
 		src/main.c \
 
 OBJ = $(SRC:.c=.o)

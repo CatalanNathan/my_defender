@@ -31,9 +31,11 @@ struct var_s
     obj_t b_constructor;
     tower_t tower;
     wall_t wall;
-    int castle_life;
+    float castle_life;
     int enemy_dammage;
     obj_t hearth;
+    int money;
+    obj_t background;
 };
 typedef struct var_s var_t;
 
@@ -46,8 +48,9 @@ void manage_enemy(var_t *var);
 void manage_construct(var_t *var);
 void make_enemies(var_t *var);
 void create_enemies(var_t *var, int possibility);
-void create_tower(char *src_img, V2f pos, var_t *var);
-void create_wall(char *src_image, V2f pos, var_t *var);
+void create_tower(char *src_img, V2f pos, var_t *var, char *tag);
+void create_wall(char *src_image, V2f pos, var_t *var, char *tag);
 void manage_button(var_t *var);
+void create_loop_game(var_t *var);
 
 #endif

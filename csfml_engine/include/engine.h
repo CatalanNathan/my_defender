@@ -184,7 +184,6 @@ V2f get_position_obj(obj_t obj);
 void set_shape_tag(char *tag, sfIntRect shape, bool ishape);
 void set_shape_obj(obj_t *obj, sfIntRect shape, bool ishape);
 bool get_collision_tag(char *obj_tag, char *obstacles_tag);
-bool get_collision_obj(obj_t *obj, char *obstacles_tag);
 void set_parallax(char **src_img, float speed, float multiplicator);
 void display_parallax();
 void set_visible_tag(char *tag, bool visible);
@@ -247,5 +246,8 @@ void set_enemy_obj(obj_t *obj, V2f *path, int n);
 void set_enemy_tag(char *tag, V2f *path, int n);
 V2f *random_this(V2f *value, int n);
 obj_t mouse_inside_more(char *tag);
+char *format_number(char *str, int str_i);
+void set_exits_tag(char *tag, bool exits);
+bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement);
 
 #endif

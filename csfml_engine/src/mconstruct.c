@@ -48,5 +48,4 @@ void manage_construct(var_t *var)
     }
     if (retract == 1)
         animation_construct_return(var, &retract);
-
 }
