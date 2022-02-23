@@ -14,11 +14,11 @@ void create_all_buttons(var_t *var);
 
 static void create_all_tower_and_wall(var_t *var)
 {
-    create_tower("Tower_lv1.png", (V2f){870, 335}, var, "Tower_1");
-    create_tower("Tower_lv1.png", (V2f){750, 10}, var, "Tower_2");
-    create_tower("Tower_lv1.png", (V2f){1000, 140}, var, "Tower_3");
-    create_tower("Tower_lv1.png", (V2f){660, 290}, var, "Tower_4");
-    create_tower("Tower_lv1.png", (V2f){470, 110}, var, "Tower_5");
+    create_tower("Tower_lv1.png", (V2f){815, 480}, var, "Tower_1");
+    create_tower("Tower_lv1.png", (V2f){1140, 350}, var, "Tower_2");
+    create_tower("Tower_lv1.png", (V2f){1030, 538}, var, "Tower_3");
+    create_tower("Tower_lv1.png", (V2f){620, 310}, var, "Tower_4");
+    create_tower("Tower_lv1.png", (V2f){900, 210}, var, "Tower_5");
     create_wall("brick-wall.png", (V2f){1190, 600}, var, "btn_wall_1");
     create_wall("brick-wall.png", (V2f){680, 605}, var, "btn_wall_2");
     create_wall("brick-wall.png", (V2f){980, 440}, var, "btn_wall_3");
