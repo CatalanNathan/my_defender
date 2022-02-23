@@ -42,7 +42,7 @@ void manage_construct(var_t *var)
             set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, true);
     } else if (get_shape_obj(&var->b_constructor).top == 0)
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, true);
-    if (get_shape_obj(&var->b_constructor).top != 0)
+    if (get_shape_obj(&var->b_constructor).top != 0 && retract != 1)
         animation_construct(var);
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).width > 83) {
         if (mouse_pressed(sfMouseLeft, &MB_pressed))
