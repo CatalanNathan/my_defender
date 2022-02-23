@@ -55,11 +55,15 @@ static void create_all_text(var_t *var)
     create_text(format_number(my_itoa(var->money, 0), var->money), "money");
     set_text_size_tag("money", 30);
     set_text_position_tag("money", (V2f){get_position_tag("global_money").x + get_size_tag("global_money").x/2 - (5 * int_size(var->money)), get_position_tag("global_money").y + 20});
+    create_text(format_number(my_itoa(var->price_wall, 0), var->price_wall), "price_wall");
+    set_text_visible_tag("price_wall", false);
+
 }
 
 static void create_all_game_value(var_t *var)
 {
     var->money = 10000;
+    var->price_wall = 5000;
 }
 
 void create_loop_game(var_t *var)

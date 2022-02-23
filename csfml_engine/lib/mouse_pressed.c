@@ -8,15 +8,13 @@
 #include "my.h"
 #include "engine.h"
 
-bool mouse_pressed(sfMouseButton button)
+bool mouse_pressed(sfMouseButton button, int *i)
 {
-    static int i = 0;
-
-    if (sfMouse_isButtonPressed(button) && i != 1) {
-        i = 1;
+    if (sfMouse_isButtonPressed(button) && (*i) != 1) {
+        (*i) = 1;
         return true;
-    } else if (i == 1 && engine.event.type == sfEvtMouseButtonReleased && engine.event.mouseButton.button == button)
-        i = 0;
+    } else if ((*i) == 1 && engine.event.type == sfEvtMouseButtonReleased && engine.event.mouseButton.button == button)
+        (*i) = 0;
     return false;
 }
 

@@ -33,17 +33,18 @@ void animation_construct_return(var_t *var, int *retract)
 void manage_construct(var_t *var)
 {
     static int retract = 0;
+    static int MB_pressed = 0;
 
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).top == 0) {
         set_shape_obj(&var->b_constructor, (sfIntRect){83, 0, 83, 85}, true);
-        if (mouse_pressed(sfMouseLeft) && get_shape_obj(&var->b_constructor).top == 0)
+        if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_obj(&var->b_constructor).top == 0)
             set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, true);
     } else if (get_shape_obj(&var->b_constructor).top == 0)
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, true);
     if (get_shape_obj(&var->b_constructor).top != 0)
         animation_construct(var);
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).width > 83) {
-        if (mouse_pressed(sfMouseLeft))
+        if (mouse_pressed(sfMouseLeft, &MB_pressed))
             retract = 1;
     }
     if (retract == 1)

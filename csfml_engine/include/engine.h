@@ -191,7 +191,7 @@ void set_visible_obj(obj_t *obj, bool visible);
 void view_fps();
 void set_fps(bool visible, int font_size, sfColor color);
 bool mouse_inside_tag(char *tag);
-bool mouse_pressed(sfMouseButton button);
+bool mouse_pressed(sfMouseButton button, int *i);
 bool mouse_inside_obj(obj_t *obj);
 bool elapsed_time_seconds(int seconds, float *increment);
 bool elapsed_time_milliseconds(int milliseconds, float *increment);
@@ -249,5 +249,7 @@ obj_t mouse_inside_more(char *tag);
 char *format_number(char *str, int str_i);
 void set_exits_tag(char *tag, bool exits);
 bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement);
+bool get_exits_tag(char *tag);
+bool get_exits_obj(obj_t obj);
 
 #endif
