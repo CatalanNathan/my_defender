@@ -24,15 +24,14 @@ void first_wall(var_t *var, int *action)
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_1", true);
             set_exits_tag("btn_wall_1", false);
+            set_exits_tag("clock_wall1", true);
             var->money -= var->price_wall;
         }
         *action += 1;
         return;
     }
-    if (get_exits_tag("wall_1") && elapsed_time_seconds(5, &incrementation)) {
-        set_exits_tag("wall_1", false);
-        set_exits_tag("btn_wall_1", true);
-    }
+    mouse_pressed(sfMouseLeft, &i);
+    update_button_exists("wall_1", "btn_wall_1", "clock_wall1", &incrementation);
     set_shape_tag("btn_wall_1",(sfIntRect){0, 0, get_size_tag("btn_wall_1").x, get_size_tag("btn_wall_1").y}, true);
 }
 
@@ -51,15 +50,14 @@ void second_wall(var_t *var, int *action)
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_2", true);
             set_exits_tag("btn_wall_2", false);
+            set_exits_tag("clock_wall2", true);
             var->money -= var->price_wall;
         }
         *action += 1;
         return;
     }
-    if (get_exits_tag("wall_2") && elapsed_time_seconds(5, &incrementation)) {
-        set_exits_tag("wall_2", false);
-        set_exits_tag("btn_wall_2", true);
-    }
+    mouse_pressed(sfMouseLeft, &i);
+    update_button_exists("wall_2", "btn_wall_2", "clock_wall2", &incrementation);
     set_shape_tag("btn_wall_2",(sfIntRect){0, 0, get_size_tag("btn_wall_2").x, get_size_tag("btn_wall_2").y}, true);
 }
 
@@ -78,15 +76,14 @@ void third_wall(var_t *var, int *action)
         if (mouse_pressed(sfMouseLeft, &i) && var->money - var->price_wall >= 0) {
             set_exits_tag("wall_3", true);
             set_exits_tag("btn_wall_3", false);
+            set_exits_tag("clock_wall3", true);
             var->money -= var->price_wall;
         }
         *action += 1;
         return;
     }
-    if (get_exits_tag("wall_3") && elapsed_time_seconds(5, &incrementation)) {
-        set_exits_tag("wall_3", false);
-        set_exits_tag("btn_wall_3", true);
-    }
+    mouse_pressed(sfMouseLeft, &i);
+    update_button_exists("wall_3", "btn_wall_3", "clock_wall3", &incrementation);
     set_shape_tag("btn_wall_3",(sfIntRect){0, 0, get_size_tag("btn_wall_3").x, get_size_tag("btn_wall_3").y}, true);
 }
 

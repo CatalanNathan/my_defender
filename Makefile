@@ -16,20 +16,9 @@ LDFLAGS = -g3 -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-network -lc
 CPPFLAGS = -I./include -I./csfml_engine/include
 
 SRC = $(wildcard csfml_engine/lib/*.c) \
-		csfml_engine/src/update.c \
-		csfml_engine/src/create.c \
-		csfml_engine/src/mconstruct.c \
-		csfml_engine/src/create_defense.c \
-		csfml_engine/src/manage_button.c \
-		csfml_engine/src/parse_all.c \
-		csfml_engine/src/manage_enemy.c \
-		csfml_engine/src/create_all_instance.c \
-		csfml_engine/src/init_system.c \
-		csfml_engine/src/selected_tower.c \
-		csfml_engine/src/change_cursor.c \
-		csfml_engine/src/mouse_event.c \
-		csfml_engine/src/create_all_instances.c \
-		src/main.c \
+	  $(wildcard csfml_engine/src/*.c) \
+	  $(wildcard src/*.c)
+
 
 OBJ = $(SRC:.c=.o)
 

@@ -39,6 +39,7 @@ struct var_s
     obj_t background;
     bool on_button;
     bool thor_mod;
+    sfColor color_tower;
 };
 typedef struct var_s var_t;
 
@@ -59,5 +60,8 @@ void create_selected_tower(var_t *var);
 void selected_button_tower(var_t *var);
 void change_cursor(var_t * var);
 void mouse_event(var_t *var);
+void update_button_exists(char *tag_obj, char *tag_button, char *tag_clock_timer, float *incrementation);
+void event_game(var_t *var);
+void tower_event(var_t *var);
 
 #endif

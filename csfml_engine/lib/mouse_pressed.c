@@ -10,11 +10,12 @@
 
 bool mouse_pressed(sfMouseButton button, int *i)
 {
+    if ((*i) == 1 && engine.event.type == sfEvtMouseButtonReleased && engine.event.mouseButton.button == button)
+        (*i) = 0;
     if (sfMouse_isButtonPressed(button) && (*i) != 1) {
         (*i) = 1;
         return true;
-    } else if ((*i) == 1 && engine.event.type == sfEvtMouseButtonReleased && engine.event.mouseButton.button == button)
-        (*i) = 0;
+    }
     return false;
 }
 

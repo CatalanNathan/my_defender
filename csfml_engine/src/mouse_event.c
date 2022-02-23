@@ -21,7 +21,6 @@ void mouse_event(var_t *var)
         set_exits_tag("thor", false);
         set_exits_tag("cursor", true);
     }
-
     if (mouse_pressed(sfMouseRight, &mouse_right) && get_exits_tag("thor"))
         var->thor_mod = false;
 }

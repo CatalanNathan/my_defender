@@ -251,5 +251,7 @@ void set_exits_tag(char *tag, bool exits);
 bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement);
 bool get_exits_tag(char *tag);
 bool get_exits_obj(obj_t obj);
+sfColor get_sprite_color_tag(char *tag);
+obj_t copy_object_tag(char *tag);
 
 #endif

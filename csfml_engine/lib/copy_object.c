@@ -26,3 +26,21 @@ obj_t copy_object(int id)
     engine.game.list = start;
     return object;
 }
+
+obj_t copy_object_tag(char *tag)
+{
+    node_t *start = engine.game.list;
+    obj_t object;
+
+    while (engine.game.list != NULL) {
+        if (equal(engine.game.list->settings.tag, tag)) {
+            object = engine.game.list->settings;
+            engine.game.list = start;
+            return object;
+        }
+        engine.game.list = engine.game.list->previous;
+    }
+    engine.game.list = start;
+    object.id = -1;
+    return object;
+}
