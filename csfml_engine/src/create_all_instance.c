@@ -9,6 +9,9 @@
 #include "my.h"
 #include "var.h"
 
+void create_all_game_value(var_t *var);
+void create_all_buttons(var_t *var);
+
 static void create_all_tower_and_wall(var_t *var)
 {
     create_tower("Tower_lv1.png", (V2f){870, 335}, var, "Tower_1");
@@ -28,6 +31,8 @@ static void create_all_tower_and_wall(var_t *var)
     set_exits_tag("wall_1", false);
     set_exits_tag("wall_2", false);
     set_exits_tag("wall_3", false);
+    create_all_buttons(var);
+
 }
 
 static void create_all_bar(var_t *var)
@@ -46,9 +51,6 @@ static void create_all_bar(var_t *var)
     set_position_tag("ruby_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("ruby_life").x/2, get_position_tag("hearth").y + 50});
     create_object("white_life.png", "white_life", 8);
     set_position_tag("white_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("white_life").x/2, get_position_tag("hearth").y + 50});
-    create_object("clock_time_wall.png", "clock_wall", 8);
-    set_position_tag("clock_wall", (V2f){500, 300});
-    set_scale_tag("clock_wall", (V2f){0.3, 0.3});
     create_selected_tower(var);
 }
 
@@ -62,12 +64,6 @@ static void create_all_text(var_t *var)
     create_text(format_number(my_itoa(var->price_wall, 0), var->price_wall), "price_wall");
     set_text_visible_tag("price_wall", false);
 
-}
-
-static void create_all_game_value(var_t *var)
-{
-    var->money = 10000;
-    var->price_wall = 5000;
 }
 
 void create_loop_game(var_t *var)
