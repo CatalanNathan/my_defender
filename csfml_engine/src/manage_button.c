@@ -104,4 +104,5 @@ void manage_button(var_t *var)
         set_visible_tag("money_bar", false);
         set_text_visible_tag("price_wall", false);
     }
+    selected_button_tower(var);
 }

@@ -54,5 +54,7 @@ void manage_button(var_t *var);
 void create_loop_game(var_t *var);
 void update_all_text(var_t *var);
 void init_system(var_t *var);
+void create_selected_tower(var_t *var);
+void selected_button_tower(var_t *var);
 
 #endif

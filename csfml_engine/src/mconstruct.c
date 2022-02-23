@@ -46,8 +46,6 @@ void manage_construct(var_t *var)
     if (get_shape_obj(&var->b_constructor).top != 0)
         animation_construct(var);
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).width > 83) {
-        set_shape_tag("cursor", (sfIntRect){200, 0, 173, 177}, true);
-        var->on_button = true;
         if (mouse_pressed(sfMouseLeft, &MB_pressed))
             retract = 1;
     }

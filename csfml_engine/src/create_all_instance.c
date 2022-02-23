@@ -49,6 +49,7 @@ static void create_all_bar(var_t *var)
     create_object("clock_time_wall.png", "clock_wall", 8);
     set_position_tag("clock_wall", (V2f){500, 300});
     set_scale_tag("clock_wall", (V2f){0.3, 0.3});
+    create_selected_tower(var);
 }
 
 static void create_all_text(var_t *var)
