@@ -24,6 +24,7 @@
 void first_btn_tower(var_t *var)
 {
     float calc_shape;
+    static int mouse = 0.00;
 
     if (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x <  get_position_tag("selecte_tower_1").x + get_texture_size_tag("selecte_tower_1").x/2)
         calc_shape = (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x) - get_position_tag("selecte_tower_1").x;
@@ -37,6 +38,8 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
+        if (mouse_pressed(sfMouseLeft, &mouse))
+            var->thor_mod = true;
         set_shape_tag("selecte_tower_1", (sfIntRect){get_size_tag("selecte_tower_1").x, 0, get_size_tag("selecte_tower_1").x, get_size_tag("selecte_tower_1").y}, true);
         change_cursor(var);
     } else
@@ -46,6 +49,7 @@ void first_btn_tower(var_t *var)
 void second_btn_tower(var_t *var)
 {
     float calc_shape;
+    static int mouse = 0.00;
 
     if (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x <  get_position_tag("selecte_tower_2").x + get_texture_size_tag("selecte_tower_2").x/2)
         calc_shape = (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x) - get_position_tag("selecte_tower_2").x;
@@ -59,6 +63,8 @@ void second_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_2", false);
 
     if (mouse_inside_tag("selecte_tower_2") && get_exits_tag("selecte_tower_2")) {
+        if (mouse_pressed(sfMouseLeft, &mouse))
+            var->thor_mod = true;
         set_shape_tag("selecte_tower_2", (sfIntRect){get_size_tag("selecte_tower_2").x, 0, get_size_tag("selecte_tower_2").x, get_size_tag("selecte_tower_2").y}, true);
         change_cursor(var);
     } else
@@ -68,6 +74,7 @@ void second_btn_tower(var_t *var)
 void third_btn_tower(var_t *var)
 {
     float calc_shape;
+    static int mouse = 0.00;
 
     if (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x <  get_position_tag("selecte_tower_3").x + get_texture_size_tag("selecte_tower_3").x/2)
         calc_shape = (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x) - get_position_tag("selecte_tower_3").x;
@@ -81,6 +88,8 @@ void third_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_3", false);
 
     if (mouse_inside_tag("selecte_tower_3") && get_exits_tag("selecte_tower_3")) {
+        if (mouse_pressed(sfMouseLeft, &mouse))
+            var->thor_mod = true;
         set_shape_tag("selecte_tower_3", (sfIntRect){get_size_tag("selecte_tower_3").x, 0, get_size_tag("selecte_tower_3").x, get_size_tag("selecte_tower_3").y}, true);
         change_cursor(var);
     } else

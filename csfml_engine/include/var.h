@@ -38,6 +38,7 @@ struct var_s
     int price_wall;
     obj_t background;
     bool on_button;
+    bool thor_mod;
 };
 typedef struct var_s var_t;
 
@@ -57,5 +58,6 @@ void init_system(var_t *var);
 void create_selected_tower(var_t *var);
 void selected_button_tower(var_t *var);
 void change_cursor(var_t * var);
+void mouse_event(var_t *var);
 
 #endif

@@ -94,9 +94,11 @@ void manage_button(var_t *var)
 {
     int action = 0;
 
-    first_wall(var, &action);
-    second_wall(var, &action);
-    third_wall(var, &action);
+    if (var->thor_mod == false) {
+        first_wall(var, &action);
+        second_wall(var, &action);
+        third_wall(var, &action);
+    }
     if (action == 0) {
         set_visible_tag("money_bar", false);
         set_text_visible_tag("price_wall", false);

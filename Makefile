@@ -27,6 +27,7 @@ SRC = $(wildcard csfml_engine/lib/*.c) \
 		csfml_engine/src/init_system.c \
 		csfml_engine/src/selected_tower.c \
 		csfml_engine/src/change_cursor.c \
+		csfml_engine/src/mouse_event.c \
 		src/main.c \
 
 OBJ = $(SRC:.c=.o)

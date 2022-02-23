@@ -11,6 +11,7 @@
 
 void init_system(var_t *var)
 {
+    var->thor_mod = false;
     set_background("background.png", true);
     set_fps(true, 15, sfBlack);
     create_object("map.png", "map", 10);
@@ -18,5 +19,8 @@ void init_system(var_t *var)
     create_object("cursor.png", "cursor", 0);
     set_scale_tag("cursor", (V2f){0.2, 0.2});
     set_shape_tag("cursor", (sfIntRect){0, 0, 173, 177}, true);
+    create_object("thor.png", "thor", 0);
+    set_scale_tag("thor", (V2f){0.1, 0.1});
+    set_exits_tag("thor", false);
     sfRenderWindow_setMouseCursorVisible(engine.win_settings.window, sfFalse);
 }
