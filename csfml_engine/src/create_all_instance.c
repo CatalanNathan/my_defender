@@ -52,6 +52,7 @@ static void create_all_bar(var_t *var)
     create_object("white_life.png", "white_life", 8);
     set_position_tag("white_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("white_life").x/2, get_position_tag("hearth").y + 50});
     create_selected_tower(var);
+    create_interface(var);
 }
 
 static void create_all_text(var_t *var)
@@ -63,7 +64,9 @@ static void create_all_text(var_t *var)
     set_text_position_tag("money", (V2f){get_position_tag("bar_money").x + get_size_tag("bar_money").x/2 - (5 * int_size(var->money)), get_position_tag("bar_money").y + 20});
     create_text(format_number(my_itoa(var->price_wall, 0), var->price_wall), "price_wall");
     set_text_visible_tag("price_wall", false);
-
+    create_text(" ", "text_clock_timer1");
+    create_text(" ", "text_clock_timer2");
+    create_text(" ", "text_clock_timer3");
 }
 
 void create_loop_game(var_t *var)

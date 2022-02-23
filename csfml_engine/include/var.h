@@ -15,6 +15,7 @@
 typedef struct wall_s
 {
     obj_t button;
+    int wait_time;
 } wall_t;
 
 struct tower_s
@@ -63,5 +64,6 @@ void mouse_event(var_t *var);
 void update_button_exists(char *tag_obj, char *tag_button, char *tag_clock_timer, float *incrementation);
 void event_game(var_t *var);
 void tower_event(var_t *var);
+void create_interface(var_t *var);
 
 #endif

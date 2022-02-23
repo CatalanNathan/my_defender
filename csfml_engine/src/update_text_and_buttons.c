@@ -35,5 +35,27 @@ void update_button_exists(char *tag_obj, char *tag_button, char *tag_clock_timer
         set_exits_tag(tag_obj, false);
         set_exits_tag(tag_button, true);
         set_exits_tag(tag_clock_timer, false);
+        if (!get_exits_tag("wall_1"))
+            set_text_visible_tag("text_clock_timer1", false);
+        if (!get_exits_tag("wall_2"))
+            set_text_visible_tag("text_clock_timer2", false);
+        if (!get_exits_tag("wall_3"))
+            set_text_visible_tag("text_clock_timer3", false);
+        return;
+    }
+    if (get_exits_tag("wall_1") && equal(tag_obj, "wall_1")) {
+        set_text_visible_tag("text_clock_timer1", true);
+        set_text_tag("text_clock_timer1", my_strcat(my_itoa(5 - ((int)(*incrementation) / 1000000), 0), "s"));
+        set_text_position_tag("text_clock_timer1", (V2f){1136, 525});
+    }
+    if (get_exits_tag("wall_2") && equal(tag_obj, "wall_2")) {
+        set_text_visible_tag("text_clock_timer2", true);
+        set_text_tag("text_clock_timer2", my_strcat(my_itoa(5 - ((int)(*incrementation) / 1000000), 0), "s"));
+        set_text_position_tag("text_clock_timer2", (V2f){795, 530});
+    }
+    if (get_exits_tag("wall_3") && equal(tag_obj, "wall_3")) {
+        set_text_visible_tag("text_clock_timer3", true);
+        set_text_tag("text_clock_timer3", my_strcat(my_itoa(5 - ((int)(*incrementation) / 1000000), 0), "s"));
+        set_text_position_tag("text_clock_timer3", (V2f){993, 436});
     }
 }

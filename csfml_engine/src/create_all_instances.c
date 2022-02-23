@@ -13,6 +13,7 @@ void create_all_game_value(var_t *var)
 {
     var->money = 100000;
     var->price_wall = 5000;
+    var->wall.wait_time = 10;
 }
 
 void create_all_buttons(var_t *var)

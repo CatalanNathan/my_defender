@@ -12,8 +12,6 @@
 void create(var_t *var)
 {
     srand(time(NULL));
-    var->castle_life = 1000;
-    var->nb_enemies = 20;
     init_system(var);
     create_loop_game(var);
 }
