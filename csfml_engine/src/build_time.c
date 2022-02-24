@@ -9,6 +9,20 @@
  #include "var.h"
  #include "my.h"
 
+void create_text_build_time(void)
+{
+    create_text("build_t1", "build_text1");
+    create_text("build_t2", "build_text2");
+    create_text("build_t3", "build_text3");
+    create_text("build_t4", "build_text4");
+    create_text("build_t5", "build_text5");
+    set_text_visible_tag("build_text1", false);
+    set_text_visible_tag("build_text2", false);
+    set_text_visible_tag("build_text3", false);
+    set_text_visible_tag("build_text4", false);
+    set_text_visible_tag("build_text5", false);
+}
+
 void link_build(void)
 {
     set_link_tag("clock_build1", "Tower_1.1");

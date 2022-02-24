@@ -257,5 +257,6 @@ sfColor get_sprite_color_tag(char *tag);
 obj_t copy_object_tag(char *tag);
 void get_elapsed_time(float *increment, float *save_increment);
 void set_link_tag(char *tag1, char *tag2);
+bool get_text_visible_tag(char *tag);
 
 #endif

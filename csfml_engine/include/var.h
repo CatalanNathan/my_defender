@@ -24,6 +24,9 @@ struct tower_s
     int price_tower_1;
     int price_tower_2;
     int price_tower_3;
+    float build_time_t1;
+    float build_time_t2;
+    float buil_time__t3;
     int tower_active;
 };
 
@@ -71,5 +74,6 @@ void tower_event(var_t *var);
 void create_interface(var_t *var);
 void create_their_text(var_t *var);
 void create_build_time(var_t *var);
+void create_text_build_time(void);
 
 #endif
