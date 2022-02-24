@@ -54,6 +54,8 @@ struct obj_s
     int display_order;
     float angle;
     int id;
+    char *link_tag;
+    int link_id;
     enemy_t enemy;
 
 };
@@ -254,5 +256,6 @@ bool get_exits_obj(obj_t obj);
 sfColor get_sprite_color_tag(char *tag);
 obj_t copy_object_tag(char *tag);
 void get_elapsed_time(float *increment, float *save_increment);
+void set_link_tag(char *tag1, char *tag2);
 
 #endif

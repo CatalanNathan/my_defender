@@ -61,6 +61,8 @@ obj_t initiate_paralax(char *src_img, char *tag, float speed)
     object.speed = speed;
     object.angle = 0;
     object.mouse_inside = false;
+    object.link_id = 0;
+    object.link_tag = "null";
     id += 1;
     initialise_enemy_par(&object);
     object = resize_parallax(object);

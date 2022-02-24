@@ -9,6 +9,15 @@
  #include "var.h"
  #include "my.h"
 
+void link_build(void)
+{
+    set_link_tag("clock_build1", "Tower_1.1");
+    set_link_tag("clock_build2", "Tower_1.2");
+    set_link_tag("clock_build3", "Tower_1.3");
+    set_link_tag("clock_build4", "Tower_1.4");
+    set_link_tag("clock_build5", "Tower_1.5");
+}
+
 void create_build_time(var_t *var)
 {
     create_object("clock_time_wall.png", "clock_build1", 7);
@@ -26,4 +35,5 @@ void create_build_time(var_t *var)
     set_exits_tag("clock_build3", false);
     set_exits_tag("clock_build4", false);
     set_exits_tag("clock_build5", false);
+    link_build();
 }

@@ -39,6 +39,8 @@ obj_t initiate_object(char *src_img, char *tag, int display_order)
     object.speed = 0.00;
     object.mouse_inside = false;
     object.angle = 0.00;
+    object.link_id = 0;
+    object.link_tag = "null";
     initialise_enemy(&object);
     id += 1;
     return object;
