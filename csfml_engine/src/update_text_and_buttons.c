@@ -36,7 +36,7 @@ void update_button_exists(char *tag_obj, char *tag_button, float *incrementation
         set_exits_tag(tag_button, true);
         if (!get_exits_tag("wall_1")) {
             set_text_visible_tag("text_clock_timer1", false);
-            set_exits_tag("clock_wall2", false);
+            set_exits_tag("clock_wall1", false);
         }
         if (!get_exits_tag("wall_2")) {
             set_text_visible_tag("text_clock_timer2", false);
