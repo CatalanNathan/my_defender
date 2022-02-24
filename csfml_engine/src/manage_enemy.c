@@ -59,8 +59,13 @@ void set_movement(obj_t *object)
 
 void animation_move_enemies(obj_t *object, var_t *var)
 {
-    animation_obj(object, (int[4]){0, 48, 240, 100}, &object->enemy.anim_ennemie);
-    if (elapsed_time_milliseconds(15, &object->enemy.move_enemies) != true)
+    static float anim_save = 0.00;
+    static float anim_increment = 0.00;
+    static float move_save = 0.00;
+    static float move_increment = 0.00;
+
+    animation_obj(object, (int[4]){0, 48, 240, 100}, &anim_increment, &anim_save);
+    if (elapsed_time_milliseconds(15, &move_increment, &move_save) == false)
         return;
     set_movement(object);
     if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)

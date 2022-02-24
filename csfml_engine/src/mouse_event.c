@@ -12,13 +12,14 @@
 void warning_true(int *e)
 {
     static float anime_warning = 0.00;
+    static float save = 0.00;
 
     if (*e == 0) {
         set_shape_tag("warning_build", (sfIntRect){220, 0, 220, 52}, true);
         set_visible_tag("warning_build", true);
         *e = 1;
     }
-    if (get_shape_tag("warning_build").left != 0 && elapsed_time_milliseconds(10, &anime_warning)) {
+    if (get_shape_tag("warning_build").left != 0 && elapsed_time_milliseconds(0.1, &anime_warning, &save)) {
         set_shape_tag("warning_build", (sfIntRect){get_shape_tag("warning_build").left - 5, 0, get_size_tag("warning_build").x ,get_shape_tag("warning_build").height}, true);
         set_position_tag("warning_build", (V2f){get_position_tag("warning_build").x - 5, get_position_tag("warning_build").y});
     }
@@ -28,12 +29,13 @@ void warning_true(int *e)
 void warning_false(int *e)
 {
     static float anime_warning = 0.00;
+    static float save = 0.00;
 
     *e = 0;
-    if (get_shape_tag("warning_build").left < (int)get_size_tag("warning_build").x && elapsed_time_milliseconds(10, &anime_warning)) {
+    if (get_shape_tag("warning_build").left < (int)get_size_tag("warning_build").x && elapsed_time_milliseconds(0.1, &anime_warning, &save)) {
         set_shape_tag("warning_build", (sfIntRect){get_shape_tag("warning_build").left + 5, 0, get_size_tag("warning_build").x ,get_shape_tag("warning_build").height}, true);
         set_position_tag("warning_build", (V2f){get_position_tag("warning_build").x + 5, get_position_tag("warning_build").y});
-    } else {
+    } else if (get_shape_tag("warning_build").left >= (int)get_size_tag("warning_build").x) {
         set_visible_tag("warning_build", false);
         set_position_tag("warning_build", (V2f){engine.win_settings.size.x - 48, 150});
     }

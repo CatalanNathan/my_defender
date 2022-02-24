@@ -61,7 +61,7 @@ void create_selected_tower(var_t *var);
 void selected_button_tower(var_t *var);
 void change_cursor(var_t * var);
 void mouse_event(var_t *var);
-void update_button_exists(char *tag_obj, char *tag_button, char *tag_clock_timer, float *incrementation);
+void update_button_exists(char *tag_obj, char *tag_button, float *incrementation, float *save);
 void event_game(var_t *var);
 void tower_event(var_t *var);
 void create_interface(var_t *var);

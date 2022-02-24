@@ -8,12 +8,17 @@
 #include "my.h"
 #include "engine.h"
 
-bool elapsed_time_seconds(int seconds, float *increment)
+bool elapsed_time_seconds(int seconds, float *increment, float *save_increment)
 {
-    sfTime convert;
+    sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
-    convert = sfClock_getElapsedTime(engine.win_settings.clock);
-    *increment += convert.microseconds;
+    if (*increment == 0) {
+        *save_increment = convert.microseconds;
+        *increment = 1;
+    } else {
+        *increment += convert.microseconds - *save_increment;
+        *save_increment = convert.microseconds;
+    }
     if (*increment / 1000000 >= seconds) {
         *increment = 0;
         return true;
@@ -21,12 +26,17 @@ bool elapsed_time_seconds(int seconds, float *increment)
     return false;
 }
 
-bool elapsed_time_milliseconds(int milliseconds, float *increment)
+bool elapsed_time_milliseconds(int milliseconds, float *increment, float *save_increment)
 {
-    sfTime convert;
+    sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
-    convert = sfClock_getElapsedTime(engine.win_settings.clock);
-    *increment += convert.microseconds;
+    if (*increment == 0) {
+        *save_increment = convert.microseconds;
+        *increment = 1;
+    } else {
+        *increment += convert.microseconds - *save_increment;
+        *save_increment = convert.microseconds;
+    }
     if (*increment / 1000 >= milliseconds) {
         *increment = 0;
         return true;
@@ -34,12 +44,17 @@ bool elapsed_time_milliseconds(int milliseconds, float *increment)
     return false;
 }
 
-bool elapsed_time_microseconds(int microseconds, float *increment)
+bool elapsed_time_microseconds(int microseconds, float *increment, float *save_increment)
 {
-    sfTime convert;
+    sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
-    convert = sfClock_getElapsedTime(engine.win_settings.clock);
-    *increment += convert.microseconds;
+    if (*increment == 0) {
+        *save_increment = convert.microseconds;
+        *increment = 1;
+    } else {
+        *increment += convert.microseconds - *save_increment;
+        *save_increment = convert.microseconds;
+    }
     if (*increment >= microseconds) {
         *increment = 0;
         return true;

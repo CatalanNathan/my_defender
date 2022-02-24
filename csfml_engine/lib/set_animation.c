@@ -26,11 +26,11 @@ void set_animation_obj(obj_t *obj, int *ref)
         set_shape_obj(obj, (sfIntRect){shape.left += ref[1], shape.top, shape.width, shape.height}, true);
 }
 
-void animation_tag(char *tag, int *shape_start_increment_end_milliseconds, float *increment)
+void animation_tag(char *tag, int *shape_start_increment_end_milliseconds, float *increment, float *save)
 {
     node_t *start = engine.game.list;
 
-    if (elapsed_time_milliseconds(shape_start_increment_end_milliseconds[3], increment) == false)
+    if (elapsed_time_milliseconds(shape_start_increment_end_milliseconds[3], increment, save) == false)
         return;
 
     while (engine.game.list != NULL) {
@@ -42,11 +42,11 @@ void animation_tag(char *tag, int *shape_start_increment_end_milliseconds, float
     engine.game.list = start;
 }
 
-void animation_obj(obj_t *obj, int *shape_start_increment_end_milliseconds, float *increment)
+void animation_obj(obj_t *obj, int *shape_start_increment_end_milliseconds, float *increment, float *save)
 {
     node_t *start = engine.game.list;
 
-    if (elapsed_time_milliseconds(shape_start_increment_end_milliseconds[3], increment) == false)
+    if (elapsed_time_milliseconds(shape_start_increment_end_milliseconds[3], increment, save) == false)
         return;
 
     while (engine.game.list != NULL) {

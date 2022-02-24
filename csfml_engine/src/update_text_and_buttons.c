@@ -29,18 +29,23 @@ void update_all_text(var_t *var)
         set_text_tag("money", format_number(my_itoa(var->money, 0), var->money));
 }
 
-void update_button_exists(char *tag_obj, char *tag_button, char *tag_clock_timer, float *incrementation)
+void update_button_exists(char *tag_obj, char *tag_button, float *incrementation, float *save)
 {
-    if (get_exits_tag(tag_obj) && elapsed_time_seconds(5, incrementation)) {
+    if (get_exits_tag(tag_obj) && elapsed_time_seconds(5, incrementation, save)) {
         set_exits_tag(tag_obj, false);
         set_exits_tag(tag_button, true);
-        set_exits_tag(tag_clock_timer, false);
-        if (!get_exits_tag("wall_1"))
+        if (!get_exits_tag("wall_1")) {
             set_text_visible_tag("text_clock_timer1", false);
-        if (!get_exits_tag("wall_2"))
+            set_exits_tag("clock_wall2", false);
+        }
+        if (!get_exits_tag("wall_2")) {
             set_text_visible_tag("text_clock_timer2", false);
-        if (!get_exits_tag("wall_3"))
+            set_exits_tag("clock_wall2", false);
+        }
+        if (!get_exits_tag("wall_3")) {
             set_text_visible_tag("text_clock_timer3", false);
+            set_exits_tag("clock_wall3", false);
+        }
         return;
     }
     if (get_exits_tag("wall_1") && equal(tag_obj, "wall_1")) {

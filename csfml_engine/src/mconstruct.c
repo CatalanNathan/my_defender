@@ -12,16 +12,18 @@
 void animation_construct(var_t *var)
 {
     static float time_pass = 0.00;
+    static float save = 0.00;
 
-    if (get_shape_obj(&var->b_constructor).width < (int)get_texture_size_obj(&var->b_constructor).x && elapsed_time_milliseconds(10, &time_pass))
+    if (get_shape_obj(&var->b_constructor).width < (int)get_texture_size_obj(&var->b_constructor).x && elapsed_time_milliseconds(0.1, &time_pass, &save))
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, get_shape_obj(&var->b_constructor).width + 10, 85}, true);
 }
 
 void animation_construct_return(var_t *var, int *retract)
 {
     static float time_pass = 0.00;
+    static float save = 0.00;
 
-    if (get_shape_obj(&var->b_constructor).width > 83 && elapsed_time_milliseconds(10, &time_pass))
+    if (get_shape_obj(&var->b_constructor).width > 83 && elapsed_time_milliseconds(0.1, &time_pass, &save))
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, get_shape_obj(&var->b_constructor).width - 10, 85}, true);
     else if (get_shape_obj(&var->b_constructor).width <= 83) {
         *retract = 0;
