@@ -21,4 +21,9 @@ void create_build_time(var_t *var)
     set_position_tag("clock_build4", (V2f){get_position_tag("Tower_1.4").x + 30, get_position_tag("Tower_1.4").y + 150});
     create_object("clock_time_wall.png", "clock_build5", 7);
     set_position_tag("clock_build5", (V2f){get_position_tag("Tower_1.5").x + 30, get_position_tag("Tower_1.5").y + 150});
+    set_exits_tag("clock_build1", false);
+    set_exits_tag("clock_build2", false);
+    set_exits_tag("clock_build3", false);
+    set_exits_tag("clock_build4", false);
+    set_exits_tag("clock_build5", false);
 }
