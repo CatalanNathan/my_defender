@@ -79,7 +79,7 @@ void manage_enemy(var_t *var)
 
 
     animation_tag("enemies", (int[4]){0, 48, 240, 100}, &anim_increment, &anim_save);
-    if (elapsed_time_milliseconds(20, &move_increment, &move_save) == false)
+    if (elapsed_time_milliseconds(15, &move_increment, &move_save) == false)
         return;
     for (;engine.game.list != NULL; engine.game.list = engine.game.list->previous)
         if (engine.game.list->settings.enemy.it_is)

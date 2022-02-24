@@ -48,7 +48,7 @@ void microprogramme(int *start, var_t *var)
         create(var);
         return;
     }
-    if (get_scale_tag("loadBar").x < 1 && elapsed_time_milliseconds(1, &time, &save))
+    if (get_scale_tag("loadBar").x < 1 && elapsed_time_milliseconds(1.00, &time, &save))
         set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x + 0.001, 0.2});
     if (key_pressed(sfKeyEscape))
         game_end(0);
