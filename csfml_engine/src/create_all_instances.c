@@ -11,12 +11,16 @@
 
 void create_all_game_value(var_t *var)
 {
+    var->thor_mod = false;
+    var->castle_life = 1000;
+    var->nb_enemies = 20;
     var->money = 100000;
     var->price_wall = 5000;
     var->wall.wait_time = 10;
     var->tower.price_tower_1 = 20000;
     var->tower.price_tower_2 = 50000;
     var->tower.price_tower_3 = 90000;
+    var->tower.tower_active = 0;
 }
 
 void create_all_buttons(var_t *var)

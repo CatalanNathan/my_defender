@@ -11,9 +11,6 @@
 
 void init_system(var_t *var)
 {
-    var->thor_mod = false;
-    var->castle_life = 1000;
-    var->nb_enemies = 20;
     set_background("background.png", true);
     set_fps(true, 15, sfBlack);
     create_object("map.png", "map", 10);

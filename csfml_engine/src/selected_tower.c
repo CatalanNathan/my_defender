@@ -38,8 +38,10 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
-        if (mouse_pressed(sfMouseLeft, &mouse))
+        if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
+            var->tower.tower_active = 1;
+        }
         set_shape_tag("selecte_tower_1", (sfIntRect){get_size_tag("selecte_tower_1").x, 0, get_size_tag("selecte_tower_1").x, get_size_tag("selecte_tower_1").y}, true);
         change_cursor(var);
     } else
@@ -63,8 +65,10 @@ void second_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_2", false);
 
     if (mouse_inside_tag("selecte_tower_2") && get_exits_tag("selecte_tower_2")) {
-        if (mouse_pressed(sfMouseLeft, &mouse))
+        if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
+            var->tower.tower_active = 2;
+        }
         set_shape_tag("selecte_tower_2", (sfIntRect){get_size_tag("selecte_tower_2").x, 0, get_size_tag("selecte_tower_2").x, get_size_tag("selecte_tower_2").y}, true);
         change_cursor(var);
     } else
@@ -88,14 +92,15 @@ void third_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_3", false);
 
     if (mouse_inside_tag("selecte_tower_3") && get_exits_tag("selecte_tower_3")) {
-        if (mouse_pressed(sfMouseLeft, &mouse))
+        if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
+            var->tower.tower_active = 3;
+        }
         set_shape_tag("selecte_tower_3", (sfIntRect){get_size_tag("selecte_tower_3").x, 0, get_size_tag("selecte_tower_3").x, get_size_tag("selecte_tower_3").y}, true);
         change_cursor(var);
     } else
         set_shape_tag("selecte_tower_3", (sfIntRect){0, 0, calc_shape, get_size_tag("selecte_tower_3").y}, true);
 }
-
 
 void selected_button_tower(var_t *var)
 {

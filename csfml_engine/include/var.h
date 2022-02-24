@@ -24,6 +24,7 @@ struct tower_s
     int price_tower_1;
     int price_tower_2;
     int price_tower_3;
+    int tower_active;
 };
 
 typedef struct tower_s tower_t;

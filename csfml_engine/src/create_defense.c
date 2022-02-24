@@ -19,6 +19,6 @@ void create_wall(char *src_image, V2f pos, var_t *var, char *tag)
 void create_tower(char *src_img, V2f pos, var_t *var, char *tag)
 {
     var->tower.tower = create_object(src_img, tag, 8);
-    set_shape_obj(&var->tower.tower, (sfIntRect){150, 0, 200, get_size_obj(&var->tower.tower).y}, true);
+    set_shape_obj(&var->tower.tower, (sfIntRect){150, 0, 120, get_size_obj(&var->tower.tower).y}, true);
     set_position_obj(var->tower.tower, pos);
 }
