@@ -16,7 +16,7 @@ void create_all_towers(var_t *var)
 {
     create_tower("Tower_lv1.png", (V2f){815, 480}, var, "Tower_1.1"); // deuxième la plus a gauche
     create_tower("Tower_lv1.png", (V2f){1140, 350}, var, "Tower_1.2"); // tout à droite
-    create_tower("Tower_lv1.png", (V2f){800, 538}, var, "Tower_1.3"); // tout en bas
+    create_tower("Tower_lv1.png", (V2f){1030, 538}, var, "Tower_1.3"); // tout en bas
     create_tower("Tower_lv1.png", (V2f){620, 310}, var, "Tower_1.4"); // tout a gauche
     create_tower("Tower_lv1.png", (V2f){900, 210}, var, "Tower_1.5"); // tout en haut
 
