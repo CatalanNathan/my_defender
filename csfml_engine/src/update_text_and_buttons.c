@@ -27,6 +27,18 @@ void update_all_text(var_t *var)
         set_text_tag("money", "0");
     else
         set_text_tag("money", format_number(my_itoa(var->money, 0), var->money));
+    if (get_shape_tag("selecte_tower_1").width >= (int)get_texture_size_tag("selecte_tower_1").x/2)
+        set_text_visible_tag("price_tower_1", true);
+    else
+        set_text_visible_tag("price_tower_1", false);
+    if (get_shape_tag("selecte_tower_2").width >= (int)get_texture_size_tag("selecte_tower_2").x/2)
+        set_text_visible_tag("price_tower_2", true);
+    else
+        set_text_visible_tag("price_tower_2", false);
+    if (get_shape_tag("selecte_tower_3").width >= (int)get_texture_size_tag("selecte_tower_3").x/2)
+        set_text_visible_tag("price_tower_3", true);
+    else
+        set_text_visible_tag("price_tower_3", false);
 }
 
 void update_button_exists(char *tag_obj, char *tag_button, float *incrementation, float *save)
