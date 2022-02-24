@@ -33,33 +33,34 @@ void create_enemies(var_t *var, int possibility)
     set_enemy_obj(&var->enemies, path, n);
 }
 
-void set_movement(obj_t *object)
+void set_movement(obj_t *object, float time)
 {
-    if (get_collision_obj(object, "wall_1", 50) || get_collision_obj(object, "wall_2", 50) || get_collision_obj(object, "wall_3", 50))
+    if (get_collision_obj(object, "wall_1", 50) || get_collision_obj(object, "wall_2", 50) || get_collision_obj(object, "wall_3", 50)) {
         return;
+    }
     if (get_position_obj(*object).x > object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x - 1, get_position_obj(*object).y});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x - (0.00005 * time), get_position_obj(*object).y});
         if (get_scale_obj(*object).x > 0) {
             set_position_obj(*object, (V2f){get_position_obj(*object).x + get_size_obj(object).x, get_position_obj(*object).y});
             set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
         }
     }
     if (get_position_obj(*object).x < object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x + 1, get_position_obj(*object).y});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x + (0.00005 * time), get_position_obj(*object).y});
         if (get_scale_obj(*object).x < 0) {
             set_position_obj(*object, (V2f){get_position_obj(*object).x - get_size_obj(object).x, get_position_obj(*object).y});
             set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
         }
     }
     if (get_position_obj(*object).y > object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y - 0.5});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y - (0.000027 * time)});
     if (get_position_obj(*object).y < object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y + 0.5});
+        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y + (0.000027 * time)});
 }
 
-void animation_move_enemies(obj_t *object, var_t *var)
+void animation_move_enemies(obj_t *object, var_t *var, float time)
 {
-    set_movement(object);
+    set_movement(object, time);
     if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)
         object->enemy.pos_path += 1;
     if (object->enemy.pos_path >= object->enemy.n_path - 1) {
@@ -72,18 +73,16 @@ void animation_move_enemies(obj_t *object, var_t *var)
 void manage_enemy(var_t *var)
 {
     node_t *start = engine.game.list;
-    static float anim_save = 0.00;
-    static float anim_increment = 0.00;
-    static float move_save = 0.00;
-    static float move_increment = 0.00;
+    static float time = 0.00;
+    static float save = 0.00;
+    static float time2 = 0.00;
+    static float save2 = 0.00;
 
-
-    animation_tag("enemies", (int[4]){0, 48, 240, 100}, &anim_increment, &anim_save);
-    if (elapsed_time_milliseconds(15, &move_increment, &move_save) == false)
-        return;
+    animation_tag("enemies", (int[4]){0, 48, 240, 100}, &time, &save);
+    get_elapsed_time(&time2, &save2);
     for (;engine.game.list != NULL; engine.game.list = engine.game.list->previous)
         if (engine.game.list->settings.enemy.it_is)
-            animation_move_enemies(&engine.game.list->settings, var);
+            animation_move_enemies(&engine.game.list->settings, var, time2);
     engine.game.list = start;
 }
 

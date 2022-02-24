@@ -11,7 +11,6 @@
 
 void animation_construct(var_t *var, float time_pass)
 {
-    printf("%f\n", time_pass);
     if (get_shape_obj(&var->b_constructor).width < (int)get_texture_size_obj(&var->b_constructor).x)
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, get_shape_obj(&var->b_constructor).width + (0.001 * time_pass), 85}, true);
 }
@@ -24,7 +23,6 @@ void animation_construct_return(var_t *var, int *retract, float time_pass)
         *retract = 0;
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, true);
     }
-
 }
 
 void manage_construct(var_t *var)
