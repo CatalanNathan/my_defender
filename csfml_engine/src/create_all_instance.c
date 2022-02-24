@@ -85,6 +85,7 @@ static void create_all_text(var_t *var)
     create_text(" ", "text_clock_timer1");
     create_text(" ", "text_clock_timer2");
     create_text(" ", "text_clock_timer3");
+    create_text_build_time();
 }
 
 void create_loop_game(var_t *var)

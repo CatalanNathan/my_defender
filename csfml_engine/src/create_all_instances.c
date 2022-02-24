@@ -17,6 +17,9 @@ void create_all_game_value(var_t *var)
     var->tower.price_tower_1 = 20000;
     var->tower.price_tower_2 = 50000;
     var->tower.price_tower_3 = 90000;
+    var->tower.build_time_t1 = 10;
+    var->tower.build_time_t2 = 15;
+    var->tower.buil_time__t3 = 25;
 }
 
 void create_all_buttons(var_t *var)
