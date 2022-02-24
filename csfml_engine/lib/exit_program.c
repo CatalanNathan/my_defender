@@ -8,20 +8,18 @@
 #include "my.h"
 #include "engine.h"
 
-void exit_program(void)
+void exit_program(float time)
 {
-    static float time = 0.00;
-    static float save = 0.00;
     static int i = 0;
 
     if (mouse_inside_tag("engineExit") == false) {
-        if (get_shape_tag("engineExit").width > 30 && elapsed_time_microseconds(10000, &time, &save))
-            set_shape_tag("engineExit", (sfIntRect){0, 0, get_shape_tag("engineExit").width - 1, get_size_tag("engineExit").y}, true);
+        if (get_shape_tag("engineExit").width > 30)
+            set_shape_tag("engineExit", (sfIntRect){0, 0, get_shape_tag("engineExit").width - (0.001 * time), get_size_tag("engineExit").y}, true);
         else if (get_shape_tag("engineExit").width == 30)
             set_shape_tag("engineExit", (sfIntRect){152, 0, 30, get_size_tag("engineExit").y}, true);
     } else {
-        if (get_shape_tag("engineExit").width < 76 && elapsed_time_microseconds(10000, &time, &save))
-            set_shape_tag("engineExit", (sfIntRect){76, 0, get_shape_tag("engineExit").width + 1, get_size_tag("engineExit").y}, true);
+        if (get_shape_tag("engineExit").width < 76)
+            set_shape_tag("engineExit", (sfIntRect){76, 0, get_shape_tag("engineExit").width + (0.002 * time), get_size_tag("engineExit").y}, true);
         if (mouse_pressed(sfMouseLeft, &i))
             game_end(0);
     }

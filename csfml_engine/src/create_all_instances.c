@@ -14,6 +14,9 @@ void create_all_game_value(var_t *var)
     var->money = 100000;
     var->price_wall = 5000;
     var->wall.wait_time = 10;
+    var->tower.price_tower_1 = 20000;
+    var->tower.price_tower_2 = 50000;
+    var->tower.price_tower_3 = 90000;
 }
 
 void create_all_buttons(var_t *var)

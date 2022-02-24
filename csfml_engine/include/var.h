@@ -21,6 +21,9 @@ typedef struct wall_s
 struct tower_s
 {
     obj_t tower;
+    int price_tower_1;
+    int price_tower_2;
+    int price_tower_3;
 };
 
 typedef struct tower_s tower_t;
@@ -65,5 +68,6 @@ void update_button_exists(char *tag_obj, char *tag_button, float *incrementation
 void event_game(var_t *var);
 void tower_event(var_t *var);
 void create_interface(var_t *var);
+void create_their_text(var_t *var);
 
 #endif

@@ -117,4 +117,6 @@ void create_selected_tower(var_t *var)
     create_object("selecte_tower_3.png", "selecte_tower_3", 7);
     set_shape_tag("selecte_tower_3", (sfIntRect){ 0, 0, get_size_tag("selecte_tower_3").x/2, get_size_tag("selecte_tower_3").y}, true);
     set_position_tag("selecte_tower_3", (V2f){get_position_tag("constructMenu").x + 280, get_position_tag("constructMenu").y + 6});
+
+    create_their_text(var);
 }

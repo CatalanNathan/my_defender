@@ -37,6 +37,7 @@ void microprogramme(int *start, var_t *var)
     static float time = 0.00;
     static float save = 0.00;
 
+    get_elapsed_time(&time, &save);
     if (*start == 0 && get_scale_tag("loadBar").x >= 1) {
         *start = 1;
         window_creator();
@@ -48,11 +49,11 @@ void microprogramme(int *start, var_t *var)
         create(var);
         return;
     }
-    if (get_scale_tag("loadBar").x < 1 && elapsed_time_milliseconds(1.00, &time, &save))
-        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x + 0.001, 0.2});
+    if (get_scale_tag("loadBar").x < 1)
+        set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x + (0.000001 * time), 0.2});
     if (key_pressed(sfKeyEscape))
         game_end(0);
-    exit_program();
+    exit_program(time);
 }
 
 void engine_is_open(int *start, var_t *var)
