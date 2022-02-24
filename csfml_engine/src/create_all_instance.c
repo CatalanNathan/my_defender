@@ -28,9 +28,9 @@ void create_all_towers(var_t *var)
 
     create_tower("Tower_lv3.png", (V2f){815, 485}, var, "Tower_3.1");
     create_tower("Tower_lv3.png", (V2f){1140, 355}, var, "Tower_3.2");
-    create_tower("Tower_lv3.png", (V2f){1030, 538}, var, "Tower_3.3");
-    create_tower("Tower_lv3.png", (V2f){620, 310}, var, "Tower_3.4");
-    create_tower("Tower_lv3.png", (V2f){900, 210}, var, "Tower_3.5");
+    create_tower("Tower_lv3.png", (V2f){1030, 540}, var, "Tower_3.3");
+    create_tower("Tower_lv3.png", (V2f){620, 312}, var, "Tower_3.4");
+    create_tower("Tower_lv3.png", (V2f){900, 212}, var, "Tower_3.5");
 }
 
 static void create_all_tower_and_wall(var_t *var)
