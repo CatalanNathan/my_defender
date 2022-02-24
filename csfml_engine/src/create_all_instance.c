@@ -12,16 +12,34 @@
 void create_all_game_value(var_t *var);
 void create_all_buttons(var_t *var);
 
+void create_all_towers(var_t *var)
+{
+    create_tower("Tower_lv1.png", (V2f){815, 480}, var, "Tower_1.1");
+    create_tower("Tower_lv1.png", (V2f){1140, 350}, var, "Tower_1.2");
+    create_tower("Tower_lv1.png", (V2f){1030, 538}, var, "Tower_1.3");
+    create_tower("Tower_lv1.png", (V2f){620, 310}, var, "Tower_1.4");
+    create_tower("Tower_lv1.png", (V2f){900, 210}, var, "Tower_1.5");
+
+    create_tower("Tower_lv2.png", (V2f){815, 482}, var, "Tower_2.1");
+    create_tower("Tower_lv2.png", (V2f){1140, 352}, var, "Tower_2.2");
+    create_tower("Tower_lv2.png", (V2f){1030, 535}, var, "Tower_2.3");
+    create_tower("Tower_lv2.png", (V2f){620, 307}, var, "Tower_2.4");
+    create_tower("Tower_lv2.png", (V2f){900, 207}, var, "Tower_2.5");
+
+    create_tower("Tower_lv3.png", (V2f){815, 485}, var, "Tower_3.1");
+    create_tower("Tower_lv3.png", (V2f){1140, 355}, var, "Tower_3.2");
+    create_tower("Tower_lv3.png", (V2f){1030, 538}, var, "Tower_3.3");
+    create_tower("Tower_lv3.png", (V2f){620, 310}, var, "Tower_3.4");
+    create_tower("Tower_lv3.png", (V2f){900, 210}, var, "Tower_3.5");
+}
+
 static void create_all_tower_and_wall(var_t *var)
 {
-    create_tower("Tower_lv1.png", (V2f){815, 480}, var, "Tower_1");
-    create_tower("Tower_lv1.png", (V2f){1140, 350}, var, "Tower_2");
-    create_tower("Tower_lv1.png", (V2f){1030, 538}, var, "Tower_3");
-    create_tower("Tower_lv1.png", (V2f){620, 310}, var, "Tower_4");
-    create_tower("Tower_lv1.png", (V2f){900, 210}, var, "Tower_5");
+    create_all_towers(var);
     create_wall("brick-wall.png", (V2f){1190, 600}, var, "btn_wall_1");
     create_wall("brick-wall.png", (V2f){680, 605}, var, "btn_wall_2");
     create_wall("brick-wall.png", (V2f){980, 440}, var, "btn_wall_3");
+    create_build_time(var);
     create_object("wall.png", "wall_1", 9);
     set_position_tag("wall_1", (V2f){1150, 535});
     create_object("wall.png", "wall_2", 9);

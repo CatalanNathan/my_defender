@@ -69,5 +69,6 @@ void event_game(var_t *var);
 void tower_event(var_t *var);
 void create_interface(var_t *var);
 void create_their_text(var_t *var);
+void create_build_time(var_t *var);
 
 #endif

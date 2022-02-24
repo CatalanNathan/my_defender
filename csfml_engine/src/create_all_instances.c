@@ -23,13 +23,10 @@ void create_all_buttons(var_t *var)
 {
     create_object("clock_time_wall.png", "clock_wall1", 8);
     set_position_tag("clock_wall1", (V2f){1100, 520});
-    set_scale_tag("clock_wall1", (V2f){1, 1});
     create_object("clock_time_wall.png", "clock_wall2", 8);
     set_position_tag("clock_wall2", (V2f){760, 525});
-    set_scale_tag("clock_wall2", (V2f){1, 1});
     create_object("clock_time_wall.png", "clock_wall3", 8);
     set_position_tag("clock_wall3", (V2f){960, 430});
-    set_scale_tag("clock_wall3", (V2f){1, 1});
     set_exits_tag("clock_wall1", false);
     set_exits_tag("clock_wall2", false);
     set_exits_tag("clock_wall3", false);

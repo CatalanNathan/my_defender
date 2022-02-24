@@ -12,7 +12,7 @@
 void tower_event(var_t *var)
 {
     obj_t object;
-    char *tower = my_strdup("Tower_1");
+    char *tower = my_strdup("Tower_1.1");
     char e = '1';
 
     while (e != '6') {
@@ -22,6 +22,6 @@ void tower_event(var_t *var)
         else
             sfSprite_setColor(object.sprite, var->color_tower);
         e++;
-        tower[6] = e;
+        tower[8] = e;
     }
 }
