@@ -75,5 +75,10 @@ void create_interface(var_t *var);
 void create_their_text(var_t *var);
 void create_build_time(var_t *var);
 void create_text_build_time(void);
+void time_tower_run_one(var_t *var);
+void time_tower_run_two(var_t *var);
+void time_tower_run_three(var_t *var);
+void time_tower_run_four(var_t *var);
+void time_tower_run_five(var_t *var);
 
 #endif

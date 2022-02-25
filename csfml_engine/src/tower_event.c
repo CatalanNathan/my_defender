@@ -16,26 +16,11 @@ void check_time(obj_t object)
 
 void time_tower(var_t *var)
 {
-    static float i_text1 = 0.00;
-    static float save_text1 = 0.00;
-
-    if (get_exits_tag("clock_build1") && get_text_visible_tag("build_text1") == false) {
-        set_text_position_tag("build_text1", (V2f){get_position_tag("clock_build1").x + get_size_tag("clock_build1").x/2 - 5, get_position_tag("clock_build1").y + 5});
-        set_text_visible_tag("build_text1", true);
-    } else if (get_text_visible_tag("build_text1")) {
-        set_text_tag("build_text1", my_itoa(var->tower.build_time_t1, 0));
-        if (elapsed_time_seconds(1, &i_text1, &save_text1))
-            var->tower.build_time_t1 -= 1;
-        if (var->tower.build_time_t1 <= 0) {
-            set_exits_tag("clock_build1", false);
-            set_text_visible_tag("build_text1", false);
-            var->tower.build_time_t1 = 10;
-        }
-    }
-    // if (get_exits_tag("clock_build2"))
-    // if (get_exits_tag("clock_build3"))
-    // if (get_exits_tag("clock_build4"))
-    // if (get_exits_tag("clock_build5"))
+    time_tower_run_one(var);
+    time_tower_run_two(var);
+    time_tower_run_three(var);
+    time_tower_run_four(var);
+    time_tower_run_five(var);
 }
 
 void check_upgrade_tower(char *tag, var_t *var)
@@ -103,8 +88,7 @@ void tower_event(var_t *var)
                 check_time(object);
                 check_upgrade_tower(tower, var);
             }
-        }
-        else
+        } else
             sfSprite_setColor(object.sprite, var->color_tower);
         e++;
         tower[8] = e;
