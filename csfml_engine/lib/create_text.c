@@ -22,7 +22,8 @@ text_t initiate_text(char *text, char *tag)
     create_text.color = sfBlack;
     sfText_setColor(create_text.text, sfBlack);
     sfText_setCharacterSize(create_text.text, 15);
-    sfText_setFont(create_text.text, sfFont_createFromFile("csfml_engine/font/Yellow Candy.otf"));
+    sfText_setFont(create_text.text, sfFont_createFromFile("csfml"
+    "_engine/font/Yellow Candy.otf"));
     sfText_setString(create_text.text, text);
     id++;
     return create_text;
