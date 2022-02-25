@@ -15,6 +15,9 @@ void first_wall(var_t *var, int *action)
     static float incrementation = 0.00;
     static float save = 0.00;
 
+    update_button_exists("wall_1", "btn_wall_1", &incrementation, &save);
+    if (var->thor_mod == true)
+        return;
     if (mouse_inside_tag("btn_wall_1") && get_exits_tag("btn_wall_1")) {
         set_shape_tag("btn_wall_1", (sfIntRect){get_size_tag("btn_wall_1").x, 0, get_size_tag("btn_wall_1").x, get_size_tag("btn_wall_1").y}, true);
         set_position_tag("money_bar", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - get_size_tag("money_bar").x/2,sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 50});
@@ -32,7 +35,6 @@ void first_wall(var_t *var, int *action)
         return;
     }
     mouse_pressed(sfMouseLeft, &i);
-    update_button_exists("wall_1", "btn_wall_1", &incrementation, &save);
     set_shape_tag("btn_wall_1",(sfIntRect){0, 0, get_size_tag("btn_wall_1").x, get_size_tag("btn_wall_1").y}, true);
 }
 
@@ -42,6 +44,9 @@ void second_wall(var_t *var, int *action)
     static float incrementation = 0.00;
     static float save = 0.00;
 
+    update_button_exists("wall_2", "btn_wall_2", &incrementation, &save);
+    if (var->thor_mod == true)
+        return;
     if (mouse_inside_tag("btn_wall_2") && get_exits_tag("btn_wall_2")) {
         set_shape_tag("btn_wall_2", (sfIntRect){get_size_tag("btn_wall_2").x, 0, get_size_tag("btn_wall_2").x, get_size_tag("btn_wall_2").y}, true);
         set_position_tag("money_bar", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - get_size_tag("money_bar").x/2,sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 50});
@@ -59,7 +64,6 @@ void second_wall(var_t *var, int *action)
         return;
     }
     mouse_pressed(sfMouseLeft, &i);
-    update_button_exists("wall_2", "btn_wall_2", &incrementation, &save);
     set_shape_tag("btn_wall_2",(sfIntRect){0, 0, get_size_tag("btn_wall_2").x, get_size_tag("btn_wall_2").y}, true);
 }
 
@@ -69,6 +73,9 @@ void third_wall(var_t *var, int *action)
     static float incrementation = 0.00;
     static float save = 0.00;
 
+    update_button_exists("wall_3", "btn_wall_3", &incrementation, &save);
+    if (var->thor_mod == true)
+        return;
     if (mouse_inside_tag("btn_wall_3") && get_exits_tag("btn_wall_3")) {
         set_shape_tag("btn_wall_3", (sfIntRect){get_size_tag("btn_wall_3").x, 0, get_size_tag("btn_wall_3").x, get_size_tag("btn_wall_3").y}, true);
         set_position_tag("money_bar", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - get_size_tag("money_bar").x/2,sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 50});
@@ -86,7 +93,6 @@ void third_wall(var_t *var, int *action)
         return;
     }
     mouse_pressed(sfMouseLeft, &i);
-    update_button_exists("wall_3", "btn_wall_3", &incrementation, &save);
     set_shape_tag("btn_wall_3",(sfIntRect){0, 0, get_size_tag("btn_wall_3").x, get_size_tag("btn_wall_3").y}, true);
 }
 
@@ -94,11 +100,9 @@ void manage_button(var_t *var)
 {
     int action = 0;
 
-    if (var->thor_mod == false) {
-        first_wall(var, &action);
-        second_wall(var, &action);
-        third_wall(var, &action);
-    }
+    first_wall(var, &action);
+    second_wall(var, &action);
+    third_wall(var, &action);
     if (action == 0) {
         set_visible_tag("money_bar", false);
         set_text_visible_tag("price_wall", false);
