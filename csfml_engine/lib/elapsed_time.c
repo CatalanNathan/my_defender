@@ -8,7 +8,8 @@
 #include "my.h"
 #include "engine.h"
 
-bool elapsed_time_seconds(float seconds, float *increment, float *save_increment)
+bool elapsed_time_seconds(float seconds, float *increment,
+float *save_increment)
 {
     sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
@@ -26,7 +27,8 @@ bool elapsed_time_seconds(float seconds, float *increment, float *save_increment
     return false;
 }
 
-bool elapsed_time_milliseconds(float milliseconds, float *increment, float *save_increment)
+bool elapsed_time_milliseconds(float milliseconds,
+float *increment, float *save_increment)
 {
     sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
@@ -44,7 +46,8 @@ bool elapsed_time_milliseconds(float milliseconds, float *increment, float *save
     return false;
 }
 
-bool elapsed_time_microseconds(float microseconds, float *increment, float *save_increment)
+bool elapsed_time_microseconds(float microseconds,
+float *increment, float *save_increment)
 {
     sfTime convert = sfClock_getElapsedTime(engine.win_settings.clock);
 
