@@ -14,19 +14,31 @@ void time_tower_run_one(var_t *var)
     static float increment = 0.00;
     static float save = 0.00;
     static float time = 10;
+    static int my_pass = 0;
 
     if (get_exits_tag("clock_build1") && get_text_visible_tag("build_text1") == false) {
         set_text_position_tag("build_text1", (V2f){get_position_tag("clock_build1").x + get_size_tag("clock_build1").x/2 - 5, get_position_tag("clock_build1").y + 5});
         set_text_visible_tag("build_text1", true);
     } else if (get_text_visible_tag("build_text1")) {
         set_text_tag("build_text1", my_itoa(time, 0));
-        if (elapsed_time_seconds(1, &increment, &save))
+        if (elapsed_time_seconds(1, &increment, &save)) {
             time -= 1;
+            my_pass++;
+        }
         if (time <= 0) {
             set_exits_tag("clock_build1", false);
             set_text_visible_tag("build_text1", false);
             time = 10;
         }
+    }
+    if (my_pass >= 2 && time < 8) {
+        if (var->tower.tower_selected == 1)
+            set_shape_tag("Tower_1.1", (sfIntRect){get_shape_tag("Tower_1.1").left + 428, 0, 120, get_size_tag("Tower_1.1").y}, true);
+        if (var->tower.tower_selected == 2)
+            set_shape_tag("Tower_2.1", (sfIntRect){get_shape_tag("Tower_2.1").left + 428, 0, 120, get_size_tag("Tower_2.1").y}, true);
+        if (var->tower.tower_selected == 3)
+            set_shape_tag("Tower_3.1", (sfIntRect){get_shape_tag("Tower_3.1").left + 428, 0, 120, get_size_tag("Tower_3.1").y}, true);
+        my_pass = 0;
     }
 }
 

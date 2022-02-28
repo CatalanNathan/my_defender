@@ -23,7 +23,7 @@ void create_all_game_value(var_t *var)
     var->tower.build_time_t1 = 10;
     var->tower.build_time_t2 = 15;
     var->tower.buil_time__t3 = 25;
-    var->tower.tower_active = 0;
+    var->tower.tower_selected = 0;
 }
 
 void create_all_buttons(var_t *var)

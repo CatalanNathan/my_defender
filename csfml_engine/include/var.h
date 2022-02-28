@@ -27,7 +27,7 @@ struct tower_s
     float build_time_t1;
     float build_time_t2;
     float buil_time__t3;
-    int tower_active;
+    int tower_selected;
 };
 
 typedef struct tower_s tower_t;

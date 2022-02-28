@@ -23,55 +23,6 @@ void time_tower(var_t *var)
     time_tower_run_five(var);
 }
 
-void check_upgrade_tower(char *tag, var_t *var)
-{
-    if (equal(tag, "Tower_1.1")) {
-        if (var->tower.tower_active == 1)
-            set_shape_tag(tag, (sfIntRect){580, 0, 120, get_size_obj(&var->tower.tower).y}, true);
-        // } else if (var->tower.tower_active == 2) {
-
-        // } else {
-
-        // }
-    }
-    // if (equal(tag, "Tower_1.2")) {
-    //     if (var->tower.tower_active == 1) {
-
-    //     } else if (var->tower.tower_active == 2) {
-
-    //     } else {
-
-    //     }
-    // }
-    // if (equal(tag, "Tower_1.3")) {
-    //     if (var->tower.tower_active == 1) {
-
-    //     } else if (var->tower.tower_active == 2) {
-
-    //     } else {
-
-    //     }
-    // }
-    // if (equal(tag, "Tower_1.4")) {
-    //     if (var->tower.tower_active == 1) {
-
-    //     } else if (var->tower.tower_active == 2) {
-
-    //     } else {
-
-    //     }
-    // }
-    // if (equal(tag, "Tower_1.5")) {
-    //     if (var->tower.tower_active == 1) {
-
-    //     } else if (var->tower.tower_active == 2) {
-
-    //     } else {
-
-    //     }
-    // }
-}
-
 void tower_event(var_t *var)
 {
     obj_t object;
@@ -86,7 +37,6 @@ void tower_event(var_t *var)
             sfSprite_setColor(object.sprite, sfYellow);
             if (mouse_pressed(sfMouseLeft, &i)) {
                 check_time(object);
-                check_upgrade_tower(tower, var);
                 break;
             }
         } else
