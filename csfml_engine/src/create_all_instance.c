@@ -72,6 +72,7 @@ static void create_all_bar(var_t *var)
     create_selected_tower(var);
     create_interface(var);
     create_tools(var);
+    create_info(var);
 }
 
 static void create_all_text(var_t *var)

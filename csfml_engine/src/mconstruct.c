@@ -40,6 +40,9 @@ void manage_construct(var_t *var)
     get_elapsed_time(&time_pass, &save);
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).top == 0) {
         set_shape_obj(&var->b_constructor, (sfIntRect){83, 0, 83, 85}, true);
+        var->info_more = true;
+        set_position_tag("info+", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - get_size_tag("info+").x/2 + 5, sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 80});
+        set_visible_tag("info+", true);
         change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_obj(&var->b_constructor).top == 0)
             set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, true);
@@ -53,4 +56,5 @@ void manage_construct(var_t *var)
     }
     if (retract == 1)
         animation_construct_return(var, &retract, time_pass);
+    btools(var);
 }
