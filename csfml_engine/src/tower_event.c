@@ -87,6 +87,7 @@ void tower_event(var_t *var)
             if (mouse_pressed(sfMouseLeft, &i)) {
                 check_time(object);
                 check_upgrade_tower(tower, var);
+                break;
             }
         } else
             sfSprite_setColor(object.sprite, var->color_tower);

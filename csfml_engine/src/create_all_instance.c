@@ -50,7 +50,7 @@ static void create_all_tower_and_wall(var_t *var)
     set_exits_tag("wall_2", false);
     set_exits_tag("wall_3", false);
     create_all_buttons(var);
-    var->color_tower = get_sprite_color_tag("Tower_1");
+    var->color_tower = get_sprite_color_tag("Tower_1.1");
 }
 
 static void create_all_bar(var_t *var)
