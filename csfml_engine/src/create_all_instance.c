@@ -26,11 +26,11 @@ void create_all_towers(var_t *var)
     create_tower("Tower_lv2.png", (V2f){620, 307}, var, "Tower_2.4");
     create_tower("Tower_lv2.png", (V2f){900, 207}, var, "Tower_2.5");
 
-    create_tower("Tower_lv3.png", (V2f){815, 485}, var, "Tower_3.1");
-    create_tower("Tower_lv3.png", (V2f){1140, 355}, var, "Tower_3.2");
-    create_tower("Tower_lv3.png", (V2f){1030, 540}, var, "Tower_3.3");
-    create_tower("Tower_lv3.png", (V2f){620, 312}, var, "Tower_3.4");
-    create_tower("Tower_lv3.png", (V2f){900, 212}, var, "Tower_3.5");
+    create_tower("Tower_lv3.png", (V2f){820, 470}, var, "Tower_3.1");
+    create_tower("Tower_lv3.png", (V2f){1146, 340}, var, "Tower_3.2");
+    create_tower("Tower_lv3.png", (V2f){1036, 525}, var, "Tower_3.3");
+    create_tower("Tower_lv3.png", (V2f){626, 297}, var, "Tower_3.4");
+    create_tower("Tower_lv3.png", (V2f){906, 197}, var, "Tower_3.5");
 }
 
 static void create_all_tower_and_wall(var_t *var)
@@ -71,6 +71,7 @@ static void create_all_bar(var_t *var)
     set_position_tag("white_life", (V2f){(get_position_tag("hearth").x + get_size_tag("hearth").x/2) - get_size_tag("white_life").x/2, get_position_tag("hearth").y + 50});
     create_selected_tower(var);
     create_interface(var);
+    create_tools(var);
 }
 
 static void create_all_text(var_t *var)

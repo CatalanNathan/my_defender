@@ -85,5 +85,6 @@ void time_tower_run_two(var_t *var);
 void time_tower_run_three(var_t *var);
 void time_tower_run_four(var_t *var);
 void time_tower_run_five(var_t *var);
+void create_tools(var_t *var);
 
 #endif
