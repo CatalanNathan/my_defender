@@ -37,6 +37,7 @@ void tower_event(var_t *var)
             sfSprite_setColor(object.sprite, sfYellow);
             if (mouse_pressed(sfMouseLeft, &i)) {
                 check_time(object);
+                var->thor_mod = false;
                 break;
             }
         } else
@@ -44,4 +45,5 @@ void tower_event(var_t *var)
         e++;
         tower[8] = e;
     }
+    mouse_pressed(sfMouseLeft, &i);
 }
