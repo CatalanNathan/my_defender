@@ -9,9 +9,24 @@
 #include "my.h"
 #include "var.h"
 
-void check_time(obj_t object)
+void check_time(obj_t object, var_t *var)
 {
-    set_exits_tag(object.link_tag, true);
+    bool paiement = false;
+
+    if (var->tower.tower_selected == 1 && var->money - 20000 >= 0) {
+        var->money -= 20000;
+        paiement = true;
+    }
+    if (var->tower.tower_selected == 2 && var->money - 50000 >= 0) {
+        var->money -= 50000;
+        paiement = true;
+    }
+    if (var->tower.tower_selected == 3  && var->money - 90000 >= 0) {
+        var->money -= 90000;
+        paiement = true;
+    }
+    if (paiement == true)
+        set_exits_tag(object.link_tag, true);
 }
 
 void time_tower(var_t *var)
@@ -36,7 +51,7 @@ void tower_event(var_t *var)
         if (mouse_inside_tag(tower) && var->thor_mod == true) {
             sfSprite_setColor(object.sprite, sfYellow);
             if (mouse_pressed(sfMouseLeft, &i)) {
-                check_time(object);
+                check_time(object, var);
                 var->thor_mod = false;
                 break;
             }
