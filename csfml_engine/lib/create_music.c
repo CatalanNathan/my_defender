@@ -16,7 +16,8 @@ music_t initiate_sound(char *src_sound, char *tag)
     sound.playing = false;
     sound.loop = false;
     sound.tag = tag;
-    sound.sound = sfMusic_createFromFile(my_strcat("csfml_engine/sound/", src_sound));
+    sound.sound = sfMusic_createFromFile(my_strcat("csfml_en"
+    "gine/sound/", src_sound));
     sound.id = id;
     sound.volume = 0;
     id += 1;

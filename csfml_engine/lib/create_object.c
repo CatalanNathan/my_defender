@@ -19,25 +19,31 @@ void initialise_enemy(obj_t *object)
     object->enemy.n_path = 0;
 }
 
+void init_bool(obj_t *object)
+{
+    object->mouse_inside = false;
+    object->gravity = false;
+    object->ishape = false;
+    object->display = true;
+    object->exist = true;
+}
+
 obj_t initiate_object(char *src_img, char *tag, int display_order)
 {
     static int id = 1;
     obj_t object;
 
-    object.display = true;
-    object.exist = true;
+    init_bool(&object);
     object.tag = tag;
-    object.texture = sfTexture_createFromFile(my_strcat("csfml_engine/img_src/", src_img), NULL);
+    object.texture = sfTexture_createFromFile(my_strcat("csfml_eng"
+    "ine/img_src/", src_img), NULL);
     object.sprite = sfSprite_create();
     sfSprite_setTexture(object.sprite, object.texture, sfTrue);
     object.size = sfTexture_getSize(object.texture);
     object.display_order = display_order;
     object.id = id;
-    object.gravity = false;
-    object.ishape = false;
     object.shape = (sfIntRect){0, 0, object.size.x, object.size.y};
     object.speed = 0.00;
-    object.mouse_inside = false;
     object.angle = 0.00;
     object.link_id = 0;
     object.link_tag = "null";
