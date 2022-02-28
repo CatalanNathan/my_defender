@@ -28,6 +28,11 @@ struct tower_s
     float build_time_t2;
     float buil_time__t3;
     int tower_selected;
+    bool valide_position_1;
+    bool valide_position_2;
+    bool valide_position_3;
+    bool valide_position_4;
+    bool valide_position_5;
 };
 
 typedef struct tower_s tower_t;

@@ -24,6 +24,11 @@ void create_all_game_value(var_t *var)
     var->tower.build_time_t2 = 15;
     var->tower.buil_time__t3 = 25;
     var->tower.tower_selected = 0;
+    var->tower.valide_position_1 = true;
+    var->tower.valide_position_2 = true;
+    var->tower.valide_position_3 = true;
+    var->tower.valide_position_4 = true;
+    var->tower.valide_position_5 = true;
 }
 
 void create_all_buttons(var_t *var)
