@@ -42,7 +42,7 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
-        add_info_more(var, time, &i, "Clay Tower\n\nAttack : 35\nBuild : 10s");
+        add_info_more(var, time, &i, "Slingshot Tower\n\nAttack : 35\nBuild : 10s");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 1;
@@ -59,6 +59,9 @@ void second_btn_tower(var_t *var)
 {
     float calc_shape;
     static int mouse = 0.00;
+    static float time = 0.00;
+    static float save = 0.00;
+    static int i = 0;
 
     if (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x <  get_position_tag("selecte_tower_2").x + get_texture_size_tag("selecte_tower_2").x/2)
         calc_shape = (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x) - get_position_tag("selecte_tower_2").x;
@@ -72,6 +75,7 @@ void second_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_2", false);
 
     if (mouse_inside_tag("selecte_tower_2") && get_exits_tag("selecte_tower_2")) {
+        add_info_more(var, time, &i, "Archers Tower\n\nAttack : 50\nBuild : 15s");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 2;

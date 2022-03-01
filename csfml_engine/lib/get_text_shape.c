@@ -14,7 +14,7 @@ sfFloatRect get_text_shape_tag(char *tag)
     node_text_t *start = engine.game.text;
 
     while (engine.game.text != NULL) {
-        if (equal(engine.game.text->settings.tag, tag))
+        if (equal(engine.game.text->settings.tag, tag) == true)
             return sfText_getLocalBounds(engine.game.text->settings.text);
         engine.game.text = engine.game.text->previous;
     }
