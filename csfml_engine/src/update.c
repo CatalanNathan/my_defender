@@ -24,6 +24,8 @@ void update(var_t *var)
     // tower_attack(var);
     if (var->on_button == false)
         set_shape_tag("cursor", (sfIntRect){0, 0, 173, 177}, true);
-    if (var->info_more == false)
+    if (var->info_more == false) {
         set_visible_tag("info+", false);
+        set_text_visible_tag("info+", false);
+    }
 }

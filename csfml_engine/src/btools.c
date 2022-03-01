@@ -31,18 +31,19 @@ void btools(var_t *var)
     static int MB_pressed = 0;
     static float time_pass = 0.00;
     static float save = 0.00;
+    static int i = 0;
 
     get_elapsed_time(&time_pass, &save);
     if (mouse_inside_tag("btools") && get_shape_tag("btools").top == 0) {
         set_shape_tag("btools", (sfIntRect){87, 0, 84, 85}, true);
-        var->info_more = true;
-        set_position_tag("info+", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - get_size_tag("info+").x/2 + 5, sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 80});
-        set_visible_tag("info+", true);
+        add_info_more(var, time_pass, &i, "Tools");
         change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_tag("btools").top == 0)
             set_shape_tag("btools", (sfIntRect){0, 85, 83, 85}, true);
-    } else if (get_shape_tag("btools").top == 0)
+    } else if (get_shape_tag("btools").top == 0) {
         set_shape_tag("btools", (sfIntRect){0, 0, 87, 85}, true);
+        i = 0;
+    }
     if (get_shape_tag("btools").top != 0 && retract != 1)
         animation_btools(var, time_pass);
     if (mouse_inside_tag("btools") && get_shape_tag("btools").width > 83) {

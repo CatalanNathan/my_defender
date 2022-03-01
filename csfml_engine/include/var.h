@@ -90,5 +90,6 @@ void create_tools(var_t *var);
 void btools(var_t *var);
 void tower_attack(var_t *var);
 void create_info(var_t *var);
+void add_info_more(var_t *var, float time_pass, int *i, char *info);
 
 #endif
