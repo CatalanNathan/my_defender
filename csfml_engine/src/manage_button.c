@@ -108,4 +108,5 @@ void manage_button(var_t *var)
         set_text_visible_tag("price_wall", false);
     }
     selected_button_tower(var);
+    selecte_button_delete(var);
 }
