@@ -25,7 +25,11 @@ void first_btn_tower(var_t *var)
 {
     float calc_shape;
     static int mouse = 0.00;
+    static float time = 0.00;
+    static float save = 0.00;
+    static int i = 0;
 
+    get_elapsed_time(&time, &save);
     if (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x <  get_position_tag("selecte_tower_1").x + get_texture_size_tag("selecte_tower_1").x/2)
         calc_shape = (get_position_tag("constructMenu").x + get_size_tag("constructMenu").x) - get_position_tag("selecte_tower_1").x;
     else
@@ -38,14 +42,17 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
+        add_info_more(var, time, &i, "Brick tower :\n\nHP :");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 1;
         }
         set_shape_tag("selecte_tower_1", (sfIntRect){get_size_tag("selecte_tower_1").x, 0, get_size_tag("selecte_tower_1").x, get_size_tag("selecte_tower_1").y}, true);
         change_cursor(var);
-    } else
+    } else {
         set_shape_tag("selecte_tower_1", (sfIntRect){0, 0, calc_shape, get_size_tag("selecte_tower_1").y}, true);
+        i = 0;
+    }
 }
 
 void second_btn_tower(var_t *var)

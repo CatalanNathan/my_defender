@@ -44,6 +44,7 @@ bool scan(char *filepath, char **buffer);
 
 int csfml_engine(int *window_mode, char *win_name, \
 bool fullscreen, int framerate);
+int my_spacelen(char *str);
 
 #endif
 
