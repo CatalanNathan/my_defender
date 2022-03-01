@@ -42,7 +42,7 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
-        add_info_more(var, time, &i, "Brick tower :\n\nHP :");
+        add_info_more(var, time, &i, "Clay Tower\n\nAttack : 35\nBuild : 10s");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 1;

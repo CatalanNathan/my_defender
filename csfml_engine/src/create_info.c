@@ -11,6 +11,6 @@
 
 void create_info(var_t *var)
 {
-    create_object("info+.png", "info+", 9);
+    create_object("info+.png", "info+", 0);
     set_visible_tag("info+", false);
 }
