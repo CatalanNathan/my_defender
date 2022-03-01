@@ -41,7 +41,7 @@ void manage_construct(var_t *var)
     get_elapsed_time(&time_pass, &save);
     if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).top == 0) {
         set_shape_obj(&var->b_constructor, (sfIntRect){83, 0, 83, 85}, true);
-        add_info_more(var, time_pass, &i, "Build");
+        // add_info_more(var, time_pass, &i, "Build");
         change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_obj(&var->b_constructor).top == 0)
             set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, true);

@@ -36,7 +36,7 @@ void btools(var_t *var)
     get_elapsed_time(&time_pass, &save);
     if (mouse_inside_tag("btools") && get_shape_tag("btools").top == 0) {
         set_shape_tag("btools", (sfIntRect){87, 0, 84, 85}, true);
-        add_info_more(var, time_pass, &i, "Tools");
+        // add_info_more(var, time_pass, &i, "Tools");
         change_cursor(var);
         if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_tag("btools").top == 0)
             set_shape_tag("btools", (sfIntRect){0, 85, 83, 85}, true);
