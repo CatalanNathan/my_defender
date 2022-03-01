@@ -90,7 +90,7 @@ void create_tools(var_t *var);
 void btools(var_t *var);
 void tower_attack(var_t *var);
 void create_info(var_t *var);
-void add_info_more(var_t *var, float time_pass, int *i, char *info);
+void add_info_more(var_t *var, char *info);
 void selecte_button_delete(var_t *var);
 
 #endif
