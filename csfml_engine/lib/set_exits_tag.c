@@ -14,7 +14,7 @@ void set_exits_tag(char *tag, bool exits)
     node_t *start = engine.game.list;
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, tag) == true)
+        if (equal(engine.game.list->settings.tag, tag))
             engine.game.list->settings.exist = exits;
         engine.game.list = engine.game.list->previous;
     }

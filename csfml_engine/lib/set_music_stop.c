@@ -13,7 +13,7 @@ void set_music_stop_tag(char *tag)
     node_music_t *start = engine.game.music;
 
     while (engine.game.music != NULL) {
-        if (equal(engine.game.music->settings.tag, tag) == true) {
+        if (equal(engine.game.music->settings.tag, tag)) {
             sfMusic_stop(engine.game.music->settings.sound);
             engine.game.music->settings.playing = false;
         }

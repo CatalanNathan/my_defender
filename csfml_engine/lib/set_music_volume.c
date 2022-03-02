@@ -13,7 +13,7 @@ void set_music_volume_tag(char *tag, float volume)
     node_music_t *start = engine.game.music;
 
     while (engine.game.music != NULL) {
-        if (equal(engine.game.music->settings.tag, tag) == true) {
+        if (equal(engine.game.music->settings.tag, tag)) {
             sfMusic_setVolume(engine.game.music->settings.sound, volume);
             engine.game.music->settings.volume = volume;
         }
