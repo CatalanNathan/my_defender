@@ -9,14 +9,6 @@
 #include "my.h"
 #include "var.h"
 
-// sfVector2i v2u_to_v2i(sfVector2u value)
-// {
-//     sfVector2i vector;
-//     vector.x = value.x;
-//     vector.y = value.y;
-//     return vector;
-// }
-
 obj_t mouse_inside_more(char *tag)
 {
     sfVector2i mouse_pos;

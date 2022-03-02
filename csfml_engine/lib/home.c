@@ -16,7 +16,8 @@ void initiate(int *window_mode, bool fullscreen, char *win_name)
     engine.game.game_end = false;
     engine.game.end_value = 0;
     engine.clear_background = sfBlack;
-    engine.win_settings.win_mode = (sfVideoMode){window_mode[0], window_mode[1], window_mode[2]};
+    engine.win_settings.win_mode = (sfVideoMode){window_mode[0],
+    window_mode[1], window_mode[2]};
     engine.win_settings.size = (V2f){window_mode[0], window_mode[1]};
     engine.win_settings.background.display = false;
     engine.win_settings.background.exist = false;
@@ -39,8 +40,10 @@ void display(int start)
     shape_img(engine);
     if (start == 0)
         return display_engine(engine);
-    if (engine.win_settings.background.display == true && engine.win_settings.background.exist == true)
-        sfRenderWindow_drawSprite(engine.win_settings.window, engine.win_settings.background.sprite, NULL);
+    if (engine.win_settings.background.display &&
+    engine.win_settings.background.exist)
+        sfRenderWindow_drawSprite(engine.win_settings.window,
+        engine.win_settings.background.sprite, NULL);
     display_parallax(engine);
     display_obj(engine);
     display_text(engine);
@@ -69,14 +72,19 @@ void primary_function(void)
         break;
     }
     while (engine.game.list != NULL) {
-        if (engine.game.list->settings.gravity == true && engine.game.list->settings.exist == true)
-            sfSprite_setPosition(engine.game.list->settings.sprite, (V2f){sfSprite_getPosition(engine.game.list->settings.sprite).x, sfSprite_getPosition(engine.game.list->settings.sprite).y + engine.game.gravity});
+        if (engine.game.list->settings.gravity &&
+        engine.game.list->settings.exist)
+            sfSprite_setPosition(engine.game.list->settings.sprite,
+            (V2f){sfSprite_getPosition(engine.game.list->settings.sprite).x,
+            sfSprite_getPosition(engine.game.list->settings.sprite).y +
+            engine.game.gravity});
         engine.game.list = engine.game.list->previous;
     }
     engine.game.list = start;
 }
 
-int csfml_engine(int *window_mode, char *win_name, bool fullscreen, int framerate)
+int csfml_engine(int *window_mode, char *win_name, bool fullscreen,
+int framerate)
 {
     static int start = 0;
     var_t var;
@@ -84,7 +92,8 @@ int csfml_engine(int *window_mode, char *win_name, bool fullscreen, int framerat
     initiate(window_mode, fullscreen, win_name);
     engine.win_settings.framerate = framerate;
     microprogramme_create();
-    while (sfRenderWindow_isOpen(engine.win_settings.engine) || engine.game.game_end != true) {
+    while (sfRenderWindow_isOpen(engine.win_settings.engine)
+    || engine.game.game_end != true) {
         engine_is_open(&start, &var);
     }
     sfRenderWindow_destroy(engine.win_settings.engine);

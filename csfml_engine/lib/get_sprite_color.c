@@ -15,7 +15,7 @@ sfColor get_sprite_color_tag(char *tag)
     sfColor color;
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, tag) == true) {
+        if (equal(engine.game.list->settings.tag, tag)) {
             color = sfSprite_getColor(engine.game.list->settings.sprite);
             engine.game.list = start;
             return color;

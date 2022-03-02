@@ -15,7 +15,7 @@ sfFloatRect get_text_shape_tag(char *tag)
     sfFloatRect bounds;
 
     while (engine.game.text != NULL) {
-        if (equal(engine.game.text->settings.tag, tag) == true) {
+        if (equal(engine.game.text->settings.tag, tag)) {
             bounds = sfText_getLocalBounds(engine.game.text->settings.text);
             engine.game.text = start;
             return bounds;

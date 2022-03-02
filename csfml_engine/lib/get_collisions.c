@@ -12,11 +12,17 @@
 void shape_selected_col(int decrement)
 {
     if (engine.game.list->settings.ishape == false) {
-        engine.game.list->settings.size.x = sfTexture_getSize(engine.game.list->settings.texture).x * sfSprite_getScale(engine.game.list->settings.sprite).x - decrement;
-        engine.game.list->settings.size.y = sfTexture_getSize(engine.game.list->settings.texture).y * sfSprite_getScale(engine.game.list->settings.sprite).y;
+        engine.game.list->settings.size.x = sfTexture_getSize(engine.game.
+        list->settings.texture).x * sfSprite_getScale(engine.game.list->
+        settings.sprite).x - decrement;
+        engine.game.list->settings.size.y = sfTexture_getSize(engine.game.
+        list->settings.texture).y * sfSprite_getScale(engine.game.list->
+        settings.sprite).y;
     } else {
-        engine.game.list->settings.size.x = engine.game.list->settings.shape.width - decrement;
-        engine.game.list->settings.size.y = engine.game.list->settings.shape.height;
+        engine.game.list->settings.size.x = engine.game.list->settings.
+        shape.width - decrement;
+        engine.game.list->settings.size.y = engine.game.list->settings.
+        shape.height;
     }
 }
 
@@ -31,8 +37,10 @@ bool check_collision(sfVector2f pos_1, sfVector2u size_1, int decrement)
     sfVector2f pos_2 = sfSprite_getPosition(engine.game.list->settings.sprite);
     sfVector2u size_2 = get_size_col(decrement);
 
-    if (((pos_1.x >= pos_2.x && pos_1.x <= pos_2.x + size_2.x) || (pos_1.x + size_1.x >= pos_2.x && pos_1.x + size_1.x <= pos_2.x + size_2.x)) &&
-    ((pos_1.y >= pos_2.y && pos_1.y <= pos_2.y + size_2.y) || (pos_1.y + size_1.y >= pos_2.y && pos_1.y + size_1.y <= pos_2.y + size_2.y)))
+    if (((pos_1.x >= pos_2.x && pos_1.x <= pos_2.x + size_2.x) || (pos_1.x
+    + size_1.x >= pos_2.x && pos_1.x + size_1.x <= pos_2.x + size_2.x)) &&
+    ((pos_1.y >= pos_2.y && pos_1.y <= pos_2.y + size_2.y) || (pos_1.y +
+    size_1.y >= pos_2.y && pos_1.y + size_1.y <= pos_2.y + size_2.y)))
         return true;
     return false;
 }
@@ -44,7 +52,7 @@ bool get_collision_tag(char *obj_tag, char *obstacles_tag)
     sfVector2u size_1 = get_size_tag(obj_tag);
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, obstacles_tag) == true) {
+        if (equal(engine.game.list->settings.tag, obstacles_tag)) {
             if (check_collision(pos_1, size_1, 0) == true) {
                 engine.game.list = start;
                 return true;
@@ -63,8 +71,9 @@ bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement)
     sfVector2u size_1 = get_size_obj(obj);
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, obstacles_tag) == true) {
-            if (check_collision(pos_1, size_1, decrement) == true && engine.game.list->settings.exist == true) {
+        if (equal(engine.game.list->settings.tag, obstacles_tag)) {
+            if (check_collision(pos_1, size_1, decrement) == true &&
+            engine.game.list->settings.exist == true) {
                 engine.game.list = start;
                 return true;
             }

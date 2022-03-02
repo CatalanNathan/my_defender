@@ -14,14 +14,18 @@ void exit_program(float time)
 
     if (mouse_inside_tag("engineExit") == false) {
         if (get_shape_tag("engineExit").width > 30)
-            set_shape_tag("engineExit", (sfIntRect){0, 0, get_shape_tag("engineExit").width - (0.001 * time), get_size_tag("engineExit").y}, true);
+            set_shape_tag("engineExit", (sfIntRect){0, 0, get_shape_tag(
+            "engineExit").width - (0.001 * time), get_size_tag("engineEx"
+            "it").y}, true);
         else if (get_shape_tag("engineExit").width == 30)
-            set_shape_tag("engineExit", (sfIntRect){152, 0, 30, get_size_tag("engineExit").y}, true);
+            set_shape_tag("engineExit", (sfIntRect){152, 0, 30, get_size_tag(
+            "engineExit").y}, true);
     } else {
         if (get_shape_tag("engineExit").width < 76)
-            set_shape_tag("engineExit", (sfIntRect){76, 0, get_shape_tag("engineExit").width + (0.002 * time), get_size_tag("engineExit").y}, true);
+            set_shape_tag("engineExit", (sfIntRect){76, 0, get_shape_tag(
+            "engineExit").width + (0.002 * time), get_size_tag("engineExi"
+            "t").y}, true);
         if (mouse_pressed(sfMouseLeft, &i))
             game_end(0);
     }
-
 }

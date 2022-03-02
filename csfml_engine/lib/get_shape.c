@@ -31,7 +31,8 @@ sfIntRect get_shape_obj(obj_t *obj)
 
     while (engine.game.list != NULL) {
         if (engine.game.list->settings.id == obj->id) {
-            obj->shape = sfSprite_getTextureRect(engine.game.list->settings.sprite);
+            obj->shape = sfSprite_getTextureRect(
+            engine.game.list->settings.sprite);
             engine.game.list = start;
             return obj->shape;
         }
