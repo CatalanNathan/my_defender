@@ -10,7 +10,6 @@
 #include "var.h"
 
 bool check_collision_id(sfVector2f pos_1, sfVector2u size_1);
-bool check_collision(sfVector2f pos_1, sfVector2u size_1, int decrement);
 
 int check_collision_obj_norms(V2f p1, sfVector2u size_1, char *obstacles_tag)
 {
@@ -26,12 +25,4 @@ int menfou(char *obstacles_tag, V2f pos_1, sfVector2u size_1)
         if (check_collision_id(pos_1, size_1) == true)
             return engine.game.list->settings.id;
     return 0;
-}
-
-int checker_lol(char *obstacles_tag, V2f pos_1, sfVector2u size_1, int i)
-{
-    if (equal(engine.game.list->settings.tag, obstacles_tag))
-        if (check_collision(pos_1, size_1, i) == true)
-            return 0;
-    return 84;
 }
