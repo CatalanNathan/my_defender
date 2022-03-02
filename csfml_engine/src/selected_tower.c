@@ -38,7 +38,8 @@ void first_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_1", false);
 
     if (mouse_inside_tag("selecte_tower_1") && get_exits_tag("selecte_tower_1")) {
-        add_info_more(var, "Slingshot Tower\n\nAttack : 35\nBuild : 10s");
+        add_info_more(var, "\t\t\t\t\tSlingshot Tower\n\nAttack : 50\nBuild : 10s\nRange : 10\n\n"
+        "Description :\nThrows wooden spears at\n enemies within its perimeter\n (Smaller perimeter than archers)");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 1;
@@ -66,7 +67,8 @@ void second_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_2", false);
 
     if (mouse_inside_tag("selecte_tower_2") && get_exits_tag("selecte_tower_2")) {
-        add_info_more(var, "Archers Tower\n\nAttack : 50\nBuild : 15s");
+        add_info_more(var, "\t\t\tArchers Tower\n\nAttack : 25\nBuild : 15s\nRange : 40\n\n"
+        "Description :\nWith archers, this tower is\n capable of hitting enemies\n from a long distance!");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 2;
@@ -94,6 +96,8 @@ void third_btn_tower(var_t *var)
         set_exits_tag("selecte_tower_3", false);
 
     if (mouse_inside_tag("selecte_tower_3") && get_exits_tag("selecte_tower_3")) {
+        add_info_more(var, "\t\t\t\t\t  Fire Tower\n\nAttack : 10/s\nBuild : 25s\nRange : 20\n\n"
+        "Description :\nThe fire tower doesn't do a lot\n of damage immediately but\n does damage over a long period\n of time.");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 3;
