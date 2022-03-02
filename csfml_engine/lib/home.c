@@ -47,7 +47,7 @@ void display(int start)
     display_parallax(engine);
     display_obj(engine);
     display_text(engine);
-    view_fps(engine);
+    view_fps();
 }
 
 void destroy_all(void)

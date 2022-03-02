@@ -92,5 +92,8 @@ void tower_attack(var_t *var);
 void create_info(var_t *var);
 void add_info_more(var_t *var, char *info);
 void selecte_button_delete(var_t *var);
+void frist_btn_tower_norms(var_t *var, int mouse, float calc_shape);
+void second_btn_tower_norms(var_t *var, int mouse, float calc_shape);
+void third_btn_tower_norms(var_t *var, int mouse, float calc_shape);
 
 #endif

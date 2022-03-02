@@ -8,7 +8,7 @@
 #include "my.h"
 #include "engine.h"
 
-void view_fps()
+void view_fps(void)
 {
     static int fps = 0;
     int seconds = 0;

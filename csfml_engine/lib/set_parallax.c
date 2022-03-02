@@ -9,7 +9,6 @@
 #include "engine.h"
 #include "var.h"
 
-
 void initiate_part(obj_t *object)
 {
     object->enemy.it_is = false;

@@ -38,7 +38,7 @@ void time_tower(var_t *var)
     time_tower_run_five(var);
 }
 
-void tower_event2()
+void tower_event2(char *tower, var_t *var, obj_t object, int i)
 {
     if (mouse_inside_tag(tower) && var->thor_mod == true) {
         sfSprite_setColor(object.sprite, sfYellow);
@@ -60,7 +60,7 @@ void tower_event(var_t *var)
     time_tower(var);
     while (e != '6') {
         object = copy_object_tag(tower);
-        to
+        tower_event2(tower, var, object, i);
         e++;
         tower[8] = e;
     }

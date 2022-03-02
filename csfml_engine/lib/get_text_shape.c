@@ -23,5 +23,5 @@ sfFloatRect get_text_shape_tag(char *tag)
         engine.game.text = engine.game.text->previous;
     }
     engine.game.text = start;
-    return (sfFloatRect){0,0,0,0};
+    return (sfFloatRect){0, 0, 0, 0};
 }

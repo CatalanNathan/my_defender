@@ -9,7 +9,10 @@
 #include "engine.h"
 #include "var.h"
 
-void shape_selected_col_id()
+int check_collision_obj_norms(V2f p1, sfVector2u size_1, char *obstacles_tag);
+int menfou(char *obstacles_tag, V2f pos_1, sfVector2u size_1);
+
+void shape_selected_col_id(void)
 {
     if (engine.game.list->settings.ishape == false) {
         engine.game.list->settings.size.x = sfTexture_getSize(engine.game.
@@ -52,11 +55,9 @@ int get_collision_tag_id(char *obj_tag, char *obstacles_tag)
     sfVector2u size_1 = get_size_tag(obj_tag);
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, obstacles_tag)) {
-            if (check_collision_id(pos_1, size_1) == true) {
-                engine.game.list = start;
-                return engine.game.list->settings.id;
-            }
+        if (menfou(obstacles_tag, pos_1, size_1) != 0) {
+            engine.game.list = start;
+            return menfou(obstacles_tag, pos_1, size_1);
         }
         engine.game.list = engine.game.list->previous;
     }
@@ -71,11 +72,9 @@ int get_collision_obj_id(obj_t *obj, char *obstacles_tag)
     sfVector2u size_1 = get_size_obj(obj);
 
     while (engine.game.list != NULL) {
-        if (equal(engine.game.list->settings.tag, obstacles_tag)) {
-            if (check_collision_id(pos_1, size_1) == true) {
-                engine.game.list = start;
-                return engine.game.list->settings.id;
-            }
+        if (check_collision_obj_norms(pos_1, size_1, obstacles_tag) != 0) {
+            engine.game.list = start;
+            return check_collision_obj_norms(pos_1, size_1, obstacles_tag);
         }
         engine.game.list = engine.game.list->previous;
     }
