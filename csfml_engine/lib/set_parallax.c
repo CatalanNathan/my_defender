@@ -10,34 +10,38 @@
 #include "var.h"
 
 
-void initialise_enemy_par(obj_t *enemy)
+void initiate_part(obj_t *object)
 {
-    enemy->enemy.it_is = false;
-    enemy->enemy.path = NULL;
-    enemy->enemy.pos_path = 0;
-    enemy->enemy.anim_ennemie = 0.00;
-    enemy->enemy.move_enemies = 0.00;
-    enemy->enemy.n_path = 0;
+    object->enemy.it_is = false;
+    object->enemy.path = NULL;
+    object->enemy.pos_path = 0;
+    object->enemy.anim_ennemie = 0.00;
+    object->enemy.move_enemies = 0.00;
+    object->enemy.n_path = 0;
+    object->gravity = false;
+    object->ishape = false;
+    object->shape = (sfIntRect){0, 0, object->size.x, object->size.y};
+    object->angle = 0;
+    object->mouse_inside = false;
+    object->link_id = 0;
+    object->link_tag = "null";
 }
 
 obj_t resize_parallax(obj_t obj)
 {
     while (obj.size.x > engine.win_settings.size.x) {
-        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x - 0.01, 1});
-        obj.size.x = sfTexture_getSize(obj.texture).x * sfSprite_getScale(obj.sprite).x;
+        sfSprite_setScale(obj.sprite, (V2f)
+        {sfSprite_getScale(obj.sprite).x - 0.01, 1});
+        obj.size.x = sfTexture_getSize(obj.texture).x *
+        sfSprite_getScale(obj.sprite).x;
     }
     while (obj.size.y > engine.win_settings.size.y) {
-        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y - 0.01});
-        obj.size.y = sfTexture_getSize(obj.texture).y * sfSprite_getScale(obj.sprite).y;
+        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x,
+        sfSprite_getScale(obj.sprite).y - 0.01});
+        obj.size.y = sfTexture_getSize(obj.texture).y *
+        sfSprite_getScale(obj.sprite).y;
     }
-    while (obj.size.x < engine.win_settings.size.x) {
-        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x + 0.01, 1});
-        obj.size.x = sfTexture_getSize(obj.texture).x * sfSprite_getScale(obj.sprite).x;
-    }
-    while (obj.size.y < engine.win_settings.size.y) {
-        sfSprite_setScale(obj.sprite, (V2f){sfSprite_getScale(obj.sprite).x, sfSprite_getScale(obj.sprite).y + 0.01});
-        obj.size.y = sfTexture_getSize(obj.texture).y * sfSprite_getScale(obj.sprite).y;
-    }
+    resize_parallax_hg(&obj);
     return obj;
 }
 
@@ -49,22 +53,16 @@ obj_t initiate_paralax(char *src_img, char *tag, float speed)
     object.display = true;
     object.exist = true;
     object.tag = tag;
-    object.texture = sfTexture_createFromFile(my_strcat("csfml_engine/img_src/", src_img), NULL);
+    object.texture = sfTexture_createFromFile(my_strcat(""
+    "csfml_engine/img_src/", src_img), NULL);
     object.sprite = sfSprite_create();
     sfSprite_setTexture(object.sprite, object.texture, sfTrue);
     object.size = sfTexture_getSize(object.texture);
     object.display_order = 0;
     object.id = id;
-    object.gravity = false;
-    object.ishape = false;
-    object.shape = (sfIntRect){0, 0, object.size.x, object.size.y};
     object.speed = speed;
-    object.angle = 0;
-    object.mouse_inside = false;
-    object.link_id = 0;
-    object.link_tag = "null";
     id += 1;
-    initialise_enemy_par(&object);
+    initiate_part(&object);
     object = resize_parallax(object);
     return object;
 }
@@ -97,7 +95,8 @@ void set_parallax(char **src_img, float speed, float multiplicator)
     for (int i = 0; src_img[i] != NULL; i++) {
         original_speed = speed;
         object = add_parallax(src_img[i], "parallax", speed /= multiplicator);
-        sfSprite_setPosition(object.sprite, (V2f){engine.win_settings.size.x, sfSprite_getPosition(object.sprite).y});
+        sfSprite_setPosition(object.sprite, (V2f){engine.win_settings.size.x,
+        sfSprite_getPosition(object.sprite).y});
         speed = original_speed;
         add_parallax(src_img[i], "parallax", speed /= multiplicator);
     }

@@ -16,8 +16,10 @@ void set_scale_tag(char *tag, V2f scale)
     while (engine.game.list != NULL) {
         if (equal(engine.game.list->settings.tag, tag) == true) {
             sfSprite_setScale(engine.game.list->settings.sprite, scale);
-            engine.game.list->settings.size.x = (sfTexture_getSize(engine.game.list->settings.texture).x * scale.x);
-            engine.game.list->settings.size.y = (sfTexture_getSize(engine.game.list->settings.texture).y * scale.y);
+            engine.game.list->settings.size.x = (sfTexture_getSize(
+            engine.game.list->settings.texture).x * scale.x);
+            engine.game.list->settings.size.y = (sfTexture_getSize(
+            engine.game.list->settings.texture).y * scale.y);
         }
         engine.game.list = engine.game.list->previous;
     }
@@ -34,8 +36,10 @@ void set_scale_obj(obj_t *obj, V2f scale)
     while (engine.game.list != NULL) {
         if (obj->id == engine.game.list->settings.id) {
             sfSprite_setScale(engine.game.list->settings.sprite, scale);
-            engine.game.list->settings.size.x = (sfTexture_getSize(engine.game.list->settings.texture).x * scale.x);
-            engine.game.list->settings.size.y = (sfTexture_getSize(engine.game.list->settings.texture).y * scale.y);
+            engine.game.list->settings.size.x = (sfTexture_getSize(
+            engine.game.list->settings.texture).x * scale.x);
+            engine.game.list->settings.size.y = (sfTexture_getSize(
+            engine.game.list->settings.texture).y * scale.y);
         }
         engine.game.list = engine.game.list->previous;
     }

@@ -15,7 +15,8 @@ void shape_img(void)
 
     while (engine.game.list != NULL) {
         if (engine.game.list->settings.ishape == true)
-            sfSprite_setTextureRect(engine.game.list->settings.sprite, engine.game.list->settings.shape);
+            sfSprite_setTextureRect(engine.game.list->settings.sprite,
+            engine.game.list->settings.shape);
         engine.game.list = engine.game.list->previous;
     }
     engine.game.list = start;

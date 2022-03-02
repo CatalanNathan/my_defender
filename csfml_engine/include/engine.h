@@ -259,5 +259,6 @@ void get_elapsed_time(float *increment, float *save_increment);
 void set_link_tag(char *tag1, char *tag2);
 bool get_text_visible_tag(char *tag);
 sfFloatRect get_text_shape_tag(char *tag);
+void resize_parallax_hg(obj_t *obj);
 
 #endif
