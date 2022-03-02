@@ -19,7 +19,7 @@ void draw_obj(int *order, node_t *start)
             engine.game.list = engine.game.list->previous;
         else {
             engine.game.list = start;
-            *order -= 1;;
+            *order -= 1;
         }
 }
 
