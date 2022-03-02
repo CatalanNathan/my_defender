@@ -9,7 +9,6 @@
 #include "my.h"
 #include "engine.h"
 #include "var.h"
-
 #define sprite engine.win_settings.parallax->settings.sprite
 #define speed engine.win_settings.parallax->settings.speed
 
