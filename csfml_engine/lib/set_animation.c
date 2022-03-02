@@ -7,7 +7,6 @@
 
 #include "my.h"
 #include "engine.h"
-
 #define shape engine.game.list->settings.shape
 
 void set_animation(char *tag, int *ref)

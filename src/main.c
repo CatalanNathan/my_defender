@@ -9,5 +9,5 @@
 
 int main(void)
 {
-    return csfml_engine((int[3]){1920, 1080, 32}, "game", true, 999);
+    return csfml_engine((int[3]){1920, 1080, 32}, "game", true, 60);
 }
