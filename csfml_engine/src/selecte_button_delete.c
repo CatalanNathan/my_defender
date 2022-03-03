@@ -12,8 +12,6 @@
 void btn_deleted(var_t *var, float calc_shape)
 {
     if (mouse_inside_tag("delete") && get_exits_tag("delete")) {
-        // if (mouse_pressed(sfMouseLeft, &mouse))
-            //RIEN POUR LE MOMENT
         set_shape_tag("delete", (sfIntRect){get_size_tag("delete").x,
         0, get_size_tag("delete").x, get_size_tag("delete").y}, true);
         change_cursor(var);

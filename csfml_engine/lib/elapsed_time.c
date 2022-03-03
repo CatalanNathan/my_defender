@@ -71,7 +71,7 @@ void get_elapsed_time(float *increment, float *save_increment)
 
     if (*increment == 0) {
         *save_increment = convert.microseconds;
-        *increment = 1;
+        *increment = 0.0000001;
     } else {
         *increment = convert.microseconds - *save_increment;
         *save_increment = convert.microseconds;

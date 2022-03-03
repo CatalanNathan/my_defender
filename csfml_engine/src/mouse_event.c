@@ -17,8 +17,12 @@ void warning_true(int *e, float time)
         *e = 1;
     }
     if (get_shape_tag("warning_build").left >= 0) {
-        set_shape_tag("warning_build", (sfIntRect){get_shape_tag("warning_build").left - (0.001 * time), 0, get_size_tag("warning_build").x ,get_shape_tag("warning_build").height}, true);
-        set_position_tag("warning_build", (V2f){get_position_tag("warning_build").x - (0.0005 * time), get_position_tag("warning_build").y});
+        set_shape_tag("warning_build", (sfIntRect){get_shape_tag(
+        "warning_build").left - (0.001 * time), 0, get_size_tag(
+        "warning_build").x ,get_shape_tag("warning_build").height}, true);
+        set_position_tag("warning_build", (V2f){get_position_tag(
+        "warning_build").x - (0.0005 * time), get_position_tag(
+        "warning_build").y});
     }
 
 }
@@ -26,12 +30,19 @@ void warning_true(int *e, float time)
 void warning_false(int *e, float time)
 {
     *e = 0;
-    if (get_shape_tag("warning_build").left <= (int)get_size_tag("warning_build").x) {
-        set_shape_tag("warning_build", (sfIntRect){get_shape_tag("warning_build").left + (0.001 * time), 0, get_size_tag("warning_build").x ,get_shape_tag("warning_build").height}, true);
-        set_position_tag("warning_build", (V2f){get_position_tag("warning_build").x + (0.0005 * time), get_position_tag("warning_build").y});
-    } else if (get_shape_tag("warning_build").left >= (int)get_size_tag("warning_build").x) {
+    if (get_shape_tag("warning_build").left <= (int)get_size_tag(
+    "warning_build").x) {
+        set_shape_tag("warning_build", (sfIntRect){get_shape_tag("warning_"
+        "build").left + (0.001 * time), 0, get_size_tag("warning_build").x ,
+        get_shape_tag("warning_build").height}, true);
+        set_position_tag("warning_build", (V2f){get_position_tag(
+        "warning_build").x + (0.0005 * time), get_position_tag(
+        "warning_build").y});
+    } else if (get_shape_tag("warning_build").left >= (int)get_size_tag(
+    "warning_build").x) {
         set_visible_tag("warning_build", false);
-        set_position_tag("warning_build", (V2f){engine.win_settings.size.x - 190, 150});
+        set_position_tag("warning_build", (V2f){
+        engine.win_settings.size.x - 190, 150});
     }
 
 }
@@ -47,7 +58,9 @@ void mouse_event(var_t *var)
     if (var->thor_mod == true) {
         set_exits_tag("thor", true);
         set_exits_tag("cursor", false);
-        set_position_tag("thor", (V2f){sfMouse_getPositionRenderWindow(engine.win_settings.window).x - 20, sfMouse_getPositionRenderWindow(engine.win_settings.window).y - 20});
+        set_position_tag("thor", (V2f){sfMouse_getPositionRenderWindow(
+        engine.win_settings.window).x - 20, sfMouse_getPositionRenderWindow(
+        engine.win_settings.window).y - 20});
         warning_true(&e, time);
     } else {
         set_exits_tag("thor", false);
