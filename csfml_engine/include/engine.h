@@ -251,6 +251,8 @@ obj_t mouse_inside_more(char *tag);
 char *format_number(char *str, int str_i);
 void set_exits_tag(char *tag, bool exits);
 bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement);
+int get_collision_tag_norms(char *obstacles_tag, sfVector2f pos_1, sfVector2u size_1);
+int get_collision_obj_norms(char *obstacles_tag, sfVector2f pos_1, sfVector2u size_1, int decrement);
 bool get_exits_tag(char *tag);
 bool get_exits_obj(obj_t obj);
 sfColor get_sprite_color_tag(char *tag);

@@ -13,11 +13,11 @@ void destroy_this(node_t *save)
     if (save != NULL && engine.game.list->previous != NULL) {
         save->previous = engine.game.list->previous;
         engine.game.list->previous->next = save;
-    } else if (save == NULL && engine.game.list->previous != NULL)
+    }
+    else if (save == NULL && engine.game.list->previous != NULL)
         engine.game.list->previous->next = NULL;
     else if (save != NULL && engine.game.list->previous == NULL)
         save->previous = NULL;
-
     sfSprite_destroy(engine.game.list->settings.sprite);
     sfTexture_destroy(engine.game.list->settings.texture);
     engine.game.list = NULL;
