@@ -9,65 +9,59 @@
 #include "my.h"
 #include "var.h"
 
-void create_enemies(var_t *var, int possibility)
-{
-    int x_start = 0;
-    int y_start = 0;
-    int n = 0;
-    V2f *path;
+void respect_norms(obj_t *object, float time);
 
-    if (possibility % 2 == 0) {
-        x_start = 1090;
-        y_start = 730;
-        path = random_this((V2f[4]){{1015, 640}, {1290, 450}, {1000, 290}, {x_start, y_start}}, 4);
-        n = 4;
-    } else {
-        x_start = 400;
-        y_start = 540;
-        path = random_this((V2f[6]){{555, 470}, {750, 550}, {910, 450}, {790, 370}, {910, 280}, {x_start, y_start}}, 6);
-        n = 6;
-    }
-    var->enemies = create_object("player.png", "enemies", 8);
-    set_shape_obj(&var->enemies, (sfIntRect){0, 48, 48, 48}, true);
-    set_position_obj(var->enemies, (V2f){x_start, y_start});
-    set_enemy_obj(&var->enemies, path, n);
+void set_movement(obj_t *object, float time, var_t *var)
+{
+    if (var->pause)
+        return;
+    if (get_collision_obj(object, "wall_1", 50) ||
+    get_collision_obj(object, "wall_2", 50) ||
+    get_collision_obj(object, "wall_3", 50))
+        return;
+    respect_norms(object, time);
+    if (get_position_obj(*object).y >
+        object->enemy.path[object->enemy.pos_path].y)
+        set_position_obj(*object, (V2f){get_position_obj(*object).x,
+        get_position_obj(*object).y - (0.000027 * time)});
+    if (get_position_obj(*object).y <
+        object->enemy.path[object->enemy.pos_path].y)
+        set_position_obj(*object, (V2f){get_position_obj(*object).x,
+        get_position_obj(*object).y + (0.000027 * time)});
 }
 
-void set_movement(obj_t *object, float time)
+void norms2(var_t *var, obj_t *object)
 {
-    if (get_collision_obj(object, "wall_1", 50) || get_collision_obj(object, "wall_2", 50) || get_collision_obj(object, "wall_3", 50)) {
-        return;
+    if (object->enemy.pos_path >= object->enemy.n_path - 1) {
+        var->castle_life -= 15.00;
+        destroy_object(object->link_id);
+        destroy_object(object->id);
+        var->nb_enemies -= 1;
+        var->money += 500;
     }
-    if (get_position_obj(*object).x > object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x - (0.00005 * time), get_position_obj(*object).y});
-        if (get_scale_obj(*object).x > 0) {
-            set_position_obj(*object, (V2f){get_position_obj(*object).x + get_size_obj(object).x, get_position_obj(*object).y});
-            set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
-        }
-    }
-    if (get_position_obj(*object).x < object->enemy.path[object->enemy.pos_path].x) {
-        set_position_obj(*object, (V2f){get_position_obj(*object).x + (0.00005 * time), get_position_obj(*object).y});
-        if (get_scale_obj(*object).x < 0) {
-            set_position_obj(*object, (V2f){get_position_obj(*object).x - get_size_obj(object).x, get_position_obj(*object).y});
-            set_scale_obj(object, (V2f){get_scale_obj(*object).x * -1, get_scale_obj(*object).y});
-        }
-    }
-    if (get_position_obj(*object).y > object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y - (0.000027 * time)});
-    if (get_position_obj(*object).y < object->enemy.path[object->enemy.pos_path].y)
-        set_position_obj(*object, (V2f){get_position_obj(*object).x, get_position_obj(*object).y + (0.000027 * time)});
 }
 
 void animation_move_enemies(obj_t *object, var_t *var, float time)
 {
-    set_movement(object, time);
-    if (compare_sfvector2f(get_position_obj(*object), object->enemy.path[object->enemy.pos_path]) == true && object->enemy.pos_path < object->enemy.n_path - 1)
-        object->enemy.pos_path += 1;
-    if (object->enemy.pos_path >= object->enemy.n_path - 1) {
-        var->castle_life -= 15.00;
-        set_position_obj(*object, object->enemy.path[object->enemy.pos_path]);
-        object->enemy.pos_path = 0;
+    obj_t linked;
+
+    if (object->enemy.is_touch == true && !var->pause)
+        set_pv_obj(object, get_pv_obj(object) -
+        0.000010 * time, get_pv_max_obj(object));
+    if (get_pv_obj(object) <= 0 && !var->pause) {
+        destroy_object(object->link_id);
+        destroy_object(object->id);
+        var->nb_enemies -= 1;
+        var->money += 500;
+        var->enemies_kill++;
+        return;
     }
+    set_movement(object, time, var);
+    if (compare_sfvector2f(get_position_obj(*object),
+        object->enemy.path[object->enemy.pos_path]) == true &&
+        object->enemy.pos_path < object->enemy.n_path - 1)
+        object->enemy.pos_path += 1;
+    norms2(var, object);
 }
 
 void manage_enemy(var_t *var)
@@ -80,16 +74,16 @@ void manage_enemy(var_t *var)
 
     animation_tag("enemies", (int[4]){0, 48, 240, 100}, &time, &save);
     get_elapsed_time(&time2, &save2);
-    for (;engine.game.list != NULL; engine.game.list = engine.game.list->previous)
+    while (engine.game.list != NULL) {
         if (engine.game.list->settings.enemy.it_is)
             animation_move_enemies(&engine.game.list->settings, var, time2);
+        engine.game.list = engine.game.list->previous;
+    }
     engine.game.list = start;
 }
 
 void make_enemies(var_t *var)
 {
-    static int i = 0;
-
-    for (; i <= var->nb_enemies; i++)
-        create_enemies(var, i);
+    if (var->nb_enemies < var->nb_enemies_max)
+        create_enemies(var);
 }

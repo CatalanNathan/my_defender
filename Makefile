@@ -28,7 +28,7 @@ all : $(TARGET)
 
 $(TARGET) : $(OBJ)
 	@make -C lib/my
-	@$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS) -lmy -L./lib
+	@$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS) -lmy -L./lib -lm
 
 clean :
 	@make clean -C lib/my

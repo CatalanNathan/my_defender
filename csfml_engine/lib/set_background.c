@@ -23,7 +23,7 @@ void resize_x(sfTexture *texture, sfSprite *sprite, sfVector2u size)
     }
 }
 
-void resize_img()
+void resize_img(void)
 {
     sfSprite *sprite = engine.win_settings.background.sprite;
     sfTexture *texture = engine.win_settings.background.texture;
@@ -57,4 +57,38 @@ void set_background(char *src_img, bool auto_resize)
     engine.win_settings.background.id = -1;
     if (auto_resize == true)
         resize_img();
+}
+
+void resize_x_img(sfTexture *texture, sfSprite *sprite,
+sfVector2u size, V2f new_size)
+{
+    while (size.x < new_size.x) {
+        sfSprite_setScale(sprite, (V2f){sfSprite_getScale(
+        sprite).x + 0.01, 1});
+        size.x = sfTexture_getSize(texture).x * sfSprite_getScale(sprite).x;
+    }
+    while (size.y < new_size.y) {
+        sfSprite_setScale(sprite, (V2f){sfSprite_getScale(sprite).x,
+        sfSprite_getScale(sprite).y + 0.01});
+        size.y = sfTexture_getSize(texture).y * sfSprite_getScale(sprite).y;
+    }
+}
+
+void resize_my_img(obj_t *obj, V2f new_size)
+{
+    sfSprite *sprite = obj->sprite;
+    sfTexture *texture = obj->texture;
+    sfVector2u size = get_size_obj(obj);
+
+    while (size.x > new_size.x) {
+        sfSprite_setScale(sprite, (V2f){sfSprite_getScale(sprite).x
+        - 0.01, 1});
+        size.x = sfTexture_getSize(texture).x * sfSprite_getScale(sprite).x;
+    }
+    while (size.y > new_size.y) {
+        sfSprite_setScale(sprite, (V2f){sfSprite_getScale(sprite).x,
+        sfSprite_getScale(sprite).y - 0.01});
+        size.y = sfTexture_getSize(texture).y * sfSprite_getScale(sprite).y;
+    }
+    resize_x_img(texture, sprite, size, new_size);
 }

@@ -14,7 +14,7 @@ void window_creator(void)
     if (engine.win_settings.fullscreen == true)
         engine.win_settings.window = sfRenderWindow_create(
         engine.win_settings.win_mode, engine.win_settings.win_name,
-        sfFullscreen | sfClose, NULL);
+        sfFullscreen | sfClose | sfResize, NULL);
     else
         engine.win_settings.window = sfRenderWindow_create(
         engine.win_settings.win_mode, engine.win_settings.win_name,
@@ -60,7 +60,7 @@ void microprogramme(int *start, var_t *var)
     }
     if (get_scale_tag("loadBar").x < 1)
         set_scale_tag("loadBar", (sfVector2f){get_scale_tag("loadBar").x
-        + (0.000001 * time), 0.2});
+        + (0.00012 * time), 0.2});
     if (key_pressed(sfKeyEscape))
         game_end(0);
     exit_program(time);

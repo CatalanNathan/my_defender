@@ -1,0 +1,32 @@
+####################################################
+################### MY DEFENDER ####################
+####################################################
+#                                                  #
+#        -> Welcome to the help menu 📖 <-         #
+#                                                  #
+# -> USAGE 🧾                                      #
+#                                                  #
+#   ./my_defender -> Start the game with default   #
+#                    settings!                     #
+#                                                  #
+#   To set some parameters,                        #
+#   you can try these options 💻 :                 #
+#                                                  #
+#   -fps [value] -> To set the number of frames    #
+#                   per second of the game         #
+#                                                  #
+#   -fullscreen::off -> To unset fullscreen        #
+#                                                  #
+#   -h -> To open the help menu                    #
+#                                                  #
+# -> HowToPlay 🔍                                  #
+#                                                  #
+#   To find out how to play, go to the game in     #
+#   the 'HowToPlay' tab. Lots of information will  #
+#   be displayed there.                            #
+#                                                  #
+#                                                  #
+# -> Sincerely, Guillaume Kucia and                #
+#    Nathan Catalan                                #
+#                                                  #
+####################################################

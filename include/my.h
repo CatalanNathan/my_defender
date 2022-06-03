@@ -24,6 +24,14 @@
 #ifndef MY_H_
     #define MY_H_
 
+typedef struct opt_s
+{
+    bool fullscreen;
+    int fps;
+    bool define;
+    int fd;
+} opt_t;
+
 int my_strlen(char const *str);
 char *my_strcat(char *dest, char *src);
 char *my_strcat_char(char *dest, char src);
@@ -45,6 +53,6 @@ bool scan(char *filepath, char **buffer);
 int csfml_engine(int *window_mode, char *win_name, \
 bool fullscreen, int framerate);
 int my_spacelen(char *str);
+void help(void);
 
 #endif
-

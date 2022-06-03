@@ -9,10 +9,10 @@
 #include "engine.h"
 #include "var.h"
 
-sfVector2f get_position_tag(char *tag)
+V2f get_position_tag(char *tag)
 {
     node_t *start = engine.game.list;
-    sfVector2f pos;
+    V2f pos;
 
     while (engine.game.list != NULL) {
         if (equal(engine.game.list->settings.tag, tag) == true) {
@@ -23,10 +23,10 @@ sfVector2f get_position_tag(char *tag)
         engine.game.list = engine.game.list->previous;
     }
     engine.game.list = start;
-    return (sfVector2f){0, 0};
+    return (V2f){0, 0};
 }
 
-sfVector2f get_position_obj(obj_t obj)
+V2f get_position_obj(obj_t obj)
 {
     return sfSprite_getPosition(obj.sprite);
 }

@@ -24,7 +24,7 @@ void animation_construct(var_t *var, float time_pass)
     }
 }
 
-void animation_construct_return(var_t *var, int *retract, float time_pass)
+void animation_construct_exept(var_t *var, int *retract, float time_pass)
 {
     if (get_shape_obj(&var->b_constructor).width > 83) {
         set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, get_shape_obj(
@@ -44,6 +44,21 @@ void animation_construct_return(var_t *var, int *retract, float time_pass)
     }
 }
 
+void manage_cursor_in_obj(var_t *var, int *MB_pressed, int *i)
+{
+    if (mouse_inside_obj(&var->b_constructor)
+        && get_shape_obj(&var->b_constructor).top == 0) {
+        set_shape_obj(&var->b_constructor, (sfIntRect){83, 0, 83, 85}, true);
+        change_cursor(var, "cursor");
+        if (mouse_pressed(sfMouseLeft, MB_pressed)
+            && get_shape_obj(&var->b_constructor).top == 0)
+            set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, 1);
+    } else if (get_shape_obj(&var->b_constructor).top == 0) {
+        set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, 1);
+        (*i) = 0;
+    }
+}
+
 void manage_construct(var_t *var)
 {
     static int retract = 0;
@@ -53,22 +68,16 @@ void manage_construct(var_t *var)
     static int i = 0;
 
     get_elapsed_time(&time_pass, &save);
-    if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).top == 0) {
-        set_shape_obj(&var->b_constructor, (sfIntRect){83, 0, 83, 85}, true);
-        change_cursor(var);
-        if (mouse_pressed(sfMouseLeft, &MB_pressed) && get_shape_obj(&var->b_constructor).top == 0)
-            set_shape_obj(&var->b_constructor, (sfIntRect){0, 85, 83, 85}, true);
-    } else if (get_shape_obj(&var->b_constructor).top == 0) {
-        set_shape_obj(&var->b_constructor, (sfIntRect){0, 0, 83, 85}, true);
-        i = 0;
-    }
+    if (var->pause)
+        return;
+    manage_cursor_in_obj(var, &MB_pressed, &i);
     if (get_shape_obj(&var->b_constructor).top != 0 && retract != 1)
         animation_construct(var, time_pass);
-    if (mouse_inside_obj(&var->b_constructor) && get_shape_obj(&var->b_constructor).width > 83) {
+    if (mouse_inside_obj(&var->b_constructor) &&
+        get_shape_obj(&var->b_constructor).width > 83)
         if (mouse_pressed(sfMouseLeft, &MB_pressed))
             retract = 1;
-    }
     if (retract == 1)
-        animation_construct_return(var, &retract, time_pass);
+        animation_construct_exept(var, &retract, time_pass);
     btools(var);
 }

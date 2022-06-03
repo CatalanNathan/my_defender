@@ -40,10 +40,10 @@ bool check_collision_id(sfVector2f pos_1, sfVector2u size_1)
     sfVector2f pos_2 = sfSprite_getPosition(engine.game.list->settings.sprite);
     sfVector2u size_2 = get_size_col_id();
 
-    if (((pos_1.x >= pos_2.x && pos_1.x <= pos_2.x + size_2.x) || (pos_1.x
-    + size_1.x >= pos_2.x && pos_1.x + size_1.x <= pos_2.x + size_2.x)) &&
-    ((pos_1.y >= pos_2.y && pos_1.y <= pos_2.y + size_2.y) || (pos_1.y +
-    size_1.y >= pos_2.y && pos_1.y + size_1.y <= pos_2.y + size_2.y)))
+    if (((pos_2.x >= pos_1.x && pos_2.x <= pos_1.x + size_1.x) || (pos_2.x
+    + size_2.x >= pos_1.x && pos_2.x + size_2.x <= pos_1.x + size_1.x)) &&
+    ((pos_2.y >= pos_1.y && pos_2.y <= pos_1.y + size_1.y) || (pos_2.y +
+    size_2.y >= pos_1.y && pos_2.y + size_2.y <= pos_1.y + size_1.y)))
         return true;
     return false;
 }

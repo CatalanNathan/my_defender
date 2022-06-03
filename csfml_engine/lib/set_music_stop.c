@@ -8,6 +8,12 @@
 #include "my.h"
 #include "engine.h"
 
+void set_music_stop_tags(char **tags, int size)
+{
+    for (int i = 0 ;i != size; i++)
+        set_music_stop_tag(tags[i]);
+}
+
 void set_music_stop_tag(char *tag)
 {
     node_music_t *start = engine.game.music;

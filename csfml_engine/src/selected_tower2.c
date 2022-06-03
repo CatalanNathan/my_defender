@@ -13,19 +13,22 @@ void frist_btn_tower_norms(var_t *var, int mouse, float calc_shape)
 {
     if (mouse_inside_tag("selecte_tower_1") &&
     get_exits_tag("selecte_tower_1")) {
-        add_info_more(var, "\t\t\t\t\tSlingshot Tower\n\nAttack"
+        add_info_more(var, "\t\t\t\t\tRock Tower\n\nAttack"
         ": 50\nBuild : 10s\nRange : 10\n\n"
-        "Description :\nThrows wooden spears at\n enemies within "
-        "its perimeter\n (Smaller perimeter than archers)");
+        "Description :\nThe rock tower launches large\n"
+        " rocks at these enemies.\n The tower's attack distance\n"
+        "is small but does great damage.");
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 1;
+            set_cursor(var, "cursor");
+            var->destroy_mod = false;
         }
         set_shape_tag("selecte_tower_1", (sfIntRect){
         get_size_tag("selecte_tower_1").x, 0,
-        get_size_tag("selecte_tower_1").x, 
+        get_size_tag("selecte_tower_1").x,
         get_size_tag("selecte_tower_1").y}, true);
-        change_cursor(var);
+        change_cursor(var, "cursor");
     } else
         set_shape_tag("selecte_tower_1", (sfIntRect){0, 0,
         calc_shape, get_size_tag("selecte_tower_1").y}, true);
@@ -42,12 +45,14 @@ void second_btn_tower_norms(var_t *var, int mouse, float calc_shape)
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 2;
+            set_cursor(var, "cursor");
+            var->destroy_mod = false;
         }
         set_shape_tag("selecte_tower_2", (sfIntRect){
-        get_size_tag("selecte_tower_2").x, 0, 
+        get_size_tag("selecte_tower_2").x, 0,
         get_size_tag("selecte_tower_2").x,
         get_size_tag("selecte_tower_2").y}, true);
-        change_cursor(var);
+        change_cursor(var, "cursor");
     } else
         set_shape_tag("selecte_tower_2", (sfIntRect){0, 0,
         calc_shape, get_size_tag("selecte_tower_2").y}, true);
@@ -56,7 +61,7 @@ void second_btn_tower_norms(var_t *var, int mouse, float calc_shape)
 void third_btn_tower_norms(var_t *var, int mouse, float calc_shape)
 {
     if (mouse_inside_tag("selecte_tower_3") &&
-    get_exits_tag("selecte_tower_3")) {
+        get_exits_tag("selecte_tower_3")) {
         add_info_more(var, "\t\t\t\t\t  Fire Tower\n\nAttack : 10/s\n"
         "Build : 25s\nRange : 20\n\n"
         "Description :\nThe fire tower doesn't do a lot\n of damage immediatel"
@@ -64,12 +69,14 @@ void third_btn_tower_norms(var_t *var, int mouse, float calc_shape)
         if (mouse_pressed(sfMouseLeft, &mouse)) {
             var->thor_mod = true;
             var->tower.tower_selected = 3;
+            set_cursor(var, "cursor");
+            var->destroy_mod = false;
         }
         set_shape_tag("selecte_tower_3", (sfIntRect){
         get_size_tag("selecte_tower_3").x, 0,
         get_size_tag("selecte_tower_3").x, get_size_tag("selecte_tower_3").y},
         true);
-        change_cursor(var);
+        change_cursor(var, "cursor");
     } else
         set_shape_tag("selecte_tower_3", (sfIntRect){0, 0,
         calc_shape, get_size_tag("selecte_tower_3").y}, true);

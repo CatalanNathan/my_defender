@@ -21,25 +21,31 @@
 #include <stddef.h>
 #include <SFML/Audio.h>
 #include "my.h"
-
-#define V2f sfVector2f
+#include <math.h>
 
 #ifndef ENGINE_
     #define ENGINE_
 
-struct enemy_s
-{
+    #define V2f sfVector2f
+    #define GPT(X) get_position_tag(X)
+    #define GPO(X) get_position_obj(X)
+    #define SPT(X, O, I) set_position_tag(X, O, I)
+    #define GRT(X) get_rotation_tag(X)
+
+struct enemy_s {
     bool it_is;
     V2f *path;
     float anim_ennemie;
     float move_enemies;
     int pos_path;
     int n_path;
+    int pv;
+    int max_pv;
+    bool is_touch;
 };
 typedef struct enemy_s enemy_t;
 
-struct obj_s
-{
+struct obj_s {
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2u size;
@@ -61,8 +67,7 @@ struct obj_s
 };
 typedef struct obj_s obj_t;
 
-struct text_s
-{
+struct text_s {
     sfText *text;
     int id;
     bool display;
@@ -73,8 +78,7 @@ struct text_s
 };
 typedef struct text_s text_t;
 
-struct music_s
-{
+struct music_s {
     sfMusic *sound;
     int id;
     float volume;
@@ -85,8 +89,7 @@ struct music_s
 typedef struct music_s music_t;
 
 typedef struct node_s node_t;
-struct node_s
-{
+struct node_s {
     node_t *next;
     node_t *previous;
     obj_t settings;
@@ -137,7 +140,6 @@ struct window_s
     sfTime time;
 };
 typedef struct window_s window_t;
-
 
 struct game_s
 {
@@ -195,13 +197,18 @@ void set_fps(bool visible, int font_size, sfColor color);
 bool mouse_inside_tag(char *tag);
 bool mouse_pressed(sfMouseButton button, int *i);
 bool mouse_inside_obj(obj_t *obj);
-bool elapsed_time_seconds(float seconds, float *increment, float *save_increment);
-bool elapsed_time_milliseconds(float milliseconds, float *increment, float *save_increment);
-bool elapsed_time_microseconds(float microseconds, float *increment, float *save_increment);
+bool elapsed_time_seconds(float seconds, float *increment,
+float *save_increment);
+bool elapsed_time_milliseconds(float milliseconds,
+float *increment, float *save_increment);
+bool elapsed_time_microseconds(float microseconds,
+float *increment, float *save_increment);
 sfIntRect get_shape_tag(char *tag);
 sfIntRect get_shape_obj(obj_t *obj);
-void animation_tag(char *tag, int *shape_start_increment_end_milliseconds, float *increment, float *save_increment);
-void animation_obj(obj_t *obj, int *shape_start_increment_end_milliseconds, float *increment, float *save_increment);
+void animation_tag(char *tag, int *shape_start_increment_end_milliseconds,
+float *increment, float *save_increment);
+void animation_obj(obj_t *obj, int *shape_start_increment_end_milliseconds,
+float *increment, float *save_increment);
 void display_obj();
 text_t create_text(char *text, char *tag);
 void display_text();
@@ -251,8 +258,6 @@ obj_t mouse_inside_more(char *tag);
 char *format_number(char *str, int str_i);
 void set_exits_tag(char *tag, bool exits);
 bool get_collision_obj(obj_t *obj, char *obstacles_tag, int decrement);
-int get_collision_tag_norms(char *obstacles_tag, sfVector2f pos_1, sfVector2u size_1);
-int get_collision_obj_norms(char *obstacles_tag, sfVector2f pos_1, sfVector2u size_1, int decrement);
 bool get_exits_tag(char *tag);
 bool get_exits_obj(obj_t obj);
 sfColor get_sprite_color_tag(char *tag);
@@ -262,5 +267,21 @@ void set_link_tag(char *tag1, char *tag2);
 bool get_text_visible_tag(char *tag);
 sfFloatRect get_text_shape_tag(char *tag);
 void resize_parallax_hg(obj_t *obj);
+bool get_visible_tag(char *tag);
+int get_collision_obj_norms(char *obstacles_tag, sfVector2f pos_1,
+sfVector2u size_1, int decrement);
+int get_collision_tag_norms(char *obstacles_tag, sfVector2f pos_1,
+sfVector2u size_1);
+float get_rotation_tag(char *tag);
+void set_link_id(obj_t *obj1, obj_t *obj2);
+int get_collision_zone_tag_id(char *obj_tag, char *obstacles_tag, int zone);
+int get_collision_zone_obj_id(obj_t *obj, char *obstacles_tag, int zone);
+void resize_my_img(obj_t *obj, V2f new_size);
+int get_pv_max_obj(obj_t *obj);
+void set_touch_object(obj_t *obj);
+void destroy_object_tag(char *tag);
+void destroy_text_tag(char *tag);
+int mouse_scroll(void);
+void set_music_stop_tags(char **tags, int size);
 
 #endif

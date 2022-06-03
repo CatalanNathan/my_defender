@@ -64,5 +64,6 @@ void put(char const *string, ...)
             i += 1;
         }
     }
+    free(my_str);
     va_end(list);
 }

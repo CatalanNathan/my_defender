@@ -17,6 +17,8 @@ void initialise_enemy(obj_t *object)
     object->enemy.move_enemies = 0.00;
     object->enemy.anim_ennemie = 0.00;
     object->enemy.n_path = 0;
+    object->enemy.pv = 0;
+    object->enemy.is_touch = false;
 }
 
 void init_bool(obj_t *object)
@@ -34,7 +36,7 @@ obj_t initiate_object(char *src_img, char *tag, int display_order)
     obj_t object;
 
     init_bool(&object);
-    object.tag = tag;
+    object.tag = my_strdup(tag);
     object.texture = sfTexture_createFromFile(my_strcat("csfml_eng"
     "ine/img_src/", src_img), NULL);
     object.sprite = sfSprite_create();

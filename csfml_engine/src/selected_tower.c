@@ -88,7 +88,8 @@ void selected_button_tower(var_t *var)
 void create_selected_tower(var_t *var)
 {
     create_object("selecte_tower_1.png", "selecte_tower_1", 7);
-    set_shape_tag("selecte_tower_1", (sfIntRect){ 0, 0, get_size_tag("selecte_t"
+    set_shape_tag("selecte_tower_1", (sfIntRect){ 0, 0,
+    get_size_tag("selecte_t"
     "ower_1").x / 2, get_size_tag("selecte_tower_1").y}, true);
     set_position_tag("selecte_tower_1", (V2f){ get_position_tag("construct"
     "Menu").x + 110, get_position_tag("constructMenu").y + 6});

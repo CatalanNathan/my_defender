@@ -5,7 +5,6 @@
 ** display_parallax.c
 */
 
-
 #include "my.h"
 #include "engine.h"
 #include "var.h"

@@ -9,10 +9,23 @@
 #include "engine.h"
 #include "var.h"
 
+void update_all_text3(void);
+
 void event_game(var_t *var)
 {
-    if (key_pressed(sfKeyEscape))
-        game_end(0);
+    if (key_pressed(sfKeyEscape) && !var->death_m) {
+        if (var->settings_m == false && !var->pause) {
+            set_music_play_tag("click", false, 100);
+            var->pause = true;
+            var->settings_m = true;
+            create_settings_m(var);
+        } else if (var->settings_m == true) {
+            set_music_play_tag("click", false, 100);
+            var->pause = false;
+            var->settings_m = false;
+            destroy_settings_m(var);
+        }
+    }
     set_position_tag("cursor", (V2f){sfMouse_getPositionRenderWindow(
     engine.win_settings.window).x - 3, sfMouse_getPositionRenderWindow(
     engine.win_settings.window).y - 3});
@@ -20,21 +33,15 @@ void event_game(var_t *var)
 
 void update_all_text2(var_t *var)
 {
-    if (get_shape_tag("selecte_tower_1").width >=
-    (int)get_texture_size_tag("selecte_tower_1").x / 2)
-        set_text_visible_tag("price_tower_1", true);
-    else
-        set_text_visible_tag("price_tower_1", false);
-    if (get_shape_tag("selecte_tower_2").width >=
-    (int)get_texture_size_tag("selecte_tower_2").x / 2)
-        set_text_visible_tag("price_tower_2", true);
-    else
-        set_text_visible_tag("price_tower_2", false);
-    if (get_shape_tag("selecte_tower_3").width >=
-    (int)get_texture_size_tag("selecte_tower_3").x / 2)
-        set_text_visible_tag("price_tower_3", true);
-    else
-        set_text_visible_tag("price_tower_3", false);
+    update_all_text3();
+    if (get_shape_tag("delete").width >=
+    (int)get_texture_size_tag("delete").x / 2) {
+        set_text_visible_tag("price_delete", true);
+        set_text_position_tag("price_delete",
+        (V2f){get_position_tag("delete").x + get_size_tag("delete").x / 2 - 8,
+        get_position_tag("delete").y + 48});
+    } else
+        set_text_visible_tag("price_delete", false);
 }
 
 void update_all_text(var_t *var)
@@ -84,7 +91,8 @@ float *incrementation, float *save)
 void update_button_exists(char *tag_obj, char *tag_button,
 float *incrementation, float *save)
 {
-    if (get_exits_tag(tag_obj) && elapsed_time_seconds(5, incrementation, save)) {
+    if (get_exits_tag(tag_obj) &&
+        elapsed_time_seconds(5, incrementation, save)) {
         set_exits_tag(tag_obj, false);
         set_exits_tag(tag_button, true);
         if (!get_exits_tag("wall_1")) {

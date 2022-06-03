@@ -11,9 +11,8 @@ int my_spacelen(char *str)
 {
     int space = 0;
 
-    for(int i = 0; str[i] != '\0'; i++) {
+    for (int i = 0; str[i] != '\0'; i++)
         if (str[i] == '\n')
             space++;
-    }
     return space;
 }

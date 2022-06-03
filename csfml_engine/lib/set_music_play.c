@@ -20,9 +20,10 @@ void set_music_play_tag(char *tag, bool loop, float volume)
 
     while (engine.game.music != NULL) {
         if (equal(engine.game.music->settings.tag, tag) == true) {
+            sfMusic_stop(engine.game.music->settings.sound);
             sfMusic_play(engine.game.music->settings.sound);
             engine.game.music->settings.loop = loop;
-            engine.game.music->settings.loop = volume;
+            engine.game.music->settings.volume = volume;
             engine.game.music->settings.playing = true;
             sfMusic_setVolume(engine.game.music->settings.sound, volume);
             old_coding_style_epitech(loop);
@@ -40,7 +41,7 @@ void set_music_play_sfmusic(music_t *sound, bool loop, float volume)
         if (engine.game.music->settings.id == sound->id) {
             sfMusic_play(engine.game.music->settings.sound);
             engine.game.music->settings.loop = loop;
-            engine.game.music->settings.loop = volume;
+            engine.game.music->settings.volume = volume;
             engine.game.music->settings.playing = true;
             sfMusic_setVolume(engine.game.music->settings.sound, volume);
             old_coding_style_epitech(loop);

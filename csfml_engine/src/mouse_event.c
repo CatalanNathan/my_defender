@@ -19,7 +19,7 @@ void warning_true(int *e, float time)
     if (get_shape_tag("warning_build").left >= 0) {
         set_shape_tag("warning_build", (sfIntRect){get_shape_tag(
         "warning_build").left - (0.001 * time), 0, get_size_tag(
-        "warning_build").x ,get_shape_tag("warning_build").height}, true);
+        "warning_build").x, get_shape_tag("warning_build").height}, true);
         set_position_tag("warning_build", (V2f){get_position_tag(
         "warning_build").x - (0.0005 * time), get_position_tag(
         "warning_build").y});

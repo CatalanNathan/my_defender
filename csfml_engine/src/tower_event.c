@@ -21,7 +21,7 @@ void check_time(obj_t object, var_t *var)
         var->money -= 50000;
         paiement = true;
     }
-    if (var->tower.tower_selected == 3  && var->money - 90000 >= 0) {
+    if (var->tower.tower_selected == 3 && var->money - 90000 >= 0) {
         var->money -= 90000;
         paiement = true;
     }
@@ -31,11 +31,19 @@ void check_time(obj_t object, var_t *var)
 
 void time_tower(var_t *var)
 {
-    time_tower_run_one(var);
-    time_tower_run_two(var);
-    time_tower_run_three(var);
-    time_tower_run_four(var);
-    time_tower_run_five(var);
+    char **tags = malloc(sizeof(char *) * 2);
+    static int a = 0;
+    static int b = 0;
+    static int c = 0;
+    static int d = 0;
+    static int e = 0;
+
+    time_tower_run_one(var, tags, &a);
+    time_tower_run_two(var, tags, &b);
+    time_tower_run_three(var, tags, &c);
+    time_tower_run_four(var, tags, &d);
+    time_tower_run_five(var, tags, &e);
+    free(tags);
 }
 
 void tower_event2(char *tower, var_t *var, obj_t object, int i)
@@ -65,4 +73,5 @@ void tower_event(var_t *var)
         tower[8] = e;
     }
     mouse_pressed(sfMouseLeft, &i);
+    update_spears(var);
 }
